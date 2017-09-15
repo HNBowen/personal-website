@@ -22428,7 +22428,12 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'Hello, Mom!'
+        'Hello, Mom!',
+        _react2.default.createElement(
+          'h1',
+          null,
+          ' Can you see me? '
+        )
       );
     }
   }]);
