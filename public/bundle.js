@@ -22433,6 +22433,11 @@ var App = function (_React$Component) {
           'h1',
           null,
           ' Can you see me? '
+        ),
+        _react2.default.createElement(
+          'h2',
+          null,
+          ' Yes, yes I can '
         )
       );
     }
