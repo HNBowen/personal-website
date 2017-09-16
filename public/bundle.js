@@ -22409,6 +22409,22 @@ var _splash = __webpack_require__(185);
 
 var _splash2 = _interopRequireDefault(_splash);
 
+var _aboutme = __webpack_require__(186);
+
+var _aboutme2 = _interopRequireDefault(_aboutme);
+
+var _skills = __webpack_require__(187);
+
+var _skills2 = _interopRequireDefault(_skills);
+
+var _experience = __webpack_require__(188);
+
+var _experience2 = _interopRequireDefault(_experience);
+
+var _applications = __webpack_require__(189);
+
+var _applications2 = _interopRequireDefault(_applications);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22432,7 +22448,11 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_splash2.default, null)
+        _react2.default.createElement(_splash2.default, null),
+        _react2.default.createElement(_aboutme2.default, null),
+        _react2.default.createElement(_skills2.default, { skills: ['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS'] }),
+        _react2.default.createElement(_experience2.default, null),
+        _react2.default.createElement(_applications2.default, null)
       );
     }
   }]);
@@ -22462,17 +22482,212 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Splash = function Splash() {
   return _react2.default.createElement(
     "div",
-    null,
+    { className: "splash" },
     _react2.default.createElement(
       "h1",
       null,
       "Hank Bowen"
     ),
-    _react2.default.createElement("img", { src: "src/assets/profile.jpg", alt: "my mug", className: "splash" })
+    _react2.default.createElement("img", { src: "src/assets/profile.jpg", alt: "my mug", className: "splashImg" })
   );
 };
 
 exports.default = Splash;
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(32);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AboutMe = function AboutMe() {
+  return _react2.default.createElement(
+    'div',
+    { className: 'about-me' },
+    _react2.default.createElement(
+      'p',
+      null,
+      'I am a full-stack software engineer who is passionate about creating functional, useful and beautiful applications.'
+    )
+  );
+};
+
+exports.default = AboutMe;
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(32);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Skills = function Skills(_ref) {
+  var skills = _ref.skills;
+
+  return _react2.default.createElement(
+    "div",
+    { className: "skills-container" },
+    _react2.default.createElement(
+      "h4",
+      null,
+      "Skills"
+    ),
+    _react2.default.createElement(
+      "ul",
+      { className: "skills-list" },
+      skills.map(function (skill, index) {
+        return _react2.default.createElement(
+          "li",
+          { className: "skills-list-item", key: index },
+          skill
+        );
+      })
+    )
+  );
+};
+
+exports.default = Skills;
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(32);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Experience = function Experience() {
+  return _react2.default.createElement(
+    "div",
+    { className: "experience-container" },
+    _react2.default.createElement(
+      "h4",
+      null,
+      "Experience"
+    ),
+    _react2.default.createElement(
+      "article",
+      null,
+      "Hack Reactor",
+      _react2.default.createElement(
+        "ul",
+        null,
+        _react2.default.createElement(
+          "li",
+          null,
+          "JavaScript Immersive"
+        ),
+        _react2.default.createElement(
+          "li",
+          null,
+          "3-month post-graudation residency"
+        )
+      )
+    ),
+    _react2.default.createElement(
+      "article",
+      null,
+      "University of New Hampshire",
+      _react2.default.createElement(
+        "ul",
+        null,
+        _react2.default.createElement(
+          "li",
+          null,
+          "B.S. Physics"
+        ),
+        _react2.default.createElement(
+          "li",
+          null,
+          "International Affiars Dual Major"
+        ),
+        _react2.default.createElement(
+          "li",
+          null,
+          "French minor"
+        )
+      )
+    )
+  );
+};
+
+exports.default = Experience;
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(32);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Applications = function Applications() {
+  return _react2.default.createElement(
+    "div",
+    { className: "applications-container" },
+    _react2.default.createElement(
+      "h4",
+      null,
+      "Applications"
+    ),
+    _react2.default.createElement(
+      "article",
+      null,
+      "brainstorm"
+    ),
+    _react2.default.createElement(
+      "article",
+      null,
+      "ShareMyKitchen"
+    ),
+    _react2.default.createElement(
+      "article",
+      null,
+      "GoodFilms"
+    )
+  );
+};
+
+exports.default = Applications;
 
 /***/ })
 /******/ ]);

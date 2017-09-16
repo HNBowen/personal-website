@@ -1,4 +1,27 @@
 .splash {
+  text-align: center
+}
+
+.splashImg {
   width: 50%;
+}
+
+.about-me {
+  text-align: center;
+}
+
+.skills-container {
+  text-align: center;
+}
+
+.skills-list {
+  text-align: center
+}
+
+.experience-container {
+  text-align: center
+}
+
+.applications-container {
   text-align: center;
 }
