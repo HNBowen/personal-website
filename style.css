@@ -15,6 +15,17 @@ html, body {
 
 .name-tag {
   -webkit-text-fill-color: white;
+  font-size: 10vh;
+  font-family: monospace;
+}
+
+.name-tag-text {
+  -webkit-text-fill-color: white;
+  position: absolute;
+  bottom: 40%;
+  top: 60%;
+  font-size: 3vh;
+  font-family: monospace;
 }
 
 .about-me {
