@@ -4,10 +4,10 @@ const Skills = ({skills}) => {
   return (
       <div className="skills-container">
         <h4>Skills</h4>
-        <ul className="skills-list">{skills.map(function(skill, index) {
-          return <li className="skills-list-item" key={index}>{skill}</li>
+        <div className="skills-list">{skills.map(function(skill, index) {
+          return <div className="skills-list-item" key={index}>{skill}</div>
         })}
-        </ul>
+        </div>
       </div>
     )
 }

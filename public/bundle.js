@@ -22447,7 +22447,7 @@ var App = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { id: 'app' },
         _react2.default.createElement(_splash2.default, null),
         _react2.default.createElement(_aboutme2.default, null),
         _react2.default.createElement(_skills2.default, { skills: ['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS'] }),
@@ -22485,10 +22485,14 @@ var Splash = function Splash() {
     { className: "splash" },
     _react2.default.createElement(
       "h1",
-      null,
-      "Hank Bowen"
+      { className: "name-tag" },
+      "<Hank />"
     ),
-    _react2.default.createElement("img", { src: "src/assets/profile.jpg", alt: "my mug", className: "splashImg" })
+    _react2.default.createElement(
+      "h5",
+      { className: "name-tag-text" },
+      "Full-stack software engineer"
+    )
   );
 };
 
@@ -22554,11 +22558,11 @@ var Skills = function Skills(_ref) {
       "Skills"
     ),
     _react2.default.createElement(
-      "ul",
+      "div",
       { className: "skills-list" },
       skills.map(function (skill, index) {
         return _react2.default.createElement(
-          "li",
+          "div",
           { className: "skills-list-item", key: index },
           skill
         );
@@ -22597,11 +22601,12 @@ var Experience = function Experience() {
     ),
     _react2.default.createElement(
       "article",
-      null,
+      { className: "experience-item" },
       "Hack Reactor",
+      _react2.default.createElement("img", { className: "experience-img", src: "src/assets/hr.jpeg", alt: "HackReactor" }),
       _react2.default.createElement(
         "ul",
-        null,
+        { className: "experience-list" },
         _react2.default.createElement(
           "li",
           null,
@@ -22616,11 +22621,12 @@ var Experience = function Experience() {
     ),
     _react2.default.createElement(
       "article",
-      null,
+      { className: "experience-item" },
       "University of New Hampshire",
+      _react2.default.createElement("img", { className: "experience-img", src: "src/assets/unh.png", alt: "UNH" }),
       _react2.default.createElement(
         "ul",
-        null,
+        { className: "experience-list" },
         _react2.default.createElement(
           "li",
           null,

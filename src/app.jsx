@@ -13,7 +13,7 @@ class App extends React.Component {
 
   render() {
     return (
-        <div>
+        <div id="app">
           <Splash />
           <AboutMe />
           <Skills skills={['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS']} />
