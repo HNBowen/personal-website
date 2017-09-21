@@ -22519,10 +22519,17 @@ var AboutMe = function AboutMe() {
   return _react2.default.createElement(
     'div',
     { className: 'about-me' },
+    _react2.default.createElement('img', { src: 'src/assets/profile_hex.png', alt: 'me', className: 'about-me-img' }),
     _react2.default.createElement(
       'p',
-      null,
-      'I am a full-stack software engineer who is passionate about creating functional, useful and beautiful applications.'
+      { className: 'about-me-text' },
+      'My name is Hank Bowen.',
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('br', null),
+      'I am a full-stack software engineer based in Austin, TX who is passionate about creating functional, useful and beautiful applications.',
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('br', null),
+      'I bring an eye for design, insatiable curiosity, and a commitment to collaboration to my work as a coder.'
     )
   );
 };

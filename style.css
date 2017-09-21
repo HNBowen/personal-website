@@ -30,10 +30,27 @@ html, body {
 
 .about-me {
   text-align: center;
+  height: 50vh;
+  display: flex;
+}
+
+.about-me-img {
+  height: 20vh;
+  margin-top: 5vh;
+  margin-left: 5vw;
+}
+
+.about-me-text {
+  margin-top: 5vh;
+  padding: 2vw;
+  padding-left: 5vw;
+  text-align: left;
 }
 
 .skills-container {
   text-align: center;
+  height: 50vh;
+  display: flex;
 }
 
 .skills-list {
@@ -47,6 +64,8 @@ html, body {
 
 .experience-container {
   text-align: center
+  height: 50vh;
+  display: flex;
 }
 
 .experience-list: {
@@ -64,4 +83,6 @@ html, body {
 
 .applications-container {
   text-align: center;
+  height: 50vh;
+  display: flex;
 }
