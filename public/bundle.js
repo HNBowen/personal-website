@@ -22487,14 +22487,11 @@ var Splash = function Splash() {
       "h1",
       { className: "name-tag" },
       "<Hank />"
-    ),
-    _react2.default.createElement(
-      "h5",
-      { className: "name-tag-text" },
-      "Full-stack software engineer"
     )
   );
 };
+
+// <h5 className="name-tag-text">Full-stack software engineer</h5>
 
 exports.default = Splash;
 
