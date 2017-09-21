@@ -22448,15 +22448,14 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { id: 'app' },
-        _react2.default.createElement(_splash2.default, null),
-        _react2.default.createElement(_aboutme2.default, null)
+        _react2.default.createElement(_splash2.default, null)
       );
     }
   }]);
 
   return App;
 }(_react2.default.Component);
-
+// <AboutMe />
 // <Skills skills={['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS']} />
 // <Experience />
 // <Applications />
