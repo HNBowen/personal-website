@@ -27,7 +27,7 @@ html, body {
 
 .name-tag-text {
   -webkit-text-fill-color: white;
-  
+  position: absolute;
   font-size: 4vw;
   font-family: monospace;
 }
