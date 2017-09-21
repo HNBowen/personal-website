@@ -3,7 +3,9 @@ import React from 'react'
 const AboutMe = () => {
   return (
       <div className = 'about-me'>
-      <img src="src/assets/profile_hex.png" alt="me" className="about-me-img"/>
+        <div className="about-me-img-container">
+          <img src="src/assets/profile.jpg" alt="me" className="about-me-img"/>
+        </div>
         <p className="about-me-text">
           My name is Hank Bowen.<br/>
           <br />  
@@ -15,5 +17,7 @@ const AboutMe = () => {
       </div>
     )
 }
+
+
 
 export default AboutMe
