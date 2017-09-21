@@ -29,16 +29,16 @@ html, body {
 
 .about-me {
   text-align: center;
-  height: 30vh;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-me-img {
   height: 20vh;
-  margin-top: 5vh;
-  margin-left: 5vw;
 }
 
 .about-me-text {
