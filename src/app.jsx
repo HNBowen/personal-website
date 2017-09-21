@@ -16,12 +16,13 @@ class App extends React.Component {
         <div id="app">
           <Splash />
           <AboutMe />
-          <Skills skills={['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS']} />
-          <Experience />
-          <Applications />
         </div>
       )
   }
 }
+
+// <Skills skills={['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS']} />
+// <Experience />
+// <Applications />
 
 module.exports = App
