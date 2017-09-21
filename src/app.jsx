@@ -15,12 +15,11 @@ class App extends React.Component {
     return (
         <div id="app">
           <Splash />
-          
+          <AboutMe />
         </div>
       )
   }
 }
-// <AboutMe />
 // <Skills skills={['JS', 'Node & Express', 'React', 'Angular', 'D3', 'MongoDB', 'HTML & CSS']} />
 // <Experience />
 // <Applications />
