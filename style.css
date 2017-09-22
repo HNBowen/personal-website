@@ -41,6 +41,7 @@ html, body {
   somewhat experimental drop-shadow property will consider the 
   transparent pieces of the png when applying the shadow. In this way
   I can acheive a box shadow effect around a custom shape.
+  http://bricss.net/post/33158273857/box-shadow-vs-filter-drop-shadow
 */
 .about-me-img-container {
   height: 20vh;
@@ -48,11 +49,12 @@ html, body {
   background-image: url("src/assets/profile_hex.png");
   background-size: contain;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
-  -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.5));
+  background-position: center;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -webkit-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -moz-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -ms-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -o-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
 }
 
 /* this is styling for the image tag. Basically it allows the 
@@ -68,11 +70,15 @@ html, body {
 
 
 .about-me-text {
-  margin-top: 5vh;
   padding: 2vw;
-  padding-left: 5vw;
-  padding-right: 5vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
   text-align: left;
+  box-shadow: 0 5px 5px grey;
+  font-family: monospace;
+  -webkit-text-fill-color: #eff8ef;
+  border: solid #eff8ef 2px;
+  background-color: #12c9d4;
 }
 
 .skills-container {

@@ -7,6 +7,9 @@ const AboutMe = () => {
           <img src="src/assets/profile.jpg" alt="me" className="about-me-img"/>
         </div>
         <p className="about-me-text">
+          readme.md
+          <br/>
+          <br />
           My name is Hank Bowen.<br/>
           <br />  
           I am a full-stack software engineer based in Austin, TX who is passionate about creating functional, useful and beautiful applications.
