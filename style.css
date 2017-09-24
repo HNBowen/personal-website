@@ -28,6 +28,7 @@ html, body {
 }
 
 .about-me {
+  opacity: 0;
   text-align: center;
   height: 50%;
   display: -webkit-box;
@@ -96,6 +97,11 @@ html, body {
 .skills-list-item {
   display: inline-block;
   width: 30%;
+}
+
+#svg-container {
+  height: 50vh;
+  width: 100vw;
 }
 
 .experience-container {
