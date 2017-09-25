@@ -35,7 +35,7 @@ class Skills extends React.Component {
 
     //set the resize listener
     d3.select(window).on("resize", () => {
-      resize()
+      resize("svg-container")
     })
 
   }
