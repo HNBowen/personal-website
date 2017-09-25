@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
 import skillSet from './skillset.js'
 
-import { node, tick, resize, startForce, fadeInForce } from './d3helpers.js'
+import { node, tick, resize, startForce, endForce } from './d3helpers.js'
 
 class Skills extends React.Component {
   constructor(props) {
@@ -20,9 +20,13 @@ class Skills extends React.Component {
       triggerElement: "#svg"
     })
       .on('enter', () => {
-        console.log('hey Imma svg!')
+        console.log('entering')
         startForce(this.d3Graph, skillSet, width, height)
-        // fadeInForce(this.d3Graph)
+        //fadeInForce(this.d3Graph)
+      })
+      .on('leave', () => {
+        console.log('exiting')
+        endForce(this.d3Graph)
       })
       .addTo(skillsCtrl)
 

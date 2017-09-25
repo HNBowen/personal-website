@@ -32212,9 +32212,12 @@ var Skills = function (_React$Component) {
       var skillsScene = new ScrollMagic.Scene({
         triggerElement: "#svg"
       }).on('enter', function () {
-        console.log('hey Imma svg!');
+        console.log('entering');
         (0, _d3helpers.startForce)(_this2.d3Graph, _skillset2.default, width, height);
-        // fadeInForce(this.d3Graph)
+        //fadeInForce(this.d3Graph)
+      }).on('leave', function () {
+        console.log('exiting');
+        (0, _d3helpers.endForce)(_this2.d3Graph);
       }).addTo(skillsCtrl);
 
       //grab the width and height of the svg-container
@@ -32277,16 +32280,29 @@ var skillSet = [{ type: "center",
   name: "Skills",
   x: window.innerWidth / 2,
   height: 50,
-  width: 50
+  width: 50,
+  hexRad: 25
 }, {
   x: window.innerWidth / 2 * 1.5,
   height: 25,
-  width: 25
+  width: 25,
+  hexRad: 25
 }, {
   x: window.innerWidth / 2 * 0.5,
   height: 25,
-  width: 25
+  width: 25,
+  hexRad: 25
 }];
+
+// const hexagon = {
+//   draw: function(height, width, size, center) {
+//     var points = this.calcPoints(/*(svg width - offset), ( svg height - offset ) */)
+//     return d3.svg.line()(points);
+//   },
+//   calcPoints: function(size, center) {
+//     var points = [ [-size, 0], [(-size * Math.PI / 2, size * Math.PI / 2], [size * Math.PI/2, size*Math.PI/2 ], [size*Math.Pi/2, -size*Math.PI/2], [-size*Math.PI/2, -size*Math.PI/2], [-size, 0] ];
+//   }
+// }
 // {type: "aux"},
 // {type: "aux"},
 // {type: "aux"},
@@ -32307,7 +32323,7 @@ exports.default = skillSet;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resize = exports.fadeInForce = exports.tick = exports.createNodes = exports.startForce = undefined;
+exports.resize = exports.fadeOutForce = exports.fadeInForce = exports.tick = exports.createNodes = exports.endForce = exports.startForce = undefined;
 
 var _d = __webpack_require__(83);
 
@@ -32317,26 +32333,49 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var force = d3.layout.force().gravity(0.5).charge(-1000);
 
+var hexagon = {
+  draw: function draw(height, width) {
+    var points = [[width / 2 - 24, height / 2], [], pt2, pt3, pt4, pt5, start];
+    return d3.svg.line()(points);
+  }
+};
+
 var startForce = exports.startForce = function startForce(selection, skills, width, height) {
+  console.log('inside startForce');
   createNodes(selection, skills);
   force.nodes(skills).size([width, height]).on('tick', function () {
     tick(selection);
   }).start();
 };
 
+var endForce = exports.endForce = function endForce(selection) {
+  force.stop();
+  selection.selectAll("circle").transition().duration(750).delay(function (d, i) {
+    console.log("endForce delay");return i * 5;
+  }).attrTween("r", function (d) {
+    var i = d3.interpolate(d.width, 0);
+    return function (t) {
+      return i(t);
+    };
+  }).remove();
+};
+
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
-  selection.selectAll("circle").data(skills).enter().append("circle")
+  console.log('inside createNodes');
+  selection.selectAll("circle" /*"path"*/).data(skills).enter().append("circle" /*svg:path*/)
   // .attr("r", function(d){return d.width})
   .attr("stroke", "black").attr("fill", "none").attr("cx", function (d) {
     return d.x;
   }).attr("cy", function (d) {
     return d.y;
   }).call(force.drag).transition().duration(750).delay(function (d, i) {
-    return i * 5;
+    console.log("i", i);return i * 5;
   }).attrTween("r", function (d) {
+
+    console.log("d.width: ", d.width);
     var i = d3.interpolate(0, d.width);
     return function (t) {
-      return d.width = i(t);
+      return i(t);
     };
   });
 };
@@ -32354,6 +32393,17 @@ var fadeInForce = exports.fadeInForce = function fadeInForce(selection) {
     return i * 5;
   }).attrTween("r", function (d) {
     var i = d3.interpolate(0, d.width);
+    return function (t) {
+      return d.width = i(t);
+    };
+  });
+};
+
+var fadeOutForce = exports.fadeOutForce = function fadeOutForce(selection) {
+  selection.selectAll("circle").transition().duration(750).delay(function (d, i) {
+    return i * 5;
+  }).attrTween("r", function (d) {
+    var i = d3.interpolate(d.width, 0);
     return function (t) {
       return d.width = i(t);
     };
