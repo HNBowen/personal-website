@@ -32349,27 +32349,27 @@ var endForce = exports.endForce = function endForce(selection) {
   force.stop();
   selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
     return i * 5;
-  }).attrTween("r", function (d) {
+  }).attrTween("d", function (d) {
     var i = d3.interpolate(d.width, 0);
     return function (t) {
-      return i(t);
+      return hexagon.draw(d.x, d.y, i(t));
     };
   }).remove();
 };
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
 
-  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("d", function (d) {
-    return hexagon.draw(d.x, d.y, d.hexRad);
-  }).attr("stroke", "black").attr("fill", "none")
+  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path")
+  //.attr("d", function(d){return hexagon.draw(d.x, d.y, d.hexRad)})
+  .attr("stroke", "black").attr("fill", "none")
   // .attr("cx", (d) => d.x)
   // .attr("cy", (d) => d.y)
   .call(force.drag).transition().duration(750).delay(function (d, i) {
     return i * 5;
-  }).attrTween("r", function (d) {
-    var i = d3.interpolate(0, d.width);
+  }).attrTween("d", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
     return function (t) {
-      return i(t);
+      return hexagon.draw(d.x, d.y, i(t));
     };
   });
 };

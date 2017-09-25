@@ -27,9 +27,9 @@ export const endForce = (selection) => {
     .transition()
     .duration(750)
     .delay(function(d, i) { return i * 5; })
-    .attrTween("r", function(d) {
+    .attrTween("d", function(d) {
       var i = d3.interpolate(d.width, 0);
-      return function(t) { return i(t); };
+      return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
     })
     .remove();
 };
@@ -38,7 +38,7 @@ export const createNodes = (selection, skills) =>  {
   
   selection.selectAll(/*"circle"*/"path")
   .data(skills).enter().append(/*"circle"*/"svg:path")
-  .attr("d", function(d){return hexagon.draw(d.x, d.y, d.hexRad)})
+  //.attr("d", function(d){return hexagon.draw(d.x, d.y, d.hexRad)})
   .attr("stroke","black")
   .attr("fill","none")
   // .attr("cx", (d) => d.x)
@@ -47,9 +47,9 @@ export const createNodes = (selection, skills) =>  {
   .transition()
   .duration(750)
   .delay(function(d, i) { return i * 5; })
-  .attrTween("r", function(d) {
-    var i = d3.interpolate(0, d.width);
-    return function(t) { return i(t); };
+  .attrTween("d", function(d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
   });
 }
 
