@@ -20,12 +20,9 @@ class Skills extends React.Component {
       triggerElement: "#svg"
     })
       .on('enter', () => {
-        console.log('entering')
         startForce(this.d3Graph, skillSet, width, height)
-        //fadeInForce(this.d3Graph)
       })
       .on('leave', () => {
-        console.log('exiting')
         endForce(this.d3Graph)
       })
       .addTo(skillsCtrl)

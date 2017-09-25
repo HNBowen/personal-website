@@ -4,7 +4,7 @@ const skillSet = [
    x: window.innerWidth / 2,
    height: 50,
    width: 50,
-   hexRad: 25
+   hexRad: 50
   },
   {
     x: (window.innerWidth / 2) * 1.5,

@@ -32212,11 +32212,8 @@ var Skills = function (_React$Component) {
       var skillsScene = new ScrollMagic.Scene({
         triggerElement: "#svg"
       }).on('enter', function () {
-        console.log('entering');
         (0, _d3helpers.startForce)(_this2.d3Graph, _skillset2.default, width, height);
-        //fadeInForce(this.d3Graph)
       }).on('leave', function () {
-        console.log('exiting');
         (0, _d3helpers.endForce)(_this2.d3Graph);
       }).addTo(skillsCtrl);
 
@@ -32281,7 +32278,7 @@ var skillSet = [{ type: "center",
   x: window.innerWidth / 2,
   height: 50,
   width: 50,
-  hexRad: 25
+  hexRad: 50
 }, {
   x: window.innerWidth / 2 * 1.5,
   height: 25,
@@ -32334,14 +32331,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var force = d3.layout.force().gravity(0.5).charge(-1000);
 
 var hexagon = {
-  draw: function draw(height, width) {
-    var points = [[width / 2 - 24, height / 2], [], pt2, pt3, pt4, pt5, start];
+  draw: function draw(x, y, r) {
+    var points = [[x - r, y], [x - r / 2, y + r * Math.sqrt(3) / 2], [x + r / 2, y + r * Math.sqrt(3) / 2], [x + r, y], [x + r / 2, y - r * Math.sqrt(3) / 2], [x - r / 2, y - r * Math.sqrt(3) / 2], [x - r, y]];
     return d3.svg.line()(points);
   }
 };
 
 var startForce = exports.startForce = function startForce(selection, skills, width, height) {
-  console.log('inside startForce');
+
   createNodes(selection, skills);
   force.nodes(skills).size([width, height]).on('tick', function () {
     tick(selection);
@@ -32350,8 +32347,8 @@ var startForce = exports.startForce = function startForce(selection, skills, wid
 
 var endForce = exports.endForce = function endForce(selection) {
   force.stop();
-  selection.selectAll("circle").transition().duration(750).delay(function (d, i) {
-    console.log("endForce delay");return i * 5;
+  selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
+    return i * 5;
   }).attrTween("r", function (d) {
     var i = d3.interpolate(d.width, 0);
     return function (t) {
@@ -32361,18 +32358,15 @@ var endForce = exports.endForce = function endForce(selection) {
 };
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
-  console.log('inside createNodes');
-  selection.selectAll("circle" /*"path"*/).data(skills).enter().append("circle" /*svg:path*/)
-  // .attr("r", function(d){return d.width})
-  .attr("stroke", "black").attr("fill", "none").attr("cx", function (d) {
-    return d.x;
-  }).attr("cy", function (d) {
-    return d.y;
-  }).call(force.drag).transition().duration(750).delay(function (d, i) {
-    console.log("i", i);return i * 5;
-  }).attrTween("r", function (d) {
 
-    console.log("d.width: ", d.width);
+  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("d", function (d) {
+    return hexagon.draw(d.x, d.y, d.hexRad);
+  }).attr("stroke", "black").attr("fill", "none")
+  // .attr("cx", (d) => d.x)
+  // .attr("cy", (d) => d.y)
+  .call(force.drag).transition().duration(750).delay(function (d, i) {
+    return i * 5;
+  }).attrTween("r", function (d) {
     var i = d3.interpolate(0, d.width);
     return function (t) {
       return i(t);
@@ -32381,7 +32375,7 @@ var createNodes = exports.createNodes = function createNodes(selection, skills) 
 };
 
 var tick = exports.tick = function tick(selection) {
-  selection.selectAll("circle").attr("cx", function (d) {
+  selection.selectAll( /*"circle"*/"path").attr("cx", function (d) {
     return d.x;
   }).attr("cy", function (d) {
     return d.y;
@@ -32389,7 +32383,7 @@ var tick = exports.tick = function tick(selection) {
 };
 
 var fadeInForce = exports.fadeInForce = function fadeInForce(selection) {
-  selection.selectAll("circle").transition().duration(750).delay(function (d, i) {
+  selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
     return i * 5;
   }).attrTween("r", function (d) {
     var i = d3.interpolate(0, d.width);
@@ -32400,7 +32394,7 @@ var fadeInForce = exports.fadeInForce = function fadeInForce(selection) {
 };
 
 var fadeOutForce = exports.fadeOutForce = function fadeOutForce(selection) {
-  selection.selectAll("circle").transition().duration(750).delay(function (d, i) {
+  selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
     return i * 5;
   }).attrTween("r", function (d) {
     var i = d3.interpolate(d.width, 0);
