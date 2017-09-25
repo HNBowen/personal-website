@@ -12,6 +12,20 @@ class Skills extends React.Component {
 
   //when the component mounts, draw the force layout
   componentDidMount() {
+
+    //scroll magic controllers and scene
+    var skillsCtrl = new ScrollMagic.Controller();
+
+    var skillsScene = new ScrollMagic.Scene({
+      triggerElement: "#svg"
+    })
+      .on('enter', () => {
+        console.log('hey Imma svg!')
+        startForce(this.d3Graph, skillSet, width, height)
+        // fadeInForce(this.d3Graph)
+      })
+      .addTo(skillsCtrl)
+
     //grab the width and height of the svg-container
     var width = window.innerWidth;
     var height = document.getElementById("svg-container").clientHeight;
@@ -28,11 +42,11 @@ class Skills extends React.Component {
 
 
     //call the startForce function
-    startForce(this.d3Graph, skillSet, width, height)
+    
       //give it the d3 graph selection
       //give it the skillSet data set
       //give it the width and height of the svg-container
-
+    
     //set the resize listener
     d3.select(window).on("resize", () => {
       resize("svg-container")

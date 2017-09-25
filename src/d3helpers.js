@@ -16,12 +16,19 @@ export const startForce = (selection, skills, width, height) => {
 export const createNodes = (selection, skills) =>  {
   selection.selectAll("circle")
   .data(skills).enter().append("circle")
-  .attr("r", function(d){return d.width})
+  // .attr("r", function(d){return d.width})
   .attr("stroke","black")
   .attr("fill","none")
   .attr("cx", (d) => d.x)
   .attr("cy", (d) => d.y)
   .call(force.drag)
+  .transition()
+  .duration(750)
+  .delay(function(d, i) { return i * 5; })
+  .attrTween("r", function(d) {
+    var i = d3.interpolate(0, d.width);
+    return function(t) { return d.width = i(t); };
+  });
 }
 
 export const tick = function(selection) {
@@ -30,8 +37,8 @@ export const tick = function(selection) {
   .attr("cy", (d) => d.y)
 }
 
-export const fadeInForce = (node) => {
-  node.transition()
+export const fadeInForce = (selection) => {
+  selection.selectAll("circle").transition()
     .duration(750)
     .delay(function(d, i) { return i * 5; })
     .attrTween("r", function(d) {
