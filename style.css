@@ -102,7 +102,7 @@ html, body {
 }
 
 #svg-container {
-  height: 50vh;
+  height: 60vh;
   width: 100vw;
   display: flex;
   justify-content: space-between;

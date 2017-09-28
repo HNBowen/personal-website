@@ -37,14 +37,17 @@ class Skills extends React.Component {
     var skillsCtrl = new ScrollMagic.Controller();
 
     var skillsScene = new ScrollMagic.Scene({
-      triggerElement: "#svg"
+      triggerElement: "#svg",
+      triggerHook: 0.5
     })
       .on('enter', () => {
         //draw and zoom-in hexagons
+        console.log('enter')
         createNodes(this.d3Graph, skillSet);
       })
       .on('leave', () => {
         //zoom out hexagons
+        console.log('leave')
         exitHex(this.d3Graph)
       })
       .addTo(skillsCtrl)
