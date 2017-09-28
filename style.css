@@ -104,6 +104,8 @@ html, body {
 #svg-container {
   height: 50vh;
   width: 100vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .experience-container {

@@ -46,17 +46,24 @@ export const resize = (el, data) => {
 }
 
 export const sizeNodes = (data, container) => {
+
+  var height = container.clientHeight
+  var width = container.clientWidth
   console.log('container: ', container)
-  data[0]['y'] = container.clientHeight / 2
-  data[1]['y'] = container.clientHeight / 2
-  data[2]['y'] = container.clientHeight / 2
+  data[0]['hexRad'] = height / 4
+  data[1]['hexRad'] = height / 16
+  data[2]['hexRad'] = height / 16
 
-  data[0]['x'] = window.innerWidth / 2
-  data[1]['x'] = (window.innerWidth / 2) * 0.5
-  data[2]['x'] = (window.innerWidth/2) * (1.5)
+  var centerHexRad = data[0]['hexRad']
 
-  data[0]['hexRad'] = container.clientHeight / 4
-  data[1]['hexRad'] = container.clientHeight / 8
-  data[2]['hexRad'] = container.clientHeight / 8
+  data[0]['y'] = height / 2
+  data[1]['y'] = height / 2
+  data[2]['y'] = height / 2
+
+  //each hexagons x-coordinate is dependent upon the center hexagons radius and its own radius
+  data[0]['x'] = width / 2
+  data[1]['x'] = (width / 2) - (centerHexRad) - (height / 16) - data[1]['hexRad']
+  data[2]['x'] = (width/2) + centerHexRad + (height /16) + data[2]['hexRad']
+
   console.log('updated data: ', data)
 }
