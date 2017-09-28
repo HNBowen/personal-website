@@ -22,6 +22,29 @@ class Skills extends React.Component {
     //size the svg
     this.d3Graph.attr("height", height).attr("width", width)
 
+    //append each of the skills icons as patterns to later fill the svg paths
+
+    this.d3Graph.append("defs")
+
+    skillSet.forEach((skill) => {
+
+      this.d3Graph.selectAll("defs")
+        .append("pattern")
+        .attr("id", skill.label)
+        .attr("patternContentUnits", "objectBoundingBox")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("height", "100%")
+        .attr("width", "100%")
+        .append("image")
+        .attr("xlink:href","src/assets/" + skill.label + ".png")
+        .attr("width",1)
+        .attr("height", 1)
+        .attr("preserveAspectRatio", "none")
+    })
+
+    
+
     //give the skillSet data set its y coordinates
     sizeNodes(skillSet, this.d3Graph[0][0])
     

@@ -32219,6 +32219,15 @@ var Skills = function (_React$Component) {
       //size the svg
       this.d3Graph.attr("height", height).attr("width", width);
 
+      //append each of the skills icons as patterns to later fill the svg paths
+
+      this.d3Graph.append("defs");
+
+      _skillset2.default.forEach(function (skill) {
+
+        _this2.d3Graph.selectAll("defs").append("pattern").attr("id", skill.label).attr("patternContentUnits", "objectBoundingBox").attr("x", 0).attr("y", 0).attr("height", "100%").attr("width", "100%").append("image").attr("xlink:href", "src/assets/" + skill.label + ".png").attr("width", 1).attr("height", 1).attr("preserveAspectRatio", "none");
+      });
+
       //give the skillSet data set its y coordinates
       (0, _d3helpers.sizeNodes)(_skillset2.default, this.d3Graph[0][0]);
 
@@ -32274,17 +32283,39 @@ exports.default = Skills;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var skillSet = [{ type: "center",
-  name: "Skills"
-  //x: window.innerWidth / 2,
-  //hexRad: 100
+var skillSet = [{
+  label: undefined
 }, {
-  //x: (window.innerWidth / 2) * 1.5,
-  //hexRad: 50
+  icon: "src/assets/js.png",
+  label: "js"
 }, {
-  //x: (window.innerWidth / 2) * 0.5,
-  //hexRad: 50
-}, {}, {}, {}, {}, {}, {}, {}, {}];
+  icon: "src/assets/unh.png",
+  label: "angular"
+}, {
+  icon: "src/assets/unh.png",
+  label: "d3"
+}, {
+  icon: "src/assets/unh.png",
+  label: "node"
+}, {
+  icon: "src/assets/unh.png",
+  label: "mongo"
+}, {
+  icon: "src/assets/unh.png",
+  label: "htmlImg"
+}, {
+  icon: "src/assets/unh.png",
+  label: "css"
+}, {
+  icon: "src/assets/unh.png",
+  label: "mysql"
+}, {
+  icon: "src/assets/unh.png",
+  label: "react"
+}, {
+  icon: "src/assets/unh.png",
+  label: "redux"
+}];
 
 exports.default = skillSet;
 
@@ -32327,8 +32358,11 @@ var exitHex = exports.exitHex = function exitHex(selection) {
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
 
-  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("stroke", "black").attr("fill", "none").transition().duration(750).delay(function (d, i) {
-    return i * 5;
+  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("stroke", "black").attr("fill", function (d) {
+
+    return d.label ? "url(#" + d.label + ")" : "none";
+  }).attr("stroke", "black").transition().duration(750).delay(function (d, i) {
+    return i * 200;
   }).attrTween("d", function (d) {
     var i = d3.interpolate(0, d.hexRad);
     return function (t) {

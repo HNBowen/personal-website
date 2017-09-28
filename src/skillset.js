@@ -1,25 +1,47 @@
 const skillSet = [
-  {type: "center",
-   name: "Skills",
-   //x: window.innerWidth / 2,
-   //hexRad: 100
+  {
+   label: undefined
   },
   {
-    //x: (window.innerWidth / 2) * 1.5,
-    //hexRad: 50
+    icon: "src/assets/js.png",
+    label: "js"
   },
   {
-    //x: (window.innerWidth / 2) * 0.5,
-    //hexRad: 50
+    icon: "src/assets/unh.png",
+    label: "angular"
   },
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {}
+  {
+    icon: "src/assets/unh.png",
+    label: "d3"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "node"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "mongo"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "htmlImg"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "css"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "mysql"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "react"
+  },
+  {
+    icon: "src/assets/unh.png",
+    label: "redux"
+  }
 ]
 
 

@@ -24,16 +24,24 @@ export const exitHex = (selection) => {
 export const createNodes = (selection, skills) =>  {
   
   selection.selectAll(/*"circle"*/"path")
-  .data(skills).enter().append(/*"circle"*/"svg:path")
+  .data(skills).enter()
+  .append(/*"circle"*/"svg:path")
   .attr("stroke","black")
-  .attr("fill","none")
+  .attr("fill", (d) => {
+    
+    return d.label ? "url(#" + d.label + ")" : "none";
+    
+  })
+  .attr("stroke","black")
   .transition()
   .duration(750)
-  .delay(function(d, i) { return i * 5; })
+  .delay(function(d, i) { return i * 200; })
   .attrTween("d", function(d) {
     var i = d3.interpolate(0, d.hexRad);
     return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
-  });
+  })
+
+  
 }
 
 export const resize = (el, data) => {
