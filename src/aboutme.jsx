@@ -6,16 +6,21 @@ class AboutMe extends React.Component {
 
     var controller = new ScrollMagic.Controller();
 
-    var aboutMeTween = new TweenMax.to('.about-me', 1.5, {
+    var aboutMeTweenEnter = new TweenMax.to('.about-me', 1.5, {
       opacity: 1
+    })
+
+    var aboutMeTweenExit = new TweenMax.to('.about-me', 1.5, {
+      opacity: 0
     })
 
     var scene = new ScrollMagic.Scene({
       triggerElement: ".about-me",
       triggerHook: 0.75,
-      reverse: false
+      reverse: true
     })
-    .setTween(aboutMeTween)
+    .setTween(aboutMeTweenEnter)
+    
 
 
 
