@@ -54,9 +54,16 @@ export const createNodes = (selection, skills) =>  {
   selection.selectAll(/*"circle"*/"path")
   .data(skills).enter()
   .append(/*"circle"*/"svg:path")
+  .attr("id", (d) => d.id)
   .attr("stroke","black")
-  .attr("fill", "none")
-  .attr("stroke","black")
+  .attr("stroke","none")
+  .attr("fill", (d) => {
+    if (d.id === "0") {
+      return "url(#" + d.label + ")"
+    } else {
+      return "#e8eeda"
+    }
+  })
   .transition()
   .duration(750)
   .delay(function(d, i) { return i * 200; })
@@ -65,12 +72,18 @@ export const createNodes = (selection, skills) =>  {
     return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
   })
 
+ 
+
   selection.selectAll("rect")
     .data(skills).enter()
     .append("rect")
     .attr("stroke", "none")
     .attr("fill", (d) => {
-      return d.label ? "url(#" + d.label + ")" : "none";
+      if (d.id !== "0") {
+        return "url(#" + d.label + ")";
+      } else {
+        return "none"
+      }
     })
     .transition()
     .duration(750)

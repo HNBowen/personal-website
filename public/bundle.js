@@ -32012,8 +32012,12 @@ var App = function (_React$Component) {
         'div',
         { id: 'app' },
         _react2.default.createElement(_splash2.default, null),
-        _react2.default.createElement(_aboutme2.default, null),
-        _react2.default.createElement(_skills2.default, { skills: ['JS', 'Node & Express', 'React', 'AngularJS', 'D3', 'MongoDB', 'HTML & CSS'] })
+        _react2.default.createElement(
+          'div',
+          { id: 'hank' },
+          _react2.default.createElement(_aboutme2.default, null),
+          _react2.default.createElement(_skills2.default, null)
+        )
       );
     }
   }]);
@@ -32124,11 +32128,6 @@ var AboutMe = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'about-me' },
-        _react2.default.createElement(
-          'div',
-          { className: 'about-me-img-container' },
-          _react2.default.createElement('img', { src: 'src/assets/profile.jpg', alt: 'me', className: 'about-me-img' })
-        ),
         _react2.default.createElement(
           'p',
           { className: 'about-me-text' },
@@ -32285,36 +32284,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var skillSet = [{
-  label: undefined
+  id: "0",
+  label: "profile_hex"
 }, {
-  icon: "src/assets/js.png",
+  id: "1",
   label: "js"
 }, {
-  icon: "src/assets/unh.png",
+  id: "2",
   label: "angular"
 }, {
-  icon: "src/assets/unh.png",
+  id: "3",
   label: "d3"
 }, {
-  icon: "src/assets/unh.png",
+  id: "4",
   label: "node"
 }, {
-  icon: "src/assets/unh.png",
+  id: "5",
   label: "mongo"
 }, {
-  icon: "src/assets/unh.png",
+  id: "6",
   label: "htmlImg"
 }, {
-  icon: "src/assets/unh.png",
+  id: "7",
   label: "css"
 }, {
-  icon: "src/assets/unh.png",
+  id: "8",
   label: "mysql"
 }, {
-  icon: "src/assets/unh.png",
+  id: "9",
   label: "react"
 }, {
-  icon: "src/assets/unh.png",
+  id: "10",
   label: "redux"
 }];
 
@@ -32387,7 +32387,15 @@ var exitHex = exports.exitHex = function exitHex(selection) {
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
 
-  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("stroke", "black").attr("fill", "none").attr("stroke", "black").transition().duration(750).delay(function (d, i) {
+  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("id", function (d) {
+    return d.id;
+  }).attr("stroke", "black").attr("stroke", "none").attr("fill", function (d) {
+    if (d.id === "0") {
+      return "url(#" + d.label + ")";
+    } else {
+      return "#e8eeda";
+    }
+  }).transition().duration(750).delay(function (d, i) {
     return i * 200;
   }).attrTween("d", function (d) {
     var i = d3.interpolate(0, d.hexRad);
@@ -32397,7 +32405,11 @@ var createNodes = exports.createNodes = function createNodes(selection, skills) 
   });
 
   selection.selectAll("rect").data(skills).enter().append("rect").attr("stroke", "none").attr("fill", function (d) {
-    return d.label ? "url(#" + d.label + ")" : "none";
+    if (d.id !== "0") {
+      return "url(#" + d.label + ")";
+    } else {
+      return "none";
+    }
   }).transition().duration(750).delay(function (d, i) {
     return i * 200;
   }).attrTween("width", function (d) {

@@ -31,9 +31,6 @@ class AboutMe extends React.Component {
   render() {
     return(
       <div className = 'about-me'>
-        <div className="about-me-img-container">
-          <img src="src/assets/profile.jpg" alt="me" className="about-me-img"/>
-        </div>
         <p className="about-me-text">
           readme.md
           <br/>

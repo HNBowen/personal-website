@@ -4,6 +4,11 @@ html, body {
   height: 100%;
 }
 
+#hank {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .splash {
 
   justify-content: center;
@@ -38,6 +43,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 60vh;
+  width: 50vw;
+  background-color: #d5d9bd;
 }
 
 /* this container has a custom png as its background image. The 
@@ -60,6 +68,7 @@ html, body {
   -o-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
 }
 
+
 /* this is styling for the image tag. Basically it allows the 
   .about-me-img-container to automatically size based on the img
   in the source attritbute of the .about-me-img img tag. We set the 
@@ -79,36 +88,19 @@ html, body {
   text-align: left;
   box-shadow: 0 5px 5px grey;
   font-family: monospace;
-  -webkit-text-fill-color: #eff8ef;
-  border: solid #eff8ef 2px;
-  background-color: #12c9d4;
+  -webkit-text-fill-color: #12c9d4;
+  border: solid #12c9d4 2px;
+  background-color: white;
 }
-
-.skills-container {
-  text-align: center;
-  height: 50vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.skills-list {
-  text-align: center
-}
-
-.skills-list-item {
-  display: inline-block;
-  width: 30%;
-}
-
 
 
 #svg-container {
   height: 60vh;
-  width: 100vw;
+  width: 50vw;
   display: flex;
   justify-content: space-between;
   z-index: -1;
+  background-color: #00b2d2;
 }
 
 .experience-container {
