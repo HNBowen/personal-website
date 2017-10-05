@@ -32224,8 +32224,9 @@ var Skills = function (_React$Component) {
       this.d3Graph.append("defs");
 
       _skillset2.default.forEach(function (skill) {
-
-        _this2.d3Graph.selectAll("defs").append("pattern").attr("id", skill.label).attr("patternContentUnits", "objectBoundingBox").attr("x", 0).attr("y", 0).attr("height", "100%").attr("width", "100%").append("image").attr("xlink:href", "src/assets/" + skill.label + ".png").attr("width", 1).attr("height", 1).attr("preserveAspectRatio", "none");
+        if (skill.label) {
+          _this2.d3Graph.selectAll("defs").append("pattern").attr("id", skill.label).attr("patternContentUnits", "objectBoundingBox").attr("x", 0).attr("y", 0).attr("height", "100%").attr("width", "100%").append("image").attr("xlink:href", "src/assets/" + skill.label + ".png").attr("width", 1).attr("height", 1).attr("preserveAspectRatio", "none");
+        }
       });
 
       //give the skillSet data set its y coordinates
@@ -32344,6 +32345,10 @@ var hexagon = {
   }
 };
 
+var square = {
+  draw: function draw(x, y, r) {}
+};
+
 var exitHex = exports.exitHex = function exitHex(selection) {
 
   selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
@@ -32354,19 +32359,66 @@ var exitHex = exports.exitHex = function exitHex(selection) {
       return hexagon.draw(d.x, d.y, i(t));
     };
   }).remove();
+
+  selection.selectAll("rect").transition().duration(750).delay(function (d, i) {
+    return i * 5;
+  }).attrTween("width", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("height", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("x", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return d.x - i(t) * (3 / 8) * Math.sqrt(2);
+    };
+  }).attrTween("y", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return d.y - i(t) * (3 / 8) * Math.sqrt(2);
+    };
+  }).remove();
 };
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
 
-  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("stroke", "black").attr("fill", function (d) {
-
-    return d.label ? "url(#" + d.label + ")" : "none";
-  }).attr("stroke", "black").transition().duration(750).delay(function (d, i) {
+  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("stroke", "black").attr("fill", "none").attr("stroke", "black").transition().duration(750).delay(function (d, i) {
     return i * 200;
   }).attrTween("d", function (d) {
     var i = d3.interpolate(0, d.hexRad);
     return function (t) {
       return hexagon.draw(d.x, d.y, i(t));
+    };
+  });
+
+  selection.selectAll("rect").data(skills).enter().append("rect").attr("stroke", "none").attr("fill", function (d) {
+    return d.label ? "url(#" + d.label + ")" : "none";
+  }).transition().duration(750).delay(function (d, i) {
+    return i * 200;
+  }).attrTween("width", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("height", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("x", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return d.x - i(t) * (3 / 8) * Math.sqrt(2);
+    };
+  }).attrTween("y", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return d.y - i(t) * (3 / 8) * Math.sqrt(2);
     };
   });
 };

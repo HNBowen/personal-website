@@ -7,6 +7,12 @@ const hexagon = {
   }
 }
 
+const square = {
+  draw: function(x, y, r) {
+    
+  }
+}
+
 
 export const exitHex = (selection) => {
   
@@ -19,6 +25,28 @@ export const exitHex = (selection) => {
       return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
     })
     .remove()
+
+  selection.selectAll("rect")
+    .transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 5})
+    .attrTween("width", function(d) {
+      var i = d3.interpolate(d.hexRad, 0);
+      return function(t) { return i(t)*(0.75)*Math.sqrt(2); };
+    })
+    .attrTween("height", function(d) {
+      var i = d3.interpolate(d.hexRad, 0);
+      return function(t) { return i(t)*(0.75)*Math.sqrt(2); };
+    })
+    .attrTween("x", function(d) {
+      var i = d3.interpolate(d.hexRad, 0);
+      return function(t) { return d.x - i(t)*(3/8)*Math.sqrt(2); };
+    })
+    .attrTween("y", function(d) {
+      var i = d3.interpolate(d.hexRad, 0);
+      return function(t) { return d.y - i(t)*(3/8)*Math.sqrt(2); };
+    })
+    .remove()
 };
 
 export const createNodes = (selection, skills) =>  {
@@ -27,11 +55,7 @@ export const createNodes = (selection, skills) =>  {
   .data(skills).enter()
   .append(/*"circle"*/"svg:path")
   .attr("stroke","black")
-  .attr("fill", (d) => {
-    
-    return d.label ? "url(#" + d.label + ")" : "none";
-    
-  })
+  .attr("fill", "none")
   .attr("stroke","black")
   .transition()
   .duration(750)
@@ -41,6 +65,33 @@ export const createNodes = (selection, skills) =>  {
     return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
   })
 
+  selection.selectAll("rect")
+    .data(skills).enter()
+    .append("rect")
+    .attr("stroke", "none")
+    .attr("fill", (d) => {
+      return d.label ? "url(#" + d.label + ")" : "none";
+    })
+    .transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 200; })
+    .attrTween("width", function(d) {
+      var i = d3.interpolate(0, d.hexRad);
+      return function(t) { return i(t)*(0.75)*Math.sqrt(2); };
+    })
+    .attrTween("height", function(d) {
+      var i = d3.interpolate(0, d.hexRad);
+      return function(t) { return i(t)*(0.75)*Math.sqrt(2); };
+    })
+    .attrTween("x", function(d) {
+      var i = d3.interpolate(0, d.hexRad);
+      return function(t) { return d.x - i(t)*(3/8)*Math.sqrt(2); };
+    })
+    .attrTween("y", function(d) {
+      var i = d3.interpolate(0, d.hexRad);
+      return function(t) { return d.y - i(t)*(3/8)*Math.sqrt(2); };
+    })
+    
   
 }
 

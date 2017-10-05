@@ -27,20 +27,21 @@ class Skills extends React.Component {
     this.d3Graph.append("defs")
 
     skillSet.forEach((skill) => {
-
-      this.d3Graph.selectAll("defs")
-        .append("pattern")
-        .attr("id", skill.label)
-        .attr("patternContentUnits", "objectBoundingBox")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("height", "100%")
-        .attr("width", "100%")
-        .append("image")
-        .attr("xlink:href","src/assets/" + skill.label + ".png")
-        .attr("width",1)
-        .attr("height", 1)
-        .attr("preserveAspectRatio", "none")
+      if (skill.label) {
+        this.d3Graph.selectAll("defs")
+          .append("pattern")
+          .attr("id", skill.label)
+          .attr("patternContentUnits", "objectBoundingBox")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("height", "100%")
+          .attr("width", "100%")
+          .append("image")
+          .attr("xlink:href","src/assets/" + skill.label + ".png")
+          .attr("width",1)
+          .attr("height", 1)
+          .attr("preserveAspectRatio", "none")
+      }
     })
 
     
