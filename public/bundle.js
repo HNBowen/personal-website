@@ -32102,15 +32102,19 @@ var AboutMe = function (_React$Component) {
 
       var controller = new ScrollMagic.Controller();
 
-      var aboutMeTween = new TweenMax.to('.about-me', 1.5, {
+      var aboutMeTweenEnter = new TweenMax.to('.about-me', 1.5, {
         opacity: 1
+      });
+
+      var aboutMeTweenExit = new TweenMax.to('.about-me', 1.5, {
+        opacity: 0
       });
 
       var scene = new ScrollMagic.Scene({
         triggerElement: ".about-me",
         triggerHook: 0.75,
-        reverse: false
-      }).setTween(aboutMeTween);
+        reverse: true
+      }).setTween(aboutMeTweenEnter);
 
       controller.addScene(scene);
     }
@@ -32198,24 +32202,13 @@ var Skills = function (_React$Component) {
     return _possibleConstructorReturn(this, (Skills.__proto__ || Object.getPrototypeOf(Skills)).call(this, props));
   }
 
-  //when the component mounts, draw the force layout
+  //when the component mounts, draw the hexagons
 
 
   _createClass(Skills, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
-
-      //scroll magic controllers and scene
-      var skillsCtrl = new ScrollMagic.Controller();
-
-      var skillsScene = new ScrollMagic.Scene({
-        triggerElement: "#svg"
-      }).on('enter', function () {
-        (0, _d3helpers.startForce)(_this2.d3Graph, _skillset2.default, width, height);
-      }).on('leave', function () {
-        (0, _d3helpers.endForce)(_this2.d3Graph);
-      }).addTo(skillsCtrl);
 
       //grab the width and height of the svg-container
       var width = window.innerWidth;
@@ -32226,25 +32219,43 @@ var Skills = function (_React$Component) {
       //size the svg
       this.d3Graph.attr("height", height).attr("width", width);
 
+      //append each of the skills icons as patterns to later fill the svg paths
+
+      this.d3Graph.append("defs");
+
+      _skillset2.default.forEach(function (skill) {
+        if (skill.label) {
+          _this2.d3Graph.selectAll("defs").append("pattern").attr("id", skill.label).attr("patternContentUnits", "objectBoundingBox").attr("x", 0).attr("y", 0).attr("height", "100%").attr("width", "100%").append("image").attr("xlink:href", "src/assets/" + skill.label + ".png").attr("width", 1).attr("height", 1).attr("preserveAspectRatio", "none");
+        }
+      });
+
       //give the skillSet data set its y coordinates
-      _skillset2.default[0]['y'] = document.getElementById("svg").clientHeight / 2;
-      _skillset2.default[1]['y'] = document.getElementById("svg").clientHeight / 2;
-      _skillset2.default[2]['y'] = document.getElementById("svg").clientHeight / 2;
-
-      //call the startForce function
-
-      //give it the d3 graph selection
-      //give it the skillSet data set
-      //give it the width and height of the svg-container
+      (0, _d3helpers.sizeNodes)(_skillset2.default, this.d3Graph[0][0]);
 
       //set the resize listener
       d3.select(window).on("resize", function () {
-        (0, _d3helpers.resize)("svg-container");
+        //calculate new sizes an positions for hexagons
+        (0, _d3helpers.sizeNodes)(_skillset2.default, _this2.d3Graph[0][0]);
+        //draw the hexagons 
+        (0, _d3helpers.resize)("svg-container", _skillset2.default);
       });
+
+      //scroll magic controllers and scene
+      var skillsCtrl = new ScrollMagic.Controller();
+
+      var skillsScene = new ScrollMagic.Scene({
+        triggerElement: "#svg",
+        triggerHook: 0.5
+      }).on('enter', function () {
+        //draw and zoom-in hexagons
+        console.log('enter');
+        (0, _d3helpers.createNodes)(_this2.d3Graph, _skillset2.default);
+      }).on('leave', function () {
+        //zoom out hexagons
+        console.log('leave');
+        (0, _d3helpers.exitHex)(_this2.d3Graph);
+      }).addTo(skillsCtrl);
     }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {}
   }, {
     key: 'render',
     value: function render() {
@@ -32273,40 +32284,39 @@ exports.default = Skills;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var skillSet = [{ type: "center",
-  name: "Skills",
-  x: window.innerWidth / 2,
-  height: 50,
-  width: 50,
-  hexRad: 50
+var skillSet = [{
+  label: undefined
 }, {
-  x: window.innerWidth / 2 * 1.5,
-  height: 25,
-  width: 25,
-  hexRad: 25
+  icon: "src/assets/js.png",
+  label: "js"
 }, {
-  x: window.innerWidth / 2 * 0.5,
-  height: 25,
-  width: 25,
-  hexRad: 25
+  icon: "src/assets/unh.png",
+  label: "angular"
+}, {
+  icon: "src/assets/unh.png",
+  label: "d3"
+}, {
+  icon: "src/assets/unh.png",
+  label: "node"
+}, {
+  icon: "src/assets/unh.png",
+  label: "mongo"
+}, {
+  icon: "src/assets/unh.png",
+  label: "htmlImg"
+}, {
+  icon: "src/assets/unh.png",
+  label: "css"
+}, {
+  icon: "src/assets/unh.png",
+  label: "mysql"
+}, {
+  icon: "src/assets/unh.png",
+  label: "react"
+}, {
+  icon: "src/assets/unh.png",
+  label: "redux"
 }];
-
-// const hexagon = {
-//   draw: function(height, width, size, center) {
-//     var points = this.calcPoints(/*(svg width - offset), ( svg height - offset ) */)
-//     return d3.svg.line()(points);
-//   },
-//   calcPoints: function(size, center) {
-//     var points = [ [-size, 0], [(-size * Math.PI / 2, size * Math.PI / 2], [size * Math.PI/2, size*Math.PI/2 ], [size*Math.Pi/2, -size*Math.PI/2], [-size*Math.PI/2, -size*Math.PI/2], [-size, 0] ];
-//   }
-// }
-// {type: "aux"},
-// {type: "aux"},
-// {type: "aux"},
-// {type: "aux"},
-// {type: "aux"},
-// {type: "aux"},
-// {type: "aux"}
 
 exports.default = skillSet;
 
@@ -32320,15 +32330,13 @@ exports.default = skillSet;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.resize = exports.fadeOutForce = exports.fadeInForce = exports.tick = exports.createNodes = exports.endForce = exports.startForce = undefined;
+exports.sizeNodes = exports.resize = exports.createNodes = exports.exitHex = undefined;
 
 var _d = __webpack_require__(83);
 
 var d3 = _interopRequireWildcard(_d);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var force = d3.layout.force().gravity(0.5).charge(-1000);
 
 var hexagon = {
   draw: function draw(x, y, r) {
@@ -32337,80 +32345,154 @@ var hexagon = {
   }
 };
 
-var startForce = exports.startForce = function startForce(selection, skills, width, height) {
-
-  createNodes(selection, skills);
-  force.nodes(skills).size([width, height]).on('tick', function () {
-    tick(selection);
-  }).start();
+var square = {
+  draw: function draw(x, y, r) {}
 };
 
-var endForce = exports.endForce = function endForce(selection) {
-  force.stop();
+var exitHex = exports.exitHex = function exitHex(selection) {
+
   selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
     return i * 5;
   }).attrTween("d", function (d) {
-    var i = d3.interpolate(d.width, 0);
+    var i = d3.interpolate(d.hexRad, 0);
     return function (t) {
       return hexagon.draw(d.x, d.y, i(t));
+    };
+  }).remove();
+
+  selection.selectAll("rect").transition().duration(750).delay(function (d, i) {
+    return i * 5;
+  }).attrTween("width", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("height", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("x", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return d.x - i(t) * (3 / 8) * Math.sqrt(2);
+    };
+  }).attrTween("y", function (d) {
+    var i = d3.interpolate(d.hexRad, 0);
+    return function (t) {
+      return d.y - i(t) * (3 / 8) * Math.sqrt(2);
     };
   }).remove();
 };
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
 
-  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path")
-  //.attr("d", function(d){return hexagon.draw(d.x, d.y, d.hexRad)})
-  .attr("stroke", "black").attr("fill", "none")
-  // .attr("cx", (d) => d.x)
-  // .attr("cy", (d) => d.y)
-  .call(force.drag).transition().duration(750).delay(function (d, i) {
-    return i * 5;
+  selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("stroke", "black").attr("fill", "none").attr("stroke", "black").transition().duration(750).delay(function (d, i) {
+    return i * 200;
   }).attrTween("d", function (d) {
     var i = d3.interpolate(0, d.hexRad);
     return function (t) {
       return hexagon.draw(d.x, d.y, i(t));
     };
   });
-};
 
-var tick = exports.tick = function tick(selection) {
-  selection.selectAll( /*"circle"*/"path").attr("cx", function (d) {
-    return d.x;
-  }).attr("cy", function (d) {
-    return d.y;
-  });
-};
-
-var fadeInForce = exports.fadeInForce = function fadeInForce(selection) {
-  selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
-    return i * 5;
-  }).attrTween("r", function (d) {
-    var i = d3.interpolate(0, d.width);
+  selection.selectAll("rect").data(skills).enter().append("rect").attr("stroke", "none").attr("fill", function (d) {
+    return d.label ? "url(#" + d.label + ")" : "none";
+  }).transition().duration(750).delay(function (d, i) {
+    return i * 200;
+  }).attrTween("width", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
     return function (t) {
-      return d.width = i(t);
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("height", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return i(t) * 0.75 * Math.sqrt(2);
+    };
+  }).attrTween("x", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return d.x - i(t) * (3 / 8) * Math.sqrt(2);
+    };
+  }).attrTween("y", function (d) {
+    var i = d3.interpolate(0, d.hexRad);
+    return function (t) {
+      return d.y - i(t) * (3 / 8) * Math.sqrt(2);
     };
   });
 };
 
-var fadeOutForce = exports.fadeOutForce = function fadeOutForce(selection) {
-  selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
-    return i * 5;
-  }).attrTween("r", function (d) {
-    var i = d3.interpolate(d.width, 0);
-    return function (t) {
-      return d.width = i(t);
-    };
-  });
-};
-
-var resize = exports.resize = function resize(el) {
-  var width = window.innerWidth;
+var resize = exports.resize = function resize(el, data) {
+  var width = document.getElementById(el).clientWidth;
   var height = document.getElementById(el).clientHeight;
   console.log(width, height);
   d3.select("svg").attr("width", width).attr("height", height);
-  force.size([window.innerWidth, document.getElementById("svg").clientHeight]);
-  force.resume();
+};
+
+var sizeNodes = exports.sizeNodes = function sizeNodes(data, container) {
+
+  var height = container.clientHeight;
+  var width = container.clientWidth;
+  var theta = 2 * Math.PI / 10;
+
+  console.log('container: ', container);
+  data[0]['hexRad'] = height / 5;
+  data[1]['hexRad'] = height / 10;
+  data[2]['hexRad'] = height / 10;
+  data[3]['hexRad'] = height / 10;
+  data[4]['hexRad'] = height / 10;
+  data[5]['hexRad'] = height / 10;
+  data[6]['hexRad'] = height / 10;
+  data[7]['hexRad'] = height / 10;
+  data[8]['hexRad'] = height / 10;
+  data[9]['hexRad'] = height / 10;
+  data[10]['hexRad'] = height / 10;
+
+  var R = data[0]['hexRad'] + height / 16 + data[1]['hexRad'];
+
+  data[0]['x'] = width / 2;
+  data[0]['y'] = height / 2;
+
+  data[1]['x'] = width / 2 + radCoords(R, theta)['x'];
+  data[1]['y'] = height / 2 + radCoords(R, theta)['y'];
+
+  data[2]['x'] = width / 2 + radCoords(R, theta * 2)['x'];
+  data[2]['y'] = height / 2 + radCoords(R, theta * 2)['y'];
+
+  data[3]['x'] = width / 2 + radCoords(R, theta * 3)['x'];
+  data[3]['y'] = height / 2 + radCoords(R, theta * 3)['y'];
+
+  data[4]['x'] = width / 2 + radCoords(R, theta * 4)['x'];
+  data[4]['y'] = height / 2 + radCoords(R, theta * 4)['y'];
+
+  data[5]['x'] = width / 2 + radCoords(R, theta * 5)['x'];
+  data[5]['y'] = height / 2 + radCoords(R, theta * 5)['y'];
+
+  data[6]['x'] = width / 2 + radCoords(R, theta * 6)['x'];
+  data[6]['y'] = height / 2 + radCoords(R, theta * 6)['y'];
+
+  data[7]['x'] = width / 2 + radCoords(R, theta * 7)['x'];
+  data[7]['y'] = height / 2 + radCoords(R, theta * 7)['y'];
+
+  data[8]['x'] = width / 2 + radCoords(R, theta * 8)['x'];
+  data[8]['y'] = height / 2 + radCoords(R, theta * 8)['y'];
+
+  data[9]['x'] = width / 2 + radCoords(R, theta * 9)['x'];
+  data[9]['y'] = height / 2 + radCoords(R, theta * 9)['y'];
+
+  data[10]['x'] = width / 2 + radCoords(R, theta * 10)['x'];
+  data[10]['y'] = height / 2 + radCoords(R, theta * 10)['y'];
+
+  console.log('updated data: ', data);
+};
+
+//helper function to calculate center coordinates of hexagons
+var radCoords = function radCoords(radius, theta) {
+  var x, y;
+  x = radius * Math.cos(theta);
+  y = radius * Math.sin(theta);
+  return { 'x': x, 'y': y };
 };
 
 /***/ }),

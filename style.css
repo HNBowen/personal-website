@@ -1,5 +1,7 @@
 html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .splash {
@@ -99,9 +101,14 @@ html, body {
   width: 30%;
 }
 
+
+
 #svg-container {
-  height: 50vh;
+  height: 60vh;
   width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  z-index: -1;
 }
 
 .experience-container {

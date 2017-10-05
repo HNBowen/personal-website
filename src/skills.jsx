@@ -3,29 +3,15 @@ import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
 import skillSet from './skillset.js'
 
-import { node, tick, resize, startForce, endForce } from './d3helpers.js'
-
+import { resize, createNodes, exitHex, sizeNodes } from './d3helpers.js'
 class Skills extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  //when the component mounts, draw the force layout
+  //when the component mounts, draw the hexagons
   componentDidMount() {
 
-    //scroll magic controllers and scene
-    var skillsCtrl = new ScrollMagic.Controller();
-
-    var skillsScene = new ScrollMagic.Scene({
-      triggerElement: "#svg"
-    })
-      .on('enter', () => {
-        startForce(this.d3Graph, skillSet, width, height)
-      })
-      .on('leave', () => {
-        endForce(this.d3Graph)
-      })
-      .addTo(skillsCtrl)
 
     //grab the width and height of the svg-container
     var width = window.innerWidth;
@@ -36,27 +22,59 @@ class Skills extends React.Component {
     //size the svg
     this.d3Graph.attr("height", height).attr("width", width)
 
-    //give the skillSet data set its y coordinates
-    skillSet[0]['y'] = document.getElementById("svg").clientHeight / 2
-    skillSet[1]['y'] = document.getElementById("svg").clientHeight / 2
-    skillSet[2]['y'] = document.getElementById("svg").clientHeight / 2
+    //append each of the skills icons as patterns to later fill the svg paths
 
+    this.d3Graph.append("defs")
 
-    //call the startForce function
+    skillSet.forEach((skill) => {
+      if (skill.label) {
+        this.d3Graph.selectAll("defs")
+          .append("pattern")
+          .attr("id", skill.label)
+          .attr("patternContentUnits", "objectBoundingBox")
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("height", "100%")
+          .attr("width", "100%")
+          .append("image")
+          .attr("xlink:href","src/assets/" + skill.label + ".png")
+          .attr("width",1)
+          .attr("height", 1)
+          .attr("preserveAspectRatio", "none")
+      }
+    })
+
     
-      //give it the d3 graph selection
-      //give it the skillSet data set
-      //give it the width and height of the svg-container
+
+    //give the skillSet data set its y coordinates
+    sizeNodes(skillSet, this.d3Graph[0][0])
     
     //set the resize listener
     d3.select(window).on("resize", () => {
-      resize("svg-container")
+      //calculate new sizes an positions for hexagons
+      sizeNodes(skillSet, this.d3Graph[0][0])
+      //draw the hexagons 
+      resize("svg-container", skillSet)
     })
 
-  }
+    //scroll magic controllers and scene
+    var skillsCtrl = new ScrollMagic.Controller();
 
-  componentDidUpdate() {
-    
+    var skillsScene = new ScrollMagic.Scene({
+      triggerElement: "#svg",
+      triggerHook: 0.5
+    })
+      .on('enter', () => {
+        //draw and zoom-in hexagons
+        console.log('enter')
+        createNodes(this.d3Graph, skillSet);
+      })
+      .on('leave', () => {
+        //zoom out hexagons
+        console.log('leave')
+        exitHex(this.d3Graph)
+      })
+      .addTo(skillsCtrl)
   }
 
   render() {
