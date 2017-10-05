@@ -1,0 +1,138 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.splash {
+
+  justify-content: center;
+  align-items: center;
+  background-image: url("src/assets/blue_tiles.jpeg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.name-tag {
+  -webkit-text-fill-color: white;
+  font-size: 10vh;
+  font-family: monospace;
+}
+
+.name-tag-text {
+  -webkit-text-fill-color: white;
+  display: flex;
+  font-size: 4vw;
+  font-family: monospace;
+}
+
+.about-me {
+  opacity: 0;
+  text-align: center;
+  height: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* this container has a custom png as its background image. The 
+  somewhat experimental drop-shadow property will consider the 
+  transparent pieces of the png when applying the shadow. In this way
+  I can acheive a box shadow effect around a custom shape.
+  http://bricss.net/post/33158273857/box-shadow-vs-filter-drop-shadow
+*/
+.about-me-img-container {
+  height: 20vh;
+  margin-left: 5vw;
+  background-image: url("src/assets/profile_hex.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -webkit-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -moz-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -ms-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+  -o-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+}
+
+/* this is styling for the image tag. Basically it allows the 
+  .about-me-img-container to automatically size based on the img
+  in the source attritbute of the .about-me-img img tag. We set the 
+  visibility to hidden to it doesn't cover the image we actually want to
+  see, the background png in the .about-me-img-container.
+*/
+.about-me-img {
+  visibility: hidden;
+  height: 20vh;
+}
+
+
+.about-me-text {
+  padding: 2vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-align: left;
+  box-shadow: 0 5px 5px grey;
+  font-family: monospace;
+  -webkit-text-fill-color: #eff8ef;
+  border: solid #eff8ef 2px;
+  background-color: #12c9d4;
+}
+
+.skills-container {
+  text-align: center;
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.skills-list {
+  text-align: center
+}
+
+.skills-list-item {
+  display: inline-block;
+  width: 30%;
+}
+
+
+
+#svg-container {
+  height: 60vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  z-index: -1;
+}
+
+.experience-container {
+  text-align: center;
+  height: 50vh;
+  
+ 
+}
+
+.experience-list: {
+  list-style: none
+}
+
+.experience-item {
+  width: 100%;
+  height: 50%;
+  float: right;
+}
+.experience-img {
+  float: left;
+}
+
+.applications-container {
+  text-align: center;
+  height: 50vh;
+  
+}
