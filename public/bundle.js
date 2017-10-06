@@ -32215,6 +32215,7 @@ var Skills = function (_React$Component) {
 
       //define the d3 graph selection
       this.d3Graph = d3.select(_reactDom2.default.findDOMNode(this.refs.svg));
+      var selection = this.d3Graph;
       //size the svg
       this.d3Graph.attr("height", height).attr("width", width);
 
@@ -32232,11 +32233,21 @@ var Skills = function (_React$Component) {
       (0, _d3helpers.sizeNodes)(_skillset2.default, this.d3Graph[0][0]);
 
       //set the resize listener
+      //we will only redraw once the window has finished resizing
+      //to simulate this, we put the redrawing code into a setTimeout
+      //we clear the setTimeout every time the "resize" event fires
+      //so, we only redraw once the resize event stops being fired
+      var resizeTimer;
       d3.select(window).on("resize", function () {
-        //calculate new sizes an positions for hexagons
-        (0, _d3helpers.sizeNodes)(_skillset2.default, _this2.d3Graph[0][0]);
-        //draw the hexagons 
-        (0, _d3helpers.resize)("svg-container", _skillset2.default);
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+          //resize the svg
+          (0, _d3helpers.resize)("svg-container", _skillset2.default, selection);
+          //calculate new sizes an positions for hexagons
+          (0, _d3helpers.sizeNodes)(_skillset2.default, selection[0][0]);
+          //redraw the hexagons
+          (0, _d3helpers.createNodes)(selection, _skillset2.default);
+        }, 250);
       });
 
       //scroll magic controllers and scene
@@ -32285,37 +32296,48 @@ Object.defineProperty(exports, "__esModule", {
 });
 var skillSet = [{
   id: "0",
-  label: "profile_hex"
+  label: "profile_hex",
+  text: "my mug"
 }, {
   id: "1",
-  label: "js"
+  label: "js",
+  text: "JavaScript"
 }, {
   id: "2",
-  label: "angular"
+  label: "angular",
+  text: "AngularJS"
 }, {
   id: "3",
-  label: "d3"
+  label: "d3",
+  text: "d3"
 }, {
   id: "4",
-  label: "node"
+  label: "node",
+  text: "NodeJS"
 }, {
   id: "5",
-  label: "mongo"
+  label: "mongo",
+  text: "MongoDB"
 }, {
   id: "6",
-  label: "htmlImg"
+  label: "htmlImg",
+  text: "html5"
 }, {
   id: "7",
-  label: "css"
+  label: "css",
+  text: "CSS"
 }, {
   id: "8",
-  label: "mysql"
+  label: "mysql",
+  text: "mysql"
 }, {
   id: "9",
-  label: "react"
+  label: "react",
+  text: "React"
 }, {
   id: "10",
-  label: "redux"
+  label: "redux",
+  text: "Redux"
 }];
 
 exports.default = skillSet;
@@ -32382,6 +32404,9 @@ var exitHex = exports.exitHex = function exitHex(selection) {
 };
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
+
+  console.log('drawing hexagons');
+  selection.selectAll("path, rect").remove();
 
   selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("id", function (d) {
     return d.id;

@@ -2,46 +2,57 @@ const skillSet = [
   {
    id: "0",
    label: "profile_hex",
+   text: "my mug"
   },
   {
     id: "1",
-    label: "js"
+    label: "js",
+    text: "JavaScript"
   },
   {
     id: "2",
-    label: "angular"
+    label: "angular",
+    text: "AngularJS"
   },
   {
     id: "3",
-    label: "d3"
+    label: "d3",
+    text: "d3"
   },
   {
     id: "4",
-    label: "node"
+    label: "node",
+    text: "NodeJS"
   },
   {
     id: "5",
-    label: "mongo"
+    label: "mongo",
+    text: "MongoDB"
   },
   {
     id: "6",
-    label: "htmlImg"
+    label: "htmlImg",
+    text: "html5"
   },
   {
     id: "7",
-    label: "css"
+    label: "css",
+    text: "CSS"
   },
   {
     id: "8",
-    label: "mysql"
+    label: "mysql",
+    text: "mysql"
   },
   {
     id: "9",
-    label: "react"
+    label: "react",
+    text: "React"
   },
   {
     id: "10",
-    label: "redux"
+    label: "redux",
+    text: "Redux"
   }
 ]
 

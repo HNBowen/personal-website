@@ -43,6 +43,9 @@ export const exitHex = (selection) => {
 };
 
 export const createNodes = (selection, skills) =>  {
+
+  console.log('drawing hexagons')
+  selection.selectAll("path, rect").remove()
   
   selection.selectAll(/*"circle"*/"path")
   .data(skills).enter()
@@ -96,6 +99,8 @@ export const createNodes = (selection, skills) =>  {
       var i = d3.interpolate(0, d.hexRad);
       return function(t) { return d.y - i(t)*(3/8)*Math.sqrt(2); };
     })
+
+  
     
   
 }

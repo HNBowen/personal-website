@@ -19,6 +19,7 @@ class Skills extends React.Component {
 
     //define the d3 graph selection
     this.d3Graph = d3.select(ReactDOM.findDOMNode(this.refs.svg));
+    var selection = this.d3Graph;
     //size the svg
     this.d3Graph.attr("height", height).attr("width", width)
 
@@ -50,11 +51,21 @@ class Skills extends React.Component {
     sizeNodes(skillSet, this.d3Graph[0][0])
     
     //set the resize listener
+    //we will only redraw once the window has finished resizing
+    //to simulate this, we put the redrawing code into a setTimeout
+    //we clear the setTimeout every time the "resize" event fires
+    //so, we only redraw once the resize event stops being fired
+    var resizeTimer;
     d3.select(window).on("resize", () => {
-      //calculate new sizes an positions for hexagons
-      sizeNodes(skillSet, this.d3Graph[0][0])
-      //draw the hexagons 
-      resize("svg-container", skillSet)
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(() => {
+        //resize the svg
+        resize("svg-container", skillSet, selection)
+        //calculate new sizes an positions for hexagons
+        sizeNodes(skillSet, selection[0][0])
+        //redraw the hexagons
+        createNodes(selection, skillSet)
+      }, 250)
     })
 
     //scroll magic controllers and scene
