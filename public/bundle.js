@@ -32106,16 +32106,16 @@ var AboutMe = function (_React$Component) {
 
       var controller = new ScrollMagic.Controller();
 
-      var aboutMeTweenEnter = new TweenMax.to('.about-me-text', 1.5, {
+      var aboutMeTweenEnter = new TweenMax.to('.aboutTween', 1.5, {
         opacity: 1
       });
 
-      var aboutMeTweenExit = new TweenMax.to('.about-me-text', 1.5, {
+      var aboutMeTweenExit = new TweenMax.to('.aboutTween', 1.5, {
         opacity: 0
       });
 
       var scene = new ScrollMagic.Scene({
-        triggerElement: ".about-me-text",
+        triggerElement: ".aboutTween",
         triggerHook: 0.75,
         reverse: true
       }).setTween(aboutMeTweenEnter);
@@ -32129,18 +32129,62 @@ var AboutMe = function (_React$Component) {
         'div',
         { className: 'about-me' },
         _react2.default.createElement(
-          'p',
-          { className: 'about-me-text' },
-          'readme.md',
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
-          'My name is Hank Bowen.',
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
-          'I am a full-stack software engineer based in Austin, TX who is passionate about creating functional, useful and beautiful applications.',
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
-          'I bring an eye for design, insatiable curiosity, and a commitment to collaboration to my work as a coder.'
+          'div',
+          { className: 'about-me-blurb' },
+          _react2.default.createElement(
+            'p',
+            { className: 'about-me-text aboutTween' },
+            'readme.md',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            'My name is Hank Bowen.',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            'I am a full-stack software engineer based in Austin, TX who is passionate about creating functional, useful and beautiful applications.',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            'I bring an eye for design, insatiable curiosity, and a commitment to collaboration to my work as a coder.'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'about-me-skills' },
+          _react2.default.createElement(
+            'p',
+            { className: 'about-me-text-skills aboutTween' },
+            'frontend.js',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            'ReactJS',
+            _react2.default.createElement('br', null),
+            'AngularJS',
+            _react2.default.createElement('br', null),
+            'Redux',
+            _react2.default.createElement('br', null),
+            'jQuery',
+            _react2.default.createElement('br', null),
+            'd3.js',
+            _react2.default.createElement('br', null),
+            'HTML5',
+            _react2.default.createElement('br', null),
+            'CSS',
+            _react2.default.createElement('br', null)
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'about-me-text-skills aboutTween' },
+            'backend.js',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            'NodeJS',
+            _react2.default.createElement('br', null),
+            'Express',
+            _react2.default.createElement('br', null),
+            'mySQL',
+            _react2.default.createElement('br', null),
+            'mongoDB',
+            _react2.default.createElement('br', null)
+          )
         )
       );
     }
