@@ -32106,16 +32106,16 @@ var AboutMe = function (_React$Component) {
 
       var controller = new ScrollMagic.Controller();
 
-      var aboutMeTweenEnter = new TweenMax.to('.about-me', 1.5, {
+      var aboutMeTweenEnter = new TweenMax.to('.about-me-text', 1.5, {
         opacity: 1
       });
 
-      var aboutMeTweenExit = new TweenMax.to('.about-me', 1.5, {
+      var aboutMeTweenExit = new TweenMax.to('.about-me-text', 1.5, {
         opacity: 0
       });
 
       var scene = new ScrollMagic.Scene({
-        triggerElement: ".about-me",
+        triggerElement: ".about-me-text",
         triggerHook: 0.75,
         reverse: true
       }).setTween(aboutMeTweenEnter);
@@ -32345,10 +32345,6 @@ var hexagon = {
   }
 };
 
-var square = {
-  draw: function draw(x, y, r) {}
-};
-
 var exitHex = exports.exitHex = function exitHex(selection) {
 
   selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
@@ -32389,7 +32385,7 @@ var createNodes = exports.createNodes = function createNodes(selection, skills) 
 
   selection.selectAll( /*"circle"*/"path").data(skills).enter().append( /*"circle"*/"svg:path").attr("id", function (d) {
     return d.id;
-  }).attr("stroke", "black").attr("stroke", "none").attr("fill", function (d) {
+  }).attr("stroke", "white").attr("fill", function (d) {
     if (d.id === "0") {
       return "url(#" + d.label + ")";
     } else {

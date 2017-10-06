@@ -6,7 +6,15 @@ html, body {
 
 #hank {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
+}
+
+/* for desktop, any screen larger than iPad pro */
+@media only screen and (min-width: 1025px) {
+  #hank {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }
 
 .splash {
@@ -35,7 +43,6 @@ html, body {
 }
 
 .about-me {
-  opacity: 0;
   text-align: center;
   height: 50%;
   display: -webkit-box;
@@ -44,8 +51,14 @@ html, body {
   align-items: center;
   justify-content: center;
   height: 60vh;
-  width: 50vw;
+  width: 100vw;
   background-color: #d5d9bd;
+}
+
+@media only screen and (min-width: 1025px) {
+  .about-me {
+    width: 50vw;
+  }
 }
 
 /* this container has a custom png as its background image. The 
@@ -82,6 +95,7 @@ html, body {
 
 
 .about-me-text {
+  opacity: 0;
   padding: 2vw;
   margin-left: 5vw;
   margin-right: 5vw;
@@ -96,11 +110,17 @@ html, body {
 
 #svg-container {
   height: 60vh;
-  width: 50vw;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   z-index: -1;
   background-color: #00b2d2;
+}
+
+@media only screen and (min-width: 1025px) {
+  #svg-container {
+    width: 50vw;
+  }
 }
 
 .experience-container {

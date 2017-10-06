@@ -7,13 +7,6 @@ const hexagon = {
   }
 }
 
-const square = {
-  draw: function(x, y, r) {
-    
-  }
-}
-
-
 export const exitHex = (selection) => {
   
   selection.selectAll(/*"circle"*/"path")
@@ -55,8 +48,7 @@ export const createNodes = (selection, skills) =>  {
   .data(skills).enter()
   .append(/*"circle"*/"svg:path")
   .attr("id", (d) => d.id)
-  .attr("stroke","black")
-  .attr("stroke","none")
+  .attr("stroke","white")
   .attr("fill", (d) => {
     if (d.id === "0") {
       return "url(#" + d.label + ")"
@@ -72,7 +64,7 @@ export const createNodes = (selection, skills) =>  {
     return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
   })
 
- 
+
 
   selection.selectAll("rect")
     .data(skills).enter()
