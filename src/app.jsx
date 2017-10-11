@@ -19,6 +19,7 @@ class App extends React.Component {
             <AboutMe />
             <Skills />
           </div>
+          <Applications />
         </div>
       )
   }

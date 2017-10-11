@@ -32017,7 +32017,8 @@ var App = function (_React$Component) {
           { id: 'hank' },
           _react2.default.createElement(_aboutme2.default, null),
           _react2.default.createElement(_skills2.default, null)
-        )
+        ),
+        _react2.default.createElement(_applications2.default, null)
       );
     }
   }]);
@@ -32671,23 +32672,19 @@ var Applications = function Applications() {
     { className: "applications-container" },
     _react2.default.createElement(
       "h4",
-      null,
+      { className: "applications-header" },
       "Applications"
     ),
     _react2.default.createElement(
-      "article",
-      null,
+      "h5",
+      { className: "brainstorm-header" },
       "brainstorm"
     ),
+    _react2.default.createElement("div", { className: "brainstorm-body" }),
     _react2.default.createElement(
-      "article",
+      "div",
       null,
-      "ShareMyKitchen"
-    ),
-    _react2.default.createElement(
-      "article",
-      null,
-      "GoodFilms"
+      "Share My Kitchen"
     )
   );
 };

@@ -50,7 +50,6 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 60vh;
   width: 100vw;
   background-color: #d5d9bd;
 }
@@ -141,6 +140,30 @@ html, body {
 
 .applications-container {
   text-align: center;
-  height: 50vh;
+  display: flex;
+  flex-direction: column;
   
 }
+
+.applications-header {
+  width: 100vw;
+  height: 10%;
+  font-size: 3vh;
+  font-family: monospace;
+}
+
+.brainstorm-header {
+  text-align: left;
+  background-color: #f7dd36;
+  -webkit-text-fill-color: #fcfcfc;
+  font-weight: bold;
+  letter-spacing: 7px;
+  margin: 0px;
+}
+
+.brainstorm-body {
+  width: 100vw;
+  background-image: url("src/assets/brainstorm_website.png");
+  height: 75vh;
+}
+
