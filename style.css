@@ -150,10 +150,13 @@ html, body {
   height: 10%;
   font-size: 3vh;
   font-family: monospace;
+  margin: 0;
 }
 
 .brainstorm-header {
   text-align: left;
+  height: 5%;
+  font-size: 3vh;
   background-color: #f7dd36;
   -webkit-text-fill-color: #fcfcfc;
   font-weight: bold;
@@ -162,8 +165,45 @@ html, body {
 }
 
 .brainstorm-body {
-  width: 100vw;
+  
   background-image: url("src/assets/brainstorm_website.png");
+  background-size: cover;
   height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.brainstorm-about {
+  box-shadow: 0 5px 5px grey;
+  font-family: monospace;
+  -webkit-text-fill-color: #12c9d4;
+  border: solid #12c9d4 2px;
+  background:rgba(255,255,255,0.5);
+  padding: 2vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.brainstorm-buttons-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  margin-right: 5vw;
+  margin-bottom: 3%;
+  justify-content: space-around;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 1025px) {
+
+  .brainstorm-about {
+    width: 25%;
+     
+  }
+
+  .brainstorm-buttons-container {
+    width: 25%;
+  }
 }
 

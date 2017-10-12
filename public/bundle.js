@@ -32680,7 +32680,27 @@ var Applications = function Applications() {
       { className: "brainstorm-header" },
       "brainstorm"
     ),
-    _react2.default.createElement("div", { className: "brainstorm-body" }),
+    _react2.default.createElement(
+      "div",
+      { className: "brainstorm-body" },
+      _react2.default.createElement(
+        "p",
+        { className: "brainstorm-about" },
+        "brainstorm is a collaborative brainstorming tool designed to help teams develop ideas with a visually iterative process.",
+        _react2.default.createElement("br", null),
+        _react2.default.createElement("br", null),
+        "Built using React, Redux, Express, MongoDB, and d3."
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "brainstorm-buttons-container" },
+        _react2.default.createElement(
+          "a",
+          { className: "github-button", href: "https://github.com/conundrum-inc/brainstorm/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork conundrum-inc/brainstorm on GitHub" },
+          "Fork"
+        )
+      )
+    ),
     _react2.default.createElement(
       "div",
       null,
