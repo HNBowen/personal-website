@@ -32682,29 +32682,60 @@ var Applications = function Applications() {
     ),
     _react2.default.createElement(
       "div",
-      { className: "brainstorm-body" },
+      { className: "app-body" },
       _react2.default.createElement(
-        "p",
-        { className: "brainstorm-about" },
-        "brainstorm is a collaborative brainstorming tool designed to help teams develop ideas with a visually iterative process.",
-        _react2.default.createElement("br", null),
-        _react2.default.createElement("br", null),
-        "Built using React, Redux, Express, MongoDB, and d3."
+        "div",
+        { className: "app-demo" },
+        _react2.default.createElement("img", { src: "src/assets/brainstorm_website.png", className: "app-img" })
       ),
       _react2.default.createElement(
         "div",
-        { className: "brainstorm-buttons-container" },
+        { className: "side-bar" },
+        _react2.default.createElement(
+          "p",
+          { className: "app-about" },
+          "brainstorm is a collaborative brainstorming tool designed to help teams develop ideas with a visually iterative process.",
+          _react2.default.createElement("br", null),
+          _react2.default.createElement("br", null),
+          "Built using React, Redux, Express, MongoDB, and d3."
+        ),
         _react2.default.createElement(
           "a",
-          { className: "github-button", href: "https://github.com/conundrum-inc/brainstorm/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork conundrum-inc/brainstorm on GitHub" },
+          { className: "github-button app-button", href: "https://github.com/conundrum-inc/brainstorm/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork conundrum-inc/brainstorm on GitHub" },
           "Fork"
         )
       )
     ),
     _react2.default.createElement(
+      "h5",
+      { className: "share-my-kitchen-header" },
+      "sharemykitchen"
+    ),
+    _react2.default.createElement(
       "div",
-      null,
-      "Share My Kitchen"
+      { className: "app-body" },
+      _react2.default.createElement(
+        "div",
+        { className: "app-demo" },
+        _react2.default.createElement("img", { className: "app-img", src: "src/assets/share-my-kitchen_website.png" })
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "side-bar" },
+        _react2.default.createElement(
+          "p",
+          { className: "app-about" },
+          "sharemykitchen is a kitchen sharing app that allows foodies and entertainers to share their kitchen spaces.",
+          _react2.default.createElement("br", null),
+          _react2.default.createElement("br", null),
+          "Built using React, Redux, Express, and MongoDB."
+        ),
+        _react2.default.createElement(
+          "a",
+          { className: "github-button app-button", href: "https://github.com/gabesangels/sharemykitchen/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork gabesangles/sharemykitchen on GitHub" },
+          "Fork"
+        )
+      )
     )
   );
 };

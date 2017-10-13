@@ -162,19 +162,43 @@ html, body {
   font-weight: bold;
   letter-spacing: 7px;
   margin: 0px;
+  padding-left: 7px;
+  font-family: monospace;
 }
 
-.brainstorm-body {
-  
-  background-image: url("src/assets/brainstorm_website.png");
-  background-size: cover;
-  height: 75vh;
+.share-my-kitchen-header {
+  text-align: left;
+  height: 5%;
+  font-size: 3vh;
+  margin: 0px;
+  padding-left: 7px;
+  background-color:#5764c6;
+  -webkit-text-fill-color: white;
+  font-family: monospace;
+}
+
+.app-body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  align-items: center;
 }
 
-.brainstorm-about {
+.app-demo {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  box-shadow: 0 5px 5px grey;
+  border: solid #12c9d4 2px;
+}
+
+.app-img {
+  width: 100%;
+}
+
+
+.app-about {
   box-shadow: 0 5px 5px grey;
   font-family: monospace;
   -webkit-text-fill-color: #12c9d4;
@@ -185,25 +209,46 @@ html, body {
   margin-right: 5vw;
 }
 
-.brainstorm-buttons-container {
-  display: flex;
-  flex-direction: row;
+.app-buttons-container {
   margin-top: auto;
   margin-right: 5vw;
   margin-bottom: 3%;
   justify-content: space-around;
-  width: 100vw;
+}
+
+.app-button {
+  align-self: center;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media only screen and (min-width: 1025px) {
 
-  .brainstorm-about {
+  .app-about {
     width: 25%;
-     
+    
   }
 
-  .brainstorm-buttons-container {
+  .app-buttons-container {
     width: 25%;
+  }
+
+  .app-body {
+    flex-direction: row;
+    align-items: center;
+    
+  }
+  
+  .app-demo {
+    width: 60%;
+  }
+
+
+  .side-bar {
+    width: 40%;
   }
 }
-
