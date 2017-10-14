@@ -32423,7 +32423,7 @@ exports.default = skillSet;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sizeHireMe = exports.sizeNodes = exports.resize = exports.createNodes = exports.exitHex = undefined;
+exports.sizeHireMe = exports.sizeNodes = exports.resize = exports.createNodes = exports.exitHex = exports.hexagon = undefined;
 
 var _d = __webpack_require__(91);
 
@@ -32431,7 +32431,7 @@ var d3 = _interopRequireWildcard(_d);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var hexagon = {
+var hexagon = exports.hexagon = {
   draw: function draw(x, y, r) {
     var points = [[x - r, y], [x - r / 2, y + r * Math.sqrt(3) / 2], [x + r / 2, y + r * Math.sqrt(3) / 2], [x + r, y], [x + r / 2, y - r * Math.sqrt(3) / 2], [x - r / 2, y - r * Math.sqrt(3) / 2], [x - r, y]];
     return d3.svg.line()(points);
@@ -32607,13 +32607,13 @@ var sizeHireMe = exports.sizeHireMe = function sizeHireMe() {
 
   var tw, th, scale;
 
-  if (width > 414) {
+  if (width > 619) {
     scale = "scale(3,3)";
-    tw = 585.57;
+    tw = 586;
     th = 168.12;
   } else {
     scale = "scale(1.5,1.5)";
-    tw = 292.79;
+    tw = 293;
     th = 84.06;
   }
 
@@ -32797,6 +32797,37 @@ var HireMe = function (_React$Component) {
             'svg',
             { className: 'hire-me-svg' },
             _react2.default.createElement('path', { d: _font_to_svg2.default, transform: 'scale(2,2)', className: 'hire-me-path' })
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'hire-me-links-container' },
+          _react2.default.createElement(
+            'a',
+            { href: '#' },
+            _react2.default.createElement(
+              'span',
+              { className: 'hb hb-sm' },
+              _react2.default.createElement('i', { className: 'fa fa-linkedin-square' })
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: '#' },
+            _react2.default.createElement(
+              'span',
+              { className: 'hb hb-sm' },
+              _react2.default.createElement('i', { className: 'fa fa-github-alt' })
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: '#' },
+            _react2.default.createElement(
+              'span',
+              { className: 'hb hb-sm' },
+              _react2.default.createElement('i', { className: 'fa fa-envelope' })
+            )
           )
         )
       );

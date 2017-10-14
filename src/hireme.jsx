@@ -2,7 +2,7 @@ import React from 'react'
 import * as d3 from 'd3'
 import hireMeData from './font_to_svg.js';
 
-import { sizeHireMe } from './d3helpers.js'
+import { sizeHireMe, hexagon } from './d3helpers.js'
 
 var x, y;
 
@@ -32,6 +32,11 @@ class HireMe extends React.Component {
           <svg className="hire-me-svg">
             <path d={hireMeData} transform="scale(2,2)" className="hire-me-path"/>
           </svg>
+        </div>
+        <div className="hire-me-links-container">
+          <a href="#"><span className="hb hb-sm"><i className="fa fa-linkedin-square"></i></span></a>
+          <a href="#"><span className="hb hb-sm"><i className="fa fa-github-alt"></i></span></a>
+          <a href="#"><span className="hb hb-sm"><i className="fa fa-envelope"></i></span></a>
         </div>
       </div>
       )  

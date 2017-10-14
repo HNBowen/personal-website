@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-const hexagon = {
+export const hexagon = {
   draw: function(x, y, r) {
     var points = [ [x - r, y], [x - (r/2), y + (r*Math.sqrt(3)/2)], [x + (r/2), y+(r*Math.sqrt(3)/2)], [x+r, y], [x+(r/2),y-(r*Math.sqrt(3)/2)], [x-(r/2),y-(r*Math.sqrt(3)/2)], [x-r,y] ];
     return d3.svg.line()(points);
@@ -187,13 +187,13 @@ export const sizeHireMe = () => {
 
   var tw, th, scale;
 
-  if (width > 414) {
+  if (width > 619) {
     scale = "scale(3,3)"
-    tw = 585.57;
+    tw = 586;
     th = 168.12;
   } else {
     scale = "scale(1.5,1.5)";
-    tw = 292.79;
+    tw = 293;
     th = 84.06;
   }
 

@@ -228,6 +228,7 @@ html, body {
 
 .hire-me {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -239,6 +240,13 @@ html, body {
 .hire-me-svg {
   width: 100%;
 }
+
+.hire-me-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 
 @media only screen and (min-width: 1025px) {
 
@@ -267,6 +275,8 @@ html, body {
   }
 }
 
-@media only screen and (min-width: 414px) {
-  
+@media only screen and (min-width: 619px) {
+  .hire-me-svg {
+    height: 200px;
+  }
 }
