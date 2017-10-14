@@ -59,6 +59,7 @@ class Skills extends React.Component {
     d3.select(window).on("resize", () => {
       clearTimeout(resizeTimer)
       resizeTimer = setTimeout(() => {
+
         //resize the svg
         resize("svg-container", skillSet, selection)
         //calculate new sizes an positions for hexagons

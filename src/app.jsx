@@ -3,8 +3,8 @@ import React from 'react'
 import Splash from './splash.jsx'
 import AboutMe from './aboutme.jsx'
 import Skills from './skills.jsx'
-import Experience from './experience.jsx'
 import Applications from './applications.jsx'
+import HireMe from './hireme.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class App extends React.Component {
             <Skills />
           </div>
           <Applications />
+          <HireMe />
         </div>
       )
   }
