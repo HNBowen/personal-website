@@ -180,8 +180,8 @@ const radCoords = (radius, theta) => {
 }
 
 export const sizeHireMe = () => {
-  var width = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientWidth
-  var height = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientHeight
+  var width = document.getElementById("hire-me-svg-wrapper").clientWidth
+  var height = document.getElementById("hire-me-svg-wrapper").clientHeight
 
   console.log(width)
 

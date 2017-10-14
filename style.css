@@ -232,12 +232,12 @@ html, body {
   justify-content: center;
 }
 
-.hire-me-svg-wrapper {
+#hire-me-svg-wrapper {
   width: 100%;
   height: 75%;
 }
 
-.hire-me-svg {
+#hire-me-svg {
   width: 100%;
 }
 
@@ -276,7 +276,7 @@ html, body {
 }
 
 @media only screen and (min-width: 619px) {
-  .hire-me-svg {
+  #hire-me-svg {
     height: 200px;
   }
 }

@@ -32600,8 +32600,8 @@ var radCoords = function radCoords(radius, theta) {
 };
 
 var sizeHireMe = exports.sizeHireMe = function sizeHireMe() {
-  var width = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientWidth;
-  var height = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientHeight;
+  var width = document.getElementById("hire-me-svg-wrapper").clientWidth;
+  var height = document.getElementById("hire-me-svg-wrapper").clientHeight;
 
   console.log(width);
 
@@ -32739,6 +32739,10 @@ var _d = __webpack_require__(91);
 
 var d3 = _interopRequireWildcard(_d);
 
+var _vivus = __webpack_require__(238);
+
+var _vivus2 = _interopRequireDefault(_vivus);
+
 var _font_to_svg = __webpack_require__(217);
 
 var _font_to_svg2 = _interopRequireDefault(_font_to_svg);
@@ -32772,7 +32776,11 @@ var HireMe = function (_React$Component) {
       //grab the coordinates of the middle of the svg
 
       var translateStr = (0, _d3helpers.sizeHireMe)();
-      d3.select(".hire-me-svg").selectAll("path").attr("transform", translateStr);
+      d3.select("#hire-me-svg").selectAll("path").attr("transform", translateStr);
+
+      var hireVivus = new _vivus2.default('hire-me-svg', { duration: 2000, type: 'oneByOne', start: 'autostart' }, function () {
+        console.log('hello from vivus');
+      });
 
       var resizeTimer2;
       d3.select(window).on("resize.two", function (e) {
@@ -32780,7 +32788,8 @@ var HireMe = function (_React$Component) {
         clearTimeout(resizeTimer2);
         resizeTimer2 = setTimeout(function () {
           translateStr = (0, _d3helpers.sizeHireMe)();
-          d3.select(".hire-me-svg").selectAll("path").attr("transform", translateStr);
+          d3.select("#hire-me-svg-wrapper").selectAll("path").attr("transform", translateStr);
+          hireVivus.play();
         }, 250);
       });
     }
@@ -32792,10 +32801,10 @@ var HireMe = function (_React$Component) {
         { className: 'hire-me' },
         _react2.default.createElement(
           'div',
-          { className: 'hire-me-svg-wrapper' },
+          { id: 'hire-me-svg-wrapper' },
           _react2.default.createElement(
             'svg',
-            { className: 'hire-me-svg' },
+            { id: 'hire-me-svg' },
             _react2.default.createElement('path', { d: _font_to_svg2.default, transform: 'scale(2,2)', className: 'hire-me-path' })
           )
         ),
@@ -32804,7 +32813,7 @@ var HireMe = function (_React$Component) {
           { className: 'hire-me-links-container' },
           _react2.default.createElement(
             'a',
-            { href: '#' },
+            { href: 'https://www.linkedin.com/in/hnbowen/' },
             _react2.default.createElement(
               'span',
               { className: 'hb hb-sm' },
@@ -32813,7 +32822,7 @@ var HireMe = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: '#' },
+            { href: 'https://github.com/HNBowen' },
             _react2.default.createElement(
               'span',
               { className: 'hb hb-sm' },
@@ -32822,7 +32831,7 @@ var HireMe = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: '#' },
+            { href: 'mailto:hbowen1123@gmail.com' },
             _react2.default.createElement(
               'span',
               { className: 'hb hb-sm' },
@@ -32857,6 +32866,1104 @@ Object.defineProperty(exports, "__esModule", {
 var hireMeData = "M27.88-47.39L27.88-21.73L39.09-21.73L39.09-46.30L39.09-46.30Q39.09-50.13 40.20-52.07L40.20-52.07L40.20-52.07Q41.31-54 42.86-54L42.86-54L42.86-54Q43.63-54 44.31-53.54L44.31-53.54L44.31-53.54Q45-53.09 45.53-52.47L45.53-52.47L45.53-52.47Q46.05-51.86 46.35-51.21L46.35-51.21L46.35-51.21Q46.65-50.55 46.65-50.17L46.65-50.17L46.65-50.17Q46.65-49.78 46.35-49.73L46.35-49.73L46.35-49.73Q46.05-49.68 45.69-49.34L45.69-49.34L45.69-49.34Q45.32-49.01 45.02-48.02L45.02-48.02L45.02-48.02Q44.72-47.04 44.72-44.79L44.72-44.79L44.72 0.35L44.72 0.35Q44.72 1.27 44.10 1.63L44.10 1.63L44.10 1.63Q43.49 2.00 42.68 2.00L42.68 2.00L42.68 2.00Q42.05 2.00 41.41 1.83L41.41 1.83L41.41 1.83Q40.78 1.65 40.27 1.37L40.27 1.37L40.27 1.37Q39.76 1.09 39.43 0.72L39.43 0.72L39.43 0.72Q39.09 0.35 39.09-0.07L39.09-0.07L39.09-16.70L27.88-16.70L27.88 0.35L27.88 0.35Q27.88 1.27 27.26 1.63L27.26 1.63L27.26 1.63Q26.65 2.00 25.84 2.00L25.84 2.00L25.84 2.00Q25.21 2.00 24.57 1.83L24.57 1.83L24.57 1.83Q23.94 1.65 23.43 1.37L23.43 1.37L23.43 1.37Q22.92 1.09 22.59 0.72L22.59 0.72L22.59 0.72Q22.25 0.35 22.25-0.07L22.25-0.07L22.25-16.70L17.12-16.70L17.12-16.70Q16.56-16.70 16.08-17.05L16.08-17.05L16.08-17.05Q15.61-17.40 15.28-17.95L15.28-17.95L15.28-17.95Q14.94-18.49 14.75-19.13L14.75-19.13L14.75-19.13Q14.55-19.76 14.55-20.32L14.55-20.32L14.55-20.32Q14.55-20.92 14.82-21.32L14.82-21.32L14.82-21.32Q15.08-21.73 15.61-21.73L15.61-21.73L22.25-21.73L22.25-45L22.25-45Q18.91-45 16.12-43.89L16.12-43.89L16.12-43.89Q13.32-42.79 11.30-40.73L11.30-40.73L11.30-40.73Q9.28-38.67 8.14-35.75L8.14-35.75L8.14-35.75Q7.00-32.84 7.00-29.21L7.00-29.21L7.00-29.21Q7.00-26.93 7.45-25.10L7.45-25.10L7.45-25.10Q7.91-23.27 8.54-21.99L8.54-21.99L8.54-21.99Q9.18-20.71 9.81-20.00L9.81-20.00L9.81-20.00Q10.44-19.30 10.79-19.30L10.79-19.30L10.79-19.30Q11.11-19.30 11.25-19.48L11.25-19.48L11.25-19.48Q11.39-19.65 11.67-19.65L11.67-19.65L11.67-19.65Q11.95-19.65 12.02-19.27L12.02-19.27L12.02-19.27Q12.09-18.88 12.09-18.49L12.09-18.49L12.09-18.49Q12.09-17.37 11.64-16.37L11.64-16.37L11.64-16.37Q11.18-15.36 10.49-14.75L10.49-14.75L10.49-14.75Q9.81-14.13 8.96-13.99L8.96-13.99L8.96-13.99Q8.12-13.85 7.35-14.41L7.35-14.41L7.35-14.41Q6.40-15.08 5.33-16.33L5.33-16.33L5.33-16.33Q4.25-17.58 3.36-19.41L3.36-19.41L3.36-19.41Q2.46-21.23 1.88-23.64L1.88-23.64L1.88-23.64Q1.30-26.05 1.30-29.00L1.30-29.00L1.30-29.00Q1.30-32.84 2.30-35.91L2.30-35.91L2.30-35.91Q3.30-38.99 5.01-41.36L5.01-41.36L5.01-41.36Q6.71-43.73 9.04-45.44L9.04-45.44L9.04-45.44Q11.36-47.14 13.97-48.25L13.97-48.25L13.97-48.25Q16.59-49.36 19.42-49.89L19.42-49.89L19.42-49.89Q22.25-50.41 25.00-50.41L25.00-50.41L25.00-50.41Q25.56-50.41 26.09-50.19L26.09-50.19L26.09-50.19Q26.61-49.96 27-49.55L27-49.55L27-49.55Q27.39-49.15 27.63-48.59L27.63-48.59L27.63-48.59Q27.88-48.02 27.88-47.39L27.88-47.39ZM55.16-34.63L55.16-34.63L55.16-34.63Q54.28-34.63 53.49-34.98L53.49-34.98L53.49-34.98Q52.70-35.33 52.12-35.93L52.12-35.93L52.12-35.93Q51.54-36.53 51.19-37.32L51.19-37.32L51.19-37.32Q50.84-38.11 50.84-39.02L50.84-39.02L50.84-39.02Q50.84-39.97 51.19-40.78L51.19-40.78L51.19-40.78Q51.54-41.59 52.12-42.17L52.12-42.17L52.12-42.17Q52.70-42.75 53.49-43.08L53.49-43.08L53.49-43.08Q54.28-43.42 55.16-43.42L55.16-43.42L55.16-43.42Q56.11-43.42 56.92-43.08L56.92-43.08L56.92-43.08Q57.73-42.75 58.31-42.17L58.31-42.17L58.31-42.17Q58.89-41.59 59.22-40.78L59.22-40.78L59.22-40.78Q59.55-39.97 59.55-39.02L59.55-39.02L59.55-39.02Q59.55-38.11 59.22-37.32L59.22-37.32L59.22-37.32Q58.89-36.53 58.31-35.93L58.31-35.93L58.31-35.93Q57.73-35.33 56.92-34.98L56.92-34.98L56.92-34.98Q56.11-34.63 55.16-34.63ZM56.81-24.33L56.81-6.05L56.81-6.05Q56.81-5.80 56.85-5.26L56.85-5.26L56.85-5.26Q56.88-4.71 57.06-4.15L57.06-4.15L57.06-4.15Q57.23-3.59 57.62-3.16L57.62-3.16L57.62-3.16Q58.01-2.74 58.71-2.74L58.71-2.74L58.71-2.74Q59.77-2.74 60.56-3.52L60.56-3.52L60.56-3.52Q61.35-4.29 61.93-5.45L61.93-5.45L61.93-5.45Q62.51-6.61 62.89-7.96L62.89-7.96L62.89-7.96Q63.28-9.32 63.53-10.51L63.53-10.51L63.53-10.51Q63.74-11.60 64.18-12.09L64.18-12.09L64.18-12.09Q64.62-12.59 65.13-12.64L65.13-12.64L65.13-12.64Q65.64-12.69 66.15-12.38L66.15-12.38L66.15-12.38Q66.66-12.06 67.06-11.55L67.06-11.55L67.06-11.55Q67.46-11.04 67.66-10.41L67.66-10.41L67.66-10.41Q67.85-9.77 67.71-9.21L67.71-9.21L67.71-9.21Q67.22-7.42 66.43-5.45L66.43-5.45L66.43-5.45Q65.64-3.48 64.41-1.83L64.41-1.83L64.41-1.83Q63.18-0.18 61.45 0.91L61.45 0.91L61.45 0.91Q59.73 2.00 57.41 2.00L57.41 2.00L57.41 2.00Q55.97 2.00 54.84 1.46L54.84 1.46L54.84 1.46Q53.72 0.91 52.95 0L52.95 0L52.95 0Q52.17-0.91 51.77-2.14L51.77-2.14L51.77-2.14Q51.36-3.38 51.36-4.75L51.36-4.75L51.36-23.98L51.36-23.98Q51.36-25.00 51.21-25.45L51.21-25.45L51.21-25.45Q51.05-25.91 51.05-26.30L51.05-26.30L51.05-26.30Q51.05-26.82 51.61-27.16L51.61-27.16L51.61-27.16Q52.17-27.49 52.95-27.49L52.95-27.49L52.95-27.49Q54.74-27.49 55.78-26.56L55.78-26.56L55.78-26.56Q56.81-25.63 56.81-24.33L56.81-24.33ZM79.49 2.00L79.49 2.00L79.49 2.00Q78.22 2.00 76.90 1.62L76.90 1.62L76.90 1.62Q75.59 1.23 74.51 0.28L74.51 0.28L74.51 0.28Q73.44-0.67 72.76-2.23L72.76-2.23L72.76-2.23Q72.07-3.80 72.07-6.19L72.07-6.19L72.07-6.19Q72.07-9.67 73.00-13.55L73.00-13.55L73.00-13.55Q73.93-17.44 75.69-22.11L75.69-22.11L70.21-22.11L69.40-22.11L69.40-22.11Q69.36-21.06 69.28-19.44L69.28-19.44L69.28-19.44Q69.19-17.82 68.98-16.00L68.98-16.00L68.98-16.00Q68.77-14.17 68.43-12.30L68.43-12.30L68.43-12.30Q68.10-10.44 67.61-8.86L67.61-8.86L67.61-8.86Q67.25-7.73 66.50-7.56L66.50-7.56L66.50-7.56Q65.74-7.38 65.00-7.82L65.00-7.82L65.00-7.82Q64.27-8.26 63.81-9.11L63.81-9.11L63.81-9.11Q63.35-9.95 63.60-10.86L63.60-10.86L63.60-10.86Q63.88-11.95 64.09-13.52L64.09-13.52L64.09-13.52Q64.30-15.08 64.42-16.82L64.42-16.82L64.42-16.82Q64.55-18.56 64.62-20.30L64.62-20.30L64.62-20.30Q64.69-22.04 64.72-23.41L64.72-23.41L64.72-23.41Q63.39-24.15 62.51-25.29L62.51-25.29L62.51-25.29Q61.63-26.44 61.63-28.02L61.63-28.02L61.63-28.02Q61.63-28.76 61.93-29.37L61.93-29.37L61.93-29.37Q62.23-29.99 62.72-30.43L62.72-30.43L62.72-30.43Q63.21-30.87 63.88-31.10L63.88-31.10L63.88-31.10Q64.55-31.32 65.25-31.32L65.25-31.32L65.25-31.32Q65.88-31.32 66.57-31.15L66.57-31.15L66.57-31.15Q67.25-30.97 67.87-30.52L67.87-30.52L67.87-30.52Q68.48-30.06 68.98-29.32L68.98-29.32L68.98-29.32Q69.47-28.58 69.79-27.49L69.79-27.49L69.79-27.49Q70.66-27.39 71.28-27.33L71.28-27.33L71.28-27.33Q71.89-27.28 72.32-27.25L72.32-27.25L72.32-27.25Q72.74-27.21 73.02-27.21L73.02-27.21L73.02-27.21Q73.30-27.21 73.58-27.21L73.58-27.21L77.34-27.21L77.34-27.21Q77.66-27.21 78.28-26.82L78.28-26.82L78.28-26.82Q78.89-26.44 79.49-25.82L79.49-25.82L79.49-25.82Q80.09-25.21 80.49-24.50L80.49-24.50L80.49-24.50Q80.89-23.80 80.79-23.17L80.79-23.17L80.79-23.17Q80.79-22.96 80.54-22.15L80.54-22.15L80.54-22.15Q80.30-21.34 79.95-20.11L79.95-20.11L79.95-20.11Q79.59-18.88 79.17-17.28L79.17-17.28L79.17-17.28Q78.75-15.68 78.40-13.92L78.40-13.92L78.40-13.92Q78.05-12.16 77.80-10.28L77.80-10.28L77.80-10.28Q77.55-8.40 77.55-6.61L77.55-6.61L77.55-6.61Q77.55-5.87 77.73-5.17L77.73-5.17L77.73-5.17Q77.91-4.46 78.26-3.92L78.26-3.92L78.26-3.92Q78.61-3.38 79.15-3.06L79.15-3.06L79.15-3.06Q79.70-2.74 80.44-2.74L80.44-2.74L80.44-2.74Q81.67-2.74 82.55-3.52L82.55-3.52L82.55-3.52Q83.43-4.29 84.02-5.45L84.02-5.45L84.02-5.45Q84.62-6.61 84.99-7.96L84.99-7.96L84.99-7.96Q85.36-9.32 85.61-10.51L85.61-10.51L85.61-10.51Q85.82-11.64 86.31-12.15L86.31-12.15L86.31-12.15Q86.80-12.66 87.33-12.66L87.33-12.66L87.33-12.66Q87.75-12.66 88.21-12.39L88.21-12.39L88.21-12.39Q88.66-12.13 89.03-11.71L89.03-11.71L89.03-11.71Q89.40-11.29 89.63-10.76L89.63-10.76L89.63-10.76Q89.86-10.23 89.86-9.70L89.86-9.70L89.86-9.70Q89.86-9.53 89.82-9.42L89.82-9.42L89.82-9.42Q89.79-9.32 89.79-9.21L89.79-9.21L89.79-9.21Q89.30-7.42 88.51-5.45L88.51-5.45L88.51-5.45Q87.71-3.48 86.48-1.83L86.48-1.83L86.48-1.83Q85.25-0.18 83.53 0.91L83.53 0.91L83.53 0.91Q81.81 2.00 79.49 2.00ZM102.48-20.95L102.48-20.95L102.48-20.95Q102.48-18.95 101.79-16.84L101.79-16.84L101.79-16.84Q101.11-14.73 99.76-12.85L99.76-12.85L99.76-12.85Q98.40-10.97 96.42-9.47L96.42-9.47L96.42-9.47Q94.43-7.98 91.83-7.21L91.83-7.21L91.83-7.21Q92.18-6.29 92.76-5.47L92.76-5.47L92.76-5.47Q93.34-4.64 94.15-4.04L94.15-4.04L94.15-4.04Q94.96-3.45 96.03-3.09L96.03-3.09L96.03-3.09Q97.10-2.74 98.51-2.74L98.51-2.74L98.51-2.74Q100.62-2.74 102.13-3.53L102.13-3.53L102.13-3.53Q103.64-4.32 104.68-5.63L104.68-5.63L104.68-5.63Q105.71-6.93 106.35-8.54L106.35-8.54L106.35-8.54Q106.98-10.16 107.30-11.81L107.30-11.81L107.30-11.81Q107.54-13.01 108.30-13.41L108.30-13.41L108.30-13.41Q109.05-13.82 109.85-13.61L109.85-13.61L109.85-13.61Q110.64-13.39 111.22-12.71L111.22-12.71L111.22-12.71Q111.80-12.02 111.69-11.07L111.69-11.07L111.69-11.07Q111.55-9.98 111.22-8.58L111.22-8.58L111.22-8.58Q110.88-7.17 110.21-5.73L110.21-5.73L110.21-5.73Q109.55-4.29 108.51-2.90L108.51-2.90L108.51-2.90Q107.47-1.51 105.96-0.42L105.96-0.42L105.96-0.42Q104.45 0.67 102.41 1.34L102.41 1.34L102.41 1.34Q100.37 2.00 97.73 2.00L97.73 2.00L97.73 2.00Q95.27 2.00 92.97 1.04L92.97 1.04L92.97 1.04Q90.67 0.07 88.89-1.74L88.89-1.74L88.89-1.74Q87.12-3.55 86.04-6.21L86.04-6.21L86.04-6.21Q84.97-8.86 84.97-12.23L84.97-12.23L84.97-12.23Q84.97-15.64 85.92-18.58L85.92-18.58L85.92-18.58Q86.87-21.52 88.42-23.66L88.42-23.66L88.42-23.66Q89.96-25.80 91.93-27.02L91.93-27.02L91.93-27.02Q93.90-28.23 95.98-28.23L95.98-28.23L95.98-28.23Q97.49-28.23 98.70-27.70L98.70-27.70L98.70-27.70Q99.91-27.18 100.76-26.21L100.76-26.21L100.76-26.21Q101.60-25.24 102.04-23.91L102.04-23.91L102.04-23.91Q102.48-22.57 102.48-20.95ZM90.88-12.45L90.88-12.45L90.88-12.45Q90.88-12.13 90.91-11.81L90.91-11.81L90.91-11.81Q90.95-11.50 90.95-11.14L90.95-11.14L90.95-11.14Q92.29-11.78 93.38-12.76L93.38-12.76L93.38-12.76Q94.46-13.75 95.24-15.01L95.24-15.01L95.24-15.01Q96.01-16.28 96.43-17.77L96.43-17.77L96.43-17.77Q96.86-19.27 96.86-20.88L96.86-20.88L96.86-20.88Q96.86-22.08 96.45-22.75L96.45-22.75L96.45-22.75Q96.05-23.41 95.34-23.41L95.34-23.41L95.34-23.41Q94.46-23.41 93.78-22.82L93.78-22.82L93.78-22.82Q93.09-22.22 92.58-21.25L92.58-21.25L92.58-21.25Q92.07-20.29 91.74-19.07L91.74-19.07L91.74-19.07Q91.41-17.86 91.20-16.63L91.20-16.63L91.20-16.63Q90.98-15.40 90.91-14.29L90.91-14.29L90.91-14.29Q90.84-13.18 90.88-12.45ZM158.84-1.37L158.84-1.37L158.84-1.37Q159.26-1.09 159.01-0.53L159.01-0.53L159.01-0.53Q158.77 0.04 158.10 0.62L158.10 0.62L158.10 0.62Q157.43 1.20 156.52 1.62L156.52 1.62L156.52 1.62Q155.60 2.04 154.69 2.00L154.69 2.00L154.69 2.00Q153.81 1.97 152.96 1.48L152.96 1.48L152.96 1.48Q152.12 0.98 151.47-0.05L151.47-0.05L151.47-0.05Q150.82-1.09 150.42-2.64L150.42-2.64L150.42-2.64Q150.01-4.18 150.01-6.33L150.01-6.33L150.01-39.66L150.01-39.66Q150.01-41.70 149.61-42.82L149.61-42.82L149.61-42.82Q149.20-43.95 148.66-44.46L148.66-44.46L148.66-44.46Q148.11-44.96 147.53-45.05L147.53-45.05L147.53-45.05Q146.95-45.14 146.60-45.14L146.60-45.14L146.60-45.14Q146.21-45.14 145.62-45.04L145.62-45.04L145.62-45.04Q145.02-44.93 144.47-44.35L144.47-44.35L144.47-44.35Q143.93-43.77 143.54-42.52L143.54-42.52L143.54-42.52Q143.16-41.27 143.16-38.95L143.16-38.95L143.16-0.07L143.16-0.07Q143.26-0.07 143.38 0.05L143.38 0.05L143.38 0.05Q143.51 0.18 143.51 0.28L143.51 0.28L143.51 0.28Q143.51 0.56 143.10 0.86L143.10 0.86L143.10 0.86Q142.70 1.16 142.10 1.42L142.10 1.42L142.10 1.42Q141.50 1.69 140.75 1.85L140.75 1.85L140.75 1.85Q139.99 2.00 139.32 2.00L139.32 2.00L139.32 2.00Q138.62 2.00 138.08 1.83L138.08 1.83L138.08 1.83Q137.53 1.65 137.53 0.63L137.53 0.63L137.53-39.66L137.53-39.66Q137.53-41.70 137.16-42.82L137.16-42.82L137.16-42.82Q136.79-43.95 136.27-44.46L136.27-44.46L136.27-44.46Q135.74-44.96 135.16-45.05L135.16-45.05L135.16-45.05Q134.58-45.14 134.16-45.14L134.16-45.14L134.16-45.14Q133.80-45.14 133.22-45.05L133.22-45.05L133.22-45.05Q132.64-44.96 132.08-44.46L132.08-44.46L132.08-44.46Q131.52-43.95 131.12-42.82L131.12-42.82L131.12-42.82Q130.71-41.70 130.71-39.66L130.71-39.66L130.71-7.77L130.71-7.77Q130.71-2.99 129.13-0.49L129.13-0.49L129.13-0.49Q127.55 2.00 124.52 2.00L124.52 2.00L124.52 2.00Q123.50 2.00 122.85 1.65L122.85 1.65L122.85 1.65Q122.20 1.30 121.82 0.77L121.82 0.77L121.82 0.77Q121.43 0.25 121.27-0.35L121.27-0.35L121.27-0.35Q121.11-0.95 121.11-1.44L121.11-1.44L121.11-1.44Q121.11-1.69 121.27-1.76L121.27-1.76L121.27-1.76Q121.43-1.83 121.71-1.83L121.71-1.83L121.71-1.83Q121.99-1.83 122.34-1.85L122.34-1.85L122.34-1.85Q122.70-1.86 123.08-2.00L123.08-2.00L123.08-2.00Q123.43-2.14 123.80-2.57L123.80-2.57L123.80-2.57Q124.17-2.99 124.45-3.80L124.45-3.80L124.45-3.80Q124.73-4.61 124.91-5.84L124.91-5.84L124.91-5.84Q125.09-7.07 125.09-8.86L125.09-8.86L125.09-38.95L125.09-38.95Q125.09-42.12 125.88-44.30L125.88-44.30L125.88-44.30Q126.67-46.48 127.93-47.85L127.93-47.85L127.93-47.85Q129.20-49.22 130.80-49.82L130.80-49.82L130.80-49.82Q132.40-50.41 134.02-50.41L134.02-50.41L134.02-50.41Q134.47-50.41 135.25-50.33L135.25-50.33L135.25-50.33Q136.02-50.24 136.95-49.92L136.95-49.92L136.95-49.92Q137.88-49.61 138.83-49.03L138.83-49.03L138.83-49.03Q139.78-48.45 140.63-47.46L140.63-47.46L140.63-47.46Q141.29-48.45 142.10-49.03L142.10-49.03L142.10-49.03Q142.91-49.61 143.70-49.92L143.70-49.92L143.70-49.92Q144.49-50.24 145.21-50.33L145.21-50.33L145.21-50.33Q145.93-50.41 146.46-50.41L146.46-50.41L146.46-50.41Q148.15-50.41 149.78-49.82L149.78-49.82L149.78-49.82Q151.42-49.22 152.70-47.85L152.70-47.85L152.70-47.85Q153.98-46.48 154.79-44.30L154.79-44.30L154.79-44.30Q155.60-42.12 155.60-38.95L155.60-38.95L155.60-6.93L155.60-6.93Q155.60-5.80 155.87-4.90L155.87-4.90L155.87-4.90Q156.13-4.01 156.57-3.32L156.57-3.32L156.57-3.32Q157.01-2.64 157.61-2.16L157.61-2.16L157.61-2.16Q158.20-1.69 158.84-1.37ZM179.16-20.95L179.16-20.95L179.16-20.95Q179.16-18.95 178.47-16.84L178.47-16.84L178.47-16.84Q177.79-14.73 176.43-12.85L176.43-12.85L176.43-12.85Q175.08-10.97 173.09-9.47L173.09-9.47L173.09-9.47Q171.11-7.98 168.50-7.21L168.50-7.21L168.50-7.21Q168.86-6.29 169.44-5.47L169.44-5.47L169.44-5.47Q170.02-4.64 170.82-4.04L170.82-4.04L170.82-4.04Q171.63-3.45 172.71-3.09L172.71-3.09L172.71-3.09Q173.78-2.74 175.18-2.74L175.18-2.74L175.18-2.74Q177.29-2.74 178.80-3.53L178.80-3.53L178.80-3.53Q180.32-4.32 181.35-5.63L181.35-5.63L181.35-5.63Q182.39-6.93 183.02-8.54L183.02-8.54L183.02-8.54Q183.66-10.16 183.97-11.81L183.97-11.81L183.97-11.81Q184.22-13.01 184.97-13.41L184.97-13.41L184.97-13.41Q185.73-13.82 186.52-13.61L186.52-13.61L186.52-13.61Q187.31-13.39 187.89-12.71L187.89-12.71L187.89-12.71Q188.47-12.02 188.37-11.07L188.37-11.07L188.37-11.07Q188.23-9.98 187.89-8.58L187.89-8.58L187.89-8.58Q187.56-7.17 186.89-5.73L186.89-5.73L186.89-5.73Q186.22-4.29 185.19-2.90L185.19-2.90L185.19-2.90Q184.15-1.51 182.64-0.42L182.64-0.42L182.64-0.42Q181.13 0.67 179.09 1.34L179.09 1.34L179.09 1.34Q177.05 2.00 174.41 2.00L174.41 2.00L174.41 2.00Q171.95 2.00 169.65 1.04L169.65 1.04L169.65 1.04Q167.34 0.07 165.57-1.74L165.57-1.74L165.57-1.74Q163.79-3.55 162.72-6.21L162.72-6.21L162.72-6.21Q161.65-8.86 161.65-12.23L161.65-12.23L161.65-12.23Q161.65-15.64 162.60-18.58L162.60-18.58L162.60-18.58Q163.55-21.52 165.09-23.66L165.09-23.66L165.09-23.66Q166.64-25.80 168.61-27.02L168.61-27.02L168.61-27.02Q170.58-28.23 172.65-28.23L172.65-28.23L172.65-28.23Q174.16-28.23 175.38-27.70L175.38-27.70L175.38-27.70Q176.59-27.18 177.43-26.21L177.43-26.21L177.43-26.21Q178.28-25.24 178.72-23.91L178.72-23.91L178.72-23.91Q179.16-22.57 179.16-20.95ZM167.55-12.45L167.55-12.45L167.55-12.45Q167.55-12.13 167.59-11.81L167.59-11.81L167.59-11.81Q167.63-11.50 167.63-11.14L167.63-11.14L167.63-11.14Q168.96-11.78 170.05-12.76L170.05-12.76L170.05-12.76Q171.14-13.75 171.91-15.01L171.91-15.01L171.91-15.01Q172.69-16.28 173.11-17.77L173.11-17.77L173.11-17.77Q173.53-19.27 173.53-20.88L173.53-20.88L173.53-20.88Q173.53-22.08 173.13-22.75L173.13-22.75L173.13-22.75Q172.72-23.41 172.02-23.41L172.02-23.41L172.02-23.41Q171.14-23.41 170.46-22.82L170.46-22.82L170.46-22.82Q169.77-22.22 169.26-21.25L169.26-21.25L169.26-21.25Q168.75-20.29 168.42-19.07L168.42-19.07L168.42-19.07Q168.08-17.86 167.87-16.63L167.87-16.63L167.87-16.63Q167.66-15.40 167.59-14.29L167.59-14.29L167.59-14.29Q167.52-13.18 167.55-12.45ZM192.97-5.27L192.97-5.27L192.97-5.27Q194.45-5.27 195.47-4.27L195.47-4.27L195.47-4.27Q196.49-3.27 196.49-1.79L196.49-1.79L196.49-1.79Q196.49-1.13 196.21-0.51L196.21-0.51L196.21-0.51Q195.93 0.11 195.45 0.56L195.45 0.56L195.45 0.56Q194.98 1.02 194.34 1.30L194.34 1.30L194.34 1.30Q193.71 1.58 192.97 1.58L192.97 1.58L192.97 1.58Q192.27 1.58 191.64 1.30L191.64 1.30L191.64 1.30Q191.00 1.02 190.53 0.56L190.53 0.56L190.53 0.56Q190.05 0.11 189.77-0.51L189.77-0.51L189.77-0.51Q189.49-1.13 189.49-1.79L189.49-1.79L189.49-1.79Q189.49-2.53 189.77-3.16L189.77-3.16L189.77-3.16Q190.05-3.80 190.53-4.27L190.53-4.27L190.53-4.27Q191.00-4.75 191.64-5.01L191.64-5.01L191.64-5.01Q192.27-5.27 192.97-5.27ZM195.79-47.53L195.79-10.86L195.79-10.86Q195.79-9.46 195.12-8.82L195.12-8.82L195.12-8.82Q194.45-8.19 193.54-8.19L193.54-8.19L193.54-8.19Q192.97-8.19 192.38-8.44L192.38-8.44L192.38-8.44Q191.78-8.68 191.30-9.12L191.30-9.12L191.30-9.12Q190.83-9.56 190.53-10.18L190.53-10.18L190.53-10.18Q190.23-10.79 190.23-11.53L190.23-11.53L190.23-47.00L190.23-47.00Q190.23-48.02 189.90-48.57L189.90-48.57L189.90-48.57Q189.56-49.11 189.56-49.54L189.56-49.54L189.56-49.54Q189.56-49.92 190.09-50.17L190.09-50.17L190.09-50.17Q190.62-50.41 191.74-50.41L191.74-50.41L191.74-50.41Q192.48-50.41 193.20-50.27L193.20-50.27L193.20-50.27Q193.92-50.13 194.50-49.80L194.50-49.80L194.50-49.80Q195.08-49.46 195.43-48.92L195.43-48.92L195.43-48.92Q195.79-48.38 195.79-47.53L195.79-47.53Z";
 
 exports.default = hireMeData;
+
+/***/ }),
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+ * vivus - JavaScript library to make drawing animation on SVG
+ * @version v0.4.1
+ * @link https://github.com/maxwellito/vivus
+ * @license MIT
+ */
+
+
+
+(function () {
+
+  'use strict';
+
+/**
+ * Pathformer
+ * Beta version
+ *
+ * Take any SVG version 1.1 and transform
+ * child elements to 'path' elements
+ *
+ * This code is purely forked from
+ * https://github.com/Waest/SVGPathConverter
+ */
+
+/**
+ * Class constructor
+ *
+ * @param {DOM|String} element Dom element of the SVG or id of it
+ */
+function Pathformer(element) {
+  // Test params
+  if (typeof element === 'undefined') {
+    throw new Error('Pathformer [constructor]: "element" parameter is required');
+  }
+
+  // Set the element
+  if (element.constructor === String) {
+    element = document.getElementById(element);
+    if (!element) {
+      throw new Error('Pathformer [constructor]: "element" parameter is not related to an existing ID');
+    }
+  }
+  if (element instanceof window.SVGElement || 
+      element instanceof window.SVGGElement ||
+      /^svg$/i.test(element.nodeName)) {
+    this.el = element;
+  } else {
+    throw new Error('Pathformer [constructor]: "element" parameter must be a string or a SVGelement');
+  }
+
+  // Start
+  this.scan(element);
+}
+
+/**
+ * List of tags which can be transformed
+ * to path elements
+ *
+ * @type {Array}
+ */
+Pathformer.prototype.TYPES = ['line', 'ellipse', 'circle', 'polygon', 'polyline', 'rect'];
+
+/**
+ * List of attribute names which contain
+ * data. This array list them to check if
+ * they contain bad values, like percentage.
+ *
+ * @type {Array}
+ */
+Pathformer.prototype.ATTR_WATCH = ['cx', 'cy', 'points', 'r', 'rx', 'ry', 'x', 'x1', 'x2', 'y', 'y1', 'y2'];
+
+/**
+ * Finds the elements compatible for transform
+ * and apply the liked method
+ *
+ * @param  {object} options Object from the constructor
+ */
+Pathformer.prototype.scan = function (svg) {
+  var fn, element, pathData, pathDom,
+      elements = svg.querySelectorAll(this.TYPES.join(','));
+
+  for (var i = 0; i < elements.length; i++) {
+    element = elements[i];
+    fn = this[element.tagName.toLowerCase() + 'ToPath'];
+    pathData = fn(this.parseAttr(element.attributes));
+    pathDom = this.pathMaker(element, pathData);
+    element.parentNode.replaceChild(pathDom, element);
+  }
+};
+
+
+/**
+ * Read `line` element to extract and transform
+ * data, to make it ready for a `path` object.
+ *
+ * @param  {DOMelement} element Line element to transform
+ * @return {object}             Data for a `path` element
+ */
+Pathformer.prototype.lineToPath = function (element) {
+  var newElement = {},
+      x1 = element.x1 || 0,
+      y1 = element.y1 || 0,
+      x2 = element.x2 || 0,
+      y2 = element.y2 || 0;
+
+  newElement.d = 'M' + x1 + ',' + y1 + 'L' + x2 + ',' + y2;
+  return newElement;
+};
+
+/**
+ * Read `rect` element to extract and transform
+ * data, to make it ready for a `path` object.
+ * The radius-border is not taken in charge yet.
+ * (your help is more than welcomed)
+ *
+ * @param  {DOMelement} element Rect element to transform
+ * @return {object}             Data for a `path` element
+ */
+Pathformer.prototype.rectToPath = function (element) {
+  var newElement = {},
+      x      = parseFloat(element.x)      || 0,
+      y      = parseFloat(element.y)      || 0,
+      width  = parseFloat(element.width)  || 0,
+      height = parseFloat(element.height) || 0;
+
+  newElement.d  = 'M' + x + ' ' + y + ' ';
+  newElement.d += 'L' + (x + width) + ' ' + y + ' ';
+  newElement.d += 'L' + (x + width) + ' ' + (y + height) + ' ';
+  newElement.d += 'L' + x + ' ' + (y + height) + ' Z';
+  return newElement;
+};
+
+/**
+ * Read `polyline` element to extract and transform
+ * data, to make it ready for a `path` object.
+ *
+ * @param  {DOMelement} element Polyline element to transform
+ * @return {object}             Data for a `path` element
+ */
+Pathformer.prototype.polylineToPath = function (element) {
+  var newElement = {},
+      points = element.points.trim().split(' '),
+      i, path;
+
+  // Reformatting if points are defined without commas
+  if (element.points.indexOf(',') === -1) {
+    var formattedPoints = [];
+    for (i = 0; i < points.length; i+=2) {
+      formattedPoints.push(points[i] + ',' + points[i+1]);
+    }
+    points = formattedPoints;
+  }
+
+  // Generate the path.d value
+  path = 'M' + points[0];
+  for(i = 1; i < points.length; i++) {
+    if (points[i].indexOf(',') !== -1) {
+      path += 'L' + points[i];
+    }
+  }
+  newElement.d = path;
+  return newElement;
+};
+
+/**
+ * Read `polygon` element to extract and transform
+ * data, to make it ready for a `path` object.
+ * This method rely on polylineToPath, because the
+ * logic is similar. The path created is just closed,
+ * so it needs an 'Z' at the end.
+ *
+ * @param  {DOMelement} element Polygon element to transform
+ * @return {object}             Data for a `path` element
+ */
+Pathformer.prototype.polygonToPath = function (element) {
+  var newElement = Pathformer.prototype.polylineToPath(element);
+
+  newElement.d += 'Z';
+  return newElement;
+};
+
+/**
+ * Read `ellipse` element to extract and transform
+ * data, to make it ready for a `path` object.
+ *
+ * @param  {DOMelement} element ellipse element to transform
+ * @return {object}             Data for a `path` element
+ */
+Pathformer.prototype.ellipseToPath = function (element) {
+  var newElement = {},
+      rx = parseFloat(element.rx) || 0,
+      ry = parseFloat(element.ry) || 0,
+      cx = parseFloat(element.cx) || 0,
+      cy = parseFloat(element.cy) || 0,
+      startX = cx - rx,
+      startY = cy,
+      endX = parseFloat(cx) + parseFloat(rx),
+      endY = cy;
+
+  newElement.d = 'M' + startX + ',' + startY +
+                 'A' + rx + ',' + ry + ' 0,1,1 ' + endX + ',' + endY +
+                 'A' + rx + ',' + ry + ' 0,1,1 ' + startX + ',' + endY;
+  return newElement;
+};
+
+/**
+ * Read `circle` element to extract and transform
+ * data, to make it ready for a `path` object.
+ *
+ * @param  {DOMelement} element Circle element to transform
+ * @return {object}             Data for a `path` element
+ */
+Pathformer.prototype.circleToPath = function (element) {
+  var newElement = {},
+      r  = parseFloat(element.r)  || 0,
+      cx = parseFloat(element.cx) || 0,
+      cy = parseFloat(element.cy) || 0,
+      startX = cx - r,
+      startY = cy,
+      endX = parseFloat(cx) + parseFloat(r),
+      endY = cy;
+      
+  newElement.d =  'M' + startX + ',' + startY +
+                  'A' + r + ',' + r + ' 0,1,1 ' + endX + ',' + endY +
+                  'A' + r + ',' + r + ' 0,1,1 ' + startX + ',' + endY;
+  return newElement;
+};
+
+/**
+ * Create `path` elements form original element
+ * and prepared objects
+ *
+ * @param  {DOMelement} element  Original element to transform
+ * @param  {object} pathData     Path data (from `toPath` methods)
+ * @return {DOMelement}          Path element
+ */
+Pathformer.prototype.pathMaker = function (element, pathData) {
+  var i, attr, pathTag = document.createElementNS('http://www.w3.org/2000/svg','path');
+  for(i = 0; i < element.attributes.length; i++) {
+    attr = element.attributes[i];
+    if (this.ATTR_WATCH.indexOf(attr.name) === -1) {
+      pathTag.setAttribute(attr.name, attr.value);
+    }
+  }
+  for(i in pathData) {
+    pathTag.setAttribute(i, pathData[i]);
+  }
+  return pathTag;
+};
+
+/**
+ * Parse attributes of a DOM element to
+ * get an object of attribute => value
+ *
+ * @param  {NamedNodeMap} attributes Attributes object from DOM element to parse
+ * @return {object}                  Object of attributes
+ */
+Pathformer.prototype.parseAttr = function (element) {
+  var attr, output = {};
+  for (var i = 0; i < element.length; i++) {
+    attr = element[i];
+    // Check if no data attribute contains '%', or the transformation is impossible
+    if (this.ATTR_WATCH.indexOf(attr.name) !== -1 && attr.value.indexOf('%') !== -1) {
+      throw new Error('Pathformer [parseAttr]: a SVG shape got values in percentage. This cannot be transformed into \'path\' tags. Please use \'viewBox\'.');
+    }
+    output[attr.name] = attr.value;
+  }
+  return output;
+};
+
+  'use strict';
+
+var setupEnv, requestAnimFrame, cancelAnimFrame, parsePositiveInt;
+
+/**
+ * Vivus
+ * Beta version
+ *
+ * Take any SVG and make the animation
+ * to give give the impression of live drawing
+ *
+ * This in more than just inspired from codrops
+ * At that point, it's a pure fork.
+ */
+
+/**
+ * Class constructor
+ * option structure
+ *   type: 'delayed'|'sync'|'oneByOne'|'script' (to know if the items must be drawn synchronously or not, default: delayed)
+ *   duration: <int> (in frames)
+ *   start: 'inViewport'|'manual'|'autostart' (start automatically the animation, default: inViewport)
+ *   delay: <int> (delay between the drawing of first and last path)
+ *   dashGap <integer> whitespace extra margin between dashes
+ *   pathTimingFunction <function> timing animation function for each path element of the SVG
+ *   animTimingFunction <function> timing animation function for the complete SVG
+ *   forceRender <boolean> force the browser to re-render all updated path items
+ *   selfDestroy <boolean> removes all extra styling on the SVG, and leaves it as original
+ *
+ * The attribute 'type' is by default on 'delayed'.
+ *  - 'delayed'
+ *    all paths are draw at the same time but with a
+ *    little delay between them before start
+ *  - 'sync'
+ *    all path are start and finish at the same time
+ *  - 'oneByOne'
+ *    only one path is draw at the time
+ *    the end of the first one will trigger the draw
+ *    of the next one
+ *
+ * All these values can be overwritten individually
+ * for each path item in the SVG
+ * The value of frames will always take the advantage of
+ * the duration value.
+ * If you fail somewhere, an error will be thrown.
+ * Good luck.
+ *
+ * @constructor
+ * @this {Vivus}
+ * @param {DOM|String}   element  Dom element of the SVG or id of it
+ * @param {Object}       options  Options about the animation
+ * @param {Function}     callback Callback for the end of the animation
+ */
+function Vivus (element, options, callback) {
+
+  setupEnv();
+
+  // Setup
+  this.isReady = false;
+  this.setElement(element, options);
+  this.setOptions(options);
+  this.setCallback(callback);
+
+  if (this.isReady) {
+    this.init();
+  }
+}
+
+/**
+ * Timing functions
+ **************************************
+ *
+ * Default functions to help developers.
+ * It always take a number as parameter (between 0 to 1) then
+ * return a number (between 0 and 1)
+ */
+Vivus.LINEAR          = function (x) {return x;};
+Vivus.EASE            = function (x) {return -Math.cos(x * Math.PI) / 2 + 0.5;};
+Vivus.EASE_OUT        = function (x) {return 1 - Math.pow(1-x, 3);};
+Vivus.EASE_IN         = function (x) {return Math.pow(x, 3);};
+Vivus.EASE_OUT_BOUNCE = function (x) {
+  var base = -Math.cos(x * (0.5 * Math.PI)) + 1,
+    rate = Math.pow(base,1.5),
+    rateR = Math.pow(1 - x, 2),
+    progress = -Math.abs(Math.cos(rate * (2.5 * Math.PI) )) + 1;
+  return (1- rateR) + (progress * rateR);
+};
+
+
+/**
+ * Setters
+ **************************************
+ */
+
+/**
+ * Check and set the element in the instance
+ * The method will not return anything, but will throw an
+ * error if the parameter is invalid
+ *
+ * @param {DOM|String}   element  SVG Dom element or id of it
+ */
+Vivus.prototype.setElement = function (element, options) {
+  // Basic check
+  if (typeof element === 'undefined') {
+    throw new Error('Vivus [constructor]: "element" parameter is required');
+  }
+
+  // Set the element
+  if (element.constructor === String) {
+    element = document.getElementById(element);
+    if (!element) {
+      throw new Error('Vivus [constructor]: "element" parameter is not related to an existing ID');
+    }
+  }
+  this.parentEl = element;
+
+  // Create the object element if the property `file` exists in the options object
+  if (options && options.file) {
+    var objElm = document.createElement('object');
+    objElm.setAttribute('type', 'image/svg+xml');
+    objElm.setAttribute('data', options.file);
+    objElm.setAttribute('built-by-vivus', 'true');
+    element.appendChild(objElm);
+    element = objElm;
+  }
+
+  switch (element.constructor) {
+  case window.SVGSVGElement:
+  case window.SVGElement:
+  case window.SVGGElement:
+    this.el = element;
+    this.isReady = true;
+    break;
+
+  case window.HTMLObjectElement:
+    // If we have to wait for it
+    var onLoad, self;
+
+    self = this;
+    onLoad = function (e) {
+      if (self.isReady) {
+        return;
+      }
+      self.el = element.contentDocument && element.contentDocument.querySelector('svg');
+      if (!self.el && e) {
+        throw new Error('Vivus [constructor]: object loaded does not contain any SVG');
+      }
+      else if (self.el) {
+        if (element.getAttribute('built-by-vivus')) {
+          self.parentEl.insertBefore(self.el, element);
+          self.parentEl.removeChild(element);
+          self.el.setAttribute('width', '100%');
+          self.el.setAttribute('height', '100%');
+        }
+        self.isReady = true;
+        self.init();
+        return true;
+      }
+    };
+
+    if (!onLoad()) {
+      element.addEventListener('load', onLoad);
+    }
+    break;
+
+  default:
+    throw new Error('Vivus [constructor]: "element" parameter is not valid (or miss the "file" attribute)');
+  }
+};
+
+/**
+ * Set up user option to the instance
+ * The method will not return anything, but will throw an
+ * error if the parameter is invalid
+ *
+ * @param  {object} options Object from the constructor
+ */
+Vivus.prototype.setOptions = function (options) {
+  var allowedTypes = ['delayed', 'sync', 'async', 'nsync', 'oneByOne', 'scenario', 'scenario-sync'];
+  var allowedStarts =  ['inViewport', 'manual', 'autostart'];
+
+  // Basic check
+  if (options !== undefined && options.constructor !== Object) {
+    throw new Error('Vivus [constructor]: "options" parameter must be an object');
+  }
+  else {
+    options = options || {};
+  }
+
+  // Set the animation type
+  if (options.type && allowedTypes.indexOf(options.type) === -1) {
+    throw new Error('Vivus [constructor]: ' + options.type + ' is not an existing animation `type`');
+  }
+  else {
+    this.type = options.type || allowedTypes[0];
+  }
+
+  // Set the start type
+  if (options.start && allowedStarts.indexOf(options.start) === -1) {
+    throw new Error('Vivus [constructor]: ' + options.start + ' is not an existing `start` option');
+  }
+  else {
+    this.start = options.start || allowedStarts[0];
+  }
+
+  this.isIE         = (window.navigator.userAgent.indexOf('MSIE') !== -1 || window.navigator.userAgent.indexOf('Trident/') !== -1 || window.navigator.userAgent.indexOf('Edge/') !== -1 );
+  this.duration     = parsePositiveInt(options.duration, 120);
+  this.delay        = parsePositiveInt(options.delay, null);
+  this.dashGap      = parsePositiveInt(options.dashGap, 1);
+  this.forceRender  = options.hasOwnProperty('forceRender') ? !!options.forceRender : this.isIE;
+  this.reverseStack = !!options.reverseStack;
+  this.selfDestroy  = !!options.selfDestroy;
+  this.onReady      = options.onReady;
+  this.map          = [];
+  this.frameLength  = this.currentFrame = this.delayUnit = this.speed = this.handle = null;
+
+  this.ignoreInvisible = options.hasOwnProperty('ignoreInvisible') ? !!options.ignoreInvisible : false;
+
+  this.animTimingFunction = options.animTimingFunction || Vivus.LINEAR;
+  this.pathTimingFunction = options.pathTimingFunction || Vivus.LINEAR;
+
+  if (this.delay >= this.duration) {
+    throw new Error('Vivus [constructor]: delay must be shorter than duration');
+  }
+};
+
+/**
+ * Set up callback to the instance
+ * The method will not return enything, but will throw an
+ * error if the parameter is invalid
+ *
+ * @param  {Function} callback Callback for the animation end
+ */
+Vivus.prototype.setCallback = function (callback) {
+  // Basic check
+  if (!!callback && callback.constructor !== Function) {
+    throw new Error('Vivus [constructor]: "callback" parameter must be a function');
+  }
+  this.callback = callback || function () {};
+};
+
+
+/**
+ * Core
+ **************************************
+ */
+
+/**
+ * Map the svg, path by path.
+ * The method return nothing, it just fill the
+ * `map` array. Each item in this array represent
+ * a path element from the SVG, with informations for
+ * the animation.
+ *
+ * ```
+ * [
+ *   {
+ *     el: <DOMobj> the path element
+ *     length: <number> length of the path line
+ *     startAt: <number> time start of the path animation (in frames)
+ *     duration: <number> path animation duration (in frames)
+ *   },
+ *   ...
+ * ]
+ * ```
+ *
+ */
+Vivus.prototype.mapping = function () {
+  var i, paths, path, pAttrs, pathObj, totalLength, lengthMeter, timePoint;
+  timePoint = totalLength = lengthMeter = 0;
+  paths = this.el.querySelectorAll('path');
+
+  for (i = 0; i < paths.length; i++) {
+    path = paths[i];
+    if (this.isInvisible(path)) {
+      continue;
+    }
+    pathObj = {
+      el: path,
+      length: Math.ceil(path.getTotalLength())
+    };
+    // Test if the path length is correct
+    if (isNaN(pathObj.length)) {
+      if (window.console && console.warn) {
+        console.warn('Vivus [mapping]: cannot retrieve a path element length', path);
+      }
+      continue;
+    }
+    this.map.push(pathObj);
+    path.style.strokeDasharray  = pathObj.length + ' ' + (pathObj.length + this.dashGap * 2);
+    path.style.strokeDashoffset = pathObj.length + this.dashGap;
+    pathObj.length += this.dashGap;
+    totalLength += pathObj.length;
+
+    this.renderPath(i);
+  }
+
+  totalLength = totalLength === 0 ? 1 : totalLength;
+  this.delay = this.delay === null ? this.duration / 3 : this.delay;
+  this.delayUnit = this.delay / (paths.length > 1 ? paths.length - 1 : 1);
+
+  // Reverse stack if asked
+  if (this.reverseStack) {
+    this.map.reverse();
+  }
+
+  for (i = 0; i < this.map.length; i++) {
+    pathObj = this.map[i];
+
+    switch (this.type) {
+    case 'delayed':
+      pathObj.startAt = this.delayUnit * i;
+      pathObj.duration = this.duration - this.delay;
+      break;
+
+    case 'oneByOne':
+      pathObj.startAt = lengthMeter / totalLength * this.duration;
+      pathObj.duration = pathObj.length / totalLength * this.duration;
+      break;
+
+    case 'sync':
+    case 'async':
+    case 'nsync':
+      pathObj.startAt = 0;
+      pathObj.duration = this.duration;
+      break;
+
+    case 'scenario-sync':
+      path = pathObj.el;
+      pAttrs = this.parseAttr(path);
+      pathObj.startAt = timePoint + (parsePositiveInt(pAttrs['data-delay'], this.delayUnit) || 0);
+      pathObj.duration = parsePositiveInt(pAttrs['data-duration'], this.duration);
+      timePoint = pAttrs['data-async'] !== undefined ? pathObj.startAt : pathObj.startAt + pathObj.duration;
+      this.frameLength = Math.max(this.frameLength, (pathObj.startAt + pathObj.duration));
+      break;
+
+    case 'scenario':
+      path = pathObj.el;
+      pAttrs = this.parseAttr(path);
+      pathObj.startAt = parsePositiveInt(pAttrs['data-start'], this.delayUnit) || 0;
+      pathObj.duration = parsePositiveInt(pAttrs['data-duration'], this.duration);
+      this.frameLength = Math.max(this.frameLength, (pathObj.startAt + pathObj.duration));
+      break;
+    }
+    lengthMeter += pathObj.length;
+    this.frameLength = this.frameLength || this.duration;
+  }
+};
+
+/**
+ * Interval method to draw the SVG from current
+ * position of the animation. It update the value of
+ * `currentFrame` and re-trace the SVG.
+ *
+ * It use this.handle to store the requestAnimationFrame
+ * and clear it one the animation is stopped. So this
+ * attribute can be used to know if the animation is
+ * playing.
+ *
+ * Once the animation at the end, this method will
+ * trigger the Vivus callback.
+ *
+ */
+Vivus.prototype.drawer = function () {
+  var self = this;
+  this.currentFrame += this.speed;
+
+  if (this.currentFrame <= 0) {
+    this.stop();
+    this.reset();
+  } else if (this.currentFrame >= this.frameLength) {
+    this.stop();
+    this.currentFrame = this.frameLength;
+    this.trace();
+    if (this.selfDestroy) {
+      this.destroy();
+    }
+  } else {
+    this.trace();
+    this.handle = requestAnimFrame(function () {
+      self.drawer();
+    });
+    return;
+  }
+
+  this.callback(this);
+  if (this.instanceCallback) {
+    this.instanceCallback(this);
+    this.instanceCallback = null;
+  }
+};
+
+/**
+ * Draw the SVG at the current instant from the
+ * `currentFrame` value. Here is where most of the magic is.
+ * The trick is to use the `strokeDashoffset` style property.
+ *
+ * For optimisation reasons, a new property called `progress`
+ * is added in each item of `map`. This one contain the current
+ * progress of the path element. Only if the new value is different
+ * the new value will be applied to the DOM element. This
+ * method save a lot of resources to re-render the SVG. And could
+ * be improved if the animation couldn't be played forward.
+ *
+ */
+Vivus.prototype.trace = function () {
+  var i, progress, path, currentFrame;
+  currentFrame = this.animTimingFunction(this.currentFrame / this.frameLength) * this.frameLength;
+  for (i = 0; i < this.map.length; i++) {
+    path = this.map[i];
+    progress = (currentFrame - path.startAt) / path.duration;
+    progress = this.pathTimingFunction(Math.max(0, Math.min(1, progress)));
+    if (path.progress !== progress) {
+      path.progress = progress;
+      path.el.style.strokeDashoffset = Math.floor(path.length * (1 - progress));
+      this.renderPath(i);
+    }
+  }
+};
+
+/**
+ * Method forcing the browser to re-render a path element
+ * from it's index in the map. Depending on the `forceRender`
+ * value.
+ * The trick is to replace the path element by it's clone.
+ * This practice is not recommended because it's asking more
+ * ressources, too much DOM manupulation..
+ * but it's the only way to let the magic happen on IE.
+ * By default, this fallback is only applied on IE.
+ *
+ * @param  {Number} index Path index
+ */
+Vivus.prototype.renderPath = function (index) {
+  if (this.forceRender && this.map && this.map[index]) {
+    var pathObj = this.map[index],
+        newPath = pathObj.el.cloneNode(true);
+    pathObj.el.parentNode.replaceChild(newPath, pathObj.el);
+    pathObj.el = newPath;
+  }
+};
+
+/**
+ * When the SVG object is loaded and ready,
+ * this method will continue the initialisation.
+ *
+ * This this mainly due to the case of passing an
+ * object tag in the constructor. It will wait
+ * the end of the loading to initialise.
+ *
+ */
+Vivus.prototype.init = function () {
+  // Set object variables
+  this.frameLength = 0;
+  this.currentFrame = 0;
+  this.map = [];
+
+  // Start
+  new Pathformer(this.el);
+  this.mapping();
+  this.starter();
+
+  if (this.onReady) {
+    this.onReady(this);
+  }
+};
+
+/**
+ * Trigger to start of the animation.
+ * Depending on the `start` value, a different script
+ * will be applied.
+ *
+ * If the `start` value is not valid, an error will be thrown.
+ * Even if technically, this is impossible.
+ *
+ */
+Vivus.prototype.starter = function () {
+  switch (this.start) {
+  case 'manual':
+    return;
+
+  case 'autostart':
+    this.play();
+    break;
+
+  case 'inViewport':
+    var self = this,
+    listener = function () {
+      if (self.isInViewport(self.parentEl, 1)) {
+        self.play();
+        window.removeEventListener('scroll', listener);
+      }
+    };
+    window.addEventListener('scroll', listener);
+    listener();
+    break;
+  }
+};
+
+
+/**
+ * Controls
+ **************************************
+ */
+
+/**
+ * Get the current status of the animation between
+ * three different states: 'start', 'progress', 'end'.
+ * @return {string} Instance status
+ */
+Vivus.prototype.getStatus = function () {
+  return this.currentFrame === 0 ? 'start' : this.currentFrame === this.frameLength ? 'end' : 'progress';
+};
+
+/**
+ * Reset the instance to the initial state : undraw
+ * Be careful, it just reset the animation, if you're
+ * playing the animation, this won't stop it. But just
+ * make it start from start.
+ *
+ */
+Vivus.prototype.reset = function () {
+  return this.setFrameProgress(0);
+};
+
+/**
+ * Set the instance to the final state : drawn
+ * Be careful, it just set the animation, if you're
+ * playing the animation on rewind, this won't stop it.
+ * But just make it start from the end.
+ *
+ */
+Vivus.prototype.finish = function () {
+  return this.setFrameProgress(1);
+};
+
+/**
+ * Set the level of progress of the drawing.
+ *
+ * @param {number} progress Level of progress to set
+ */
+Vivus.prototype.setFrameProgress = function (progress) {
+  progress = Math.min(1, Math.max(0, progress));
+  this.currentFrame = Math.round(this.frameLength * progress);
+  this.trace();
+  return this;
+};
+
+/**
+ * Play the animation at the desired speed.
+ * Speed must be a valid number (no zero).
+ * By default, the speed value is 1.
+ * But a negative value is accepted to go forward.
+ *
+ * And works with float too.
+ * But don't forget we are in JavaScript, se be nice
+ * with him and give him a 1/2^x value.
+ *
+ * @param  {number} speed Animation speed [optional]
+ */
+Vivus.prototype.play = function (speed, callback) {
+  this.instanceCallback = null;
+
+  if (speed && typeof speed === 'function') {
+    this.instanceCallback = speed; // first parameter is actually the callback function
+    speed = null;
+  }
+  else if (speed && typeof speed !== 'number') {
+    throw new Error('Vivus [play]: invalid speed');
+  }
+  // if the first parameter wasn't the callback, check if the seconds was
+  if (callback && typeof(callback) === 'function' && !this.instanceCallback) {
+    this.instanceCallback = callback;
+  }
+
+
+  this.speed = speed || 1;
+  if (!this.handle) {
+    this.drawer();
+  }
+  return this;
+};
+
+/**
+ * Stop the current animation, if on progress.
+ * Should not trigger any error.
+ *
+ */
+Vivus.prototype.stop = function () {
+  if (this.handle) {
+    cancelAnimFrame(this.handle);
+    this.handle = null;
+  }
+  return this;
+};
+
+/**
+ * Destroy the instance.
+ * Remove all bad styling attributes on all
+ * path tags
+ *
+ */
+Vivus.prototype.destroy = function () {
+  this.stop();
+  var i, path;
+  for (i = 0; i < this.map.length; i++) {
+    path = this.map[i];
+    path.el.style.strokeDashoffset = null;
+    path.el.style.strokeDasharray = null;
+    this.renderPath(i);
+  }
+};
+
+
+/**
+ * Utils methods
+ * include methods from Codrops
+ **************************************
+ */
+
+/**
+ * Method to best guess if a path should added into
+ * the animation or not.
+ *
+ * 1. Use the `data-vivus-ignore` attribute if set
+ * 2. Check if the instance must ignore invisible paths
+ * 3. Check if the path is visible
+ *
+ * For now the visibility checking is unstable.
+ * It will be used for a beta phase.
+ *
+ * Other improvments are planned. Like detecting
+ * is the path got a stroke or a valid opacity.
+ */
+Vivus.prototype.isInvisible = function (el) {
+  var rect,
+    ignoreAttr = el.getAttribute('data-ignore');
+
+  if (ignoreAttr !== null) {
+    return ignoreAttr !== 'false';
+  }
+
+  if (this.ignoreInvisible) {
+    rect = el.getBoundingClientRect();
+    return !rect.width && !rect.height;
+  }
+  else {
+    return false;
+  }
+};
+
+/**
+ * Parse attributes of a DOM element to
+ * get an object of {attributeName => attributeValue}
+ *
+ * @param  {object} element DOM element to parse
+ * @return {object}         Object of attributes
+ */
+Vivus.prototype.parseAttr = function (element) {
+  var attr, output = {};
+  if (element && element.attributes) {
+    for (var i = 0; i < element.attributes.length; i++) {
+      attr = element.attributes[i];
+      output[attr.name] = attr.value;
+    }
+  }
+  return output;
+};
+
+/**
+ * Reply if an element is in the page viewport
+ *
+ * @param  {object} el Element to observe
+ * @param  {number} h  Percentage of height
+ * @return {boolean}
+ */
+Vivus.prototype.isInViewport = function (el, h) {
+  var scrolled   = this.scrollY(),
+    viewed       = scrolled + this.getViewportH(),
+    elBCR        = el.getBoundingClientRect(),
+    elHeight     = elBCR.height,
+    elTop        = scrolled + elBCR.top,
+    elBottom     = elTop + elHeight;
+
+  // if 0, the element is considered in the viewport as soon as it enters.
+  // if 1, the element is considered in the viewport only when it's fully inside
+  // value in percentage (1 >= h >= 0)
+  h = h || 0;
+
+  return (elTop + elHeight * h) <= viewed && (elBottom) >= scrolled;
+};
+
+
+/**
+ * Get the viewport height in pixels
+ *
+ * @return {integer} Viewport height
+ */
+Vivus.prototype.getViewportH = function () {
+  var client = this.docElem.clientHeight,
+    inner = window.innerHeight;
+
+  if (client < inner) {
+    return inner;
+  }
+  else {
+    return client;
+  }
+};
+
+/**
+ * Get the page Y offset
+ *
+ * @return {integer} Page Y offset
+ */
+Vivus.prototype.scrollY = function () {
+  return window.pageYOffset || this.docElem.scrollTop;
+};
+
+setupEnv = function () {
+
+  if (Vivus.prototype.docElem) {
+    return;
+  }
+
+  /**
+   * Alias for document element
+   *
+   * @type {DOMelement}
+   */
+  Vivus.prototype.docElem = window.document.documentElement;
+
+  /**
+   * Alias for `requestAnimationFrame` or
+   * `setTimeout` function for deprecated browsers.
+   *
+   */
+  requestAnimFrame = (function () {
+    return (
+      window.requestAnimationFrame       ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame    ||
+      window.oRequestAnimationFrame      ||
+      window.msRequestAnimationFrame     ||
+      function(/* function */ callback){
+        return window.setTimeout(callback, 1000 / 60);
+      }
+    );
+  })();
+
+  /**
+   * Alias for `cancelAnimationFrame` or
+   * `cancelTimeout` function for deprecated browsers.
+   *
+   */
+  cancelAnimFrame = (function () {
+    return (
+      window.cancelAnimationFrame       ||
+      window.webkitCancelAnimationFrame ||
+      window.mozCancelAnimationFrame    ||
+      window.oCancelAnimationFrame      ||
+      window.msCancelAnimationFrame     ||
+      function(id){
+        return window.clearTimeout(id);
+      }
+    );
+  })();
+};
+
+/**
+ * Parse string to integer.
+ * If the number is not positive or null
+ * the method will return the default value
+ * or 0 if undefined
+ *
+ * @param {string} value String to parse
+ * @param {*} defaultValue Value to return if the result parsed is invalid
+ * @return {number}
+ *
+ */
+parsePositiveInt = function (value, defaultValue) {
+  var output = parseInt(value, 10);
+  return (output >= 0) ? output : defaultValue;
+};
+
+
+  if (true) {
+    // AMD. Register as an anonymous module.
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+      return Vivus;
+    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = Vivus;
+  } else {
+    // Browser globals
+    window.Vivus = Vivus;
+  }
+
+}());
+
 
 /***/ })
 /******/ ]);
