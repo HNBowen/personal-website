@@ -32778,8 +32778,8 @@ var HireMe = function (_React$Component) {
       var translateStr = (0, _d3helpers.sizeHireMe)();
       d3.select("#hire-me-svg").selectAll("path").attr("transform", translateStr);
 
-      var hireVivus = new _vivus2.default('hire-me-svg', { duration: 2000, type: 'oneByOne', start: 'autostart' }, function () {
-        console.log('hello from vivus');
+      var hireVivus = new _vivus2.default('hire-me-svg', { duration: 750 }, function () {
+        console.log('vivus finished');
       });
 
       var resizeTimer2;
@@ -32789,7 +32789,6 @@ var HireMe = function (_React$Component) {
         resizeTimer2 = setTimeout(function () {
           translateStr = (0, _d3helpers.sizeHireMe)();
           d3.select("#hire-me-svg-wrapper").selectAll("path").attr("transform", translateStr);
-          hireVivus.play();
         }, 250);
       });
     }
@@ -32805,7 +32804,7 @@ var HireMe = function (_React$Component) {
           _react2.default.createElement(
             'svg',
             { id: 'hire-me-svg' },
-            _react2.default.createElement('path', { d: _font_to_svg2.default, transform: 'scale(2,2)', className: 'hire-me-path' })
+            _react2.default.createElement('path', { d: _font_to_svg2.default, fill: 'none', stroke: '#000000', strokeWidth: '2', transform: 'scale(2,2)', className: 'hire-me-path' })
           )
         ),
         _react2.default.createElement(
