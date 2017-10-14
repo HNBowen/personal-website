@@ -32308,7 +32308,7 @@ var Skills = function (_React$Component) {
       //we clear the setTimeout every time the "resize" event fires
       //so, we only redraw once the resize event stops being fired
       var resizeTimer;
-      d3.select(window).on("resize", function () {
+      d3.select(window).on("resize.one", function (e) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
 
@@ -32423,7 +32423,7 @@ exports.default = skillSet;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sizeNodes = exports.resize = exports.createNodes = exports.exitHex = undefined;
+exports.sizeHireMe = exports.sizeNodes = exports.resize = exports.createNodes = exports.exitHex = undefined;
 
 var _d = __webpack_require__(91);
 
@@ -32599,6 +32599,32 @@ var radCoords = function radCoords(radius, theta) {
   return { 'x': x, 'y': y };
 };
 
+var sizeHireMe = exports.sizeHireMe = function sizeHireMe() {
+  var width = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientWidth;
+  var height = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientHeight;
+
+  console.log(width);
+
+  var tw, th, scale;
+
+  if (width > 414) {
+    scale = "scale(3,3)";
+    tw = 585.57;
+    th = 168.12;
+  } else {
+    scale = "scale(1.5,1.5)";
+    tw = 292.79;
+    th = 84.06;
+  }
+
+  var x = width / 2 - tw / 2;
+  var y = height / 2 + th / 2;
+
+  var translateStr = "translate(" + x + "," + y + ")" + scale;
+
+  return translateStr;
+};
+
 /***/ }),
 /* 215 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -32717,6 +32743,8 @@ var _font_to_svg = __webpack_require__(217);
 
 var _font_to_svg2 = _interopRequireDefault(_font_to_svg);
 
+var _d3helpers = __webpack_require__(214);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -32742,37 +32770,19 @@ var HireMe = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       //grab the coordinates of the middle of the svg
-      var width = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientWidth;
-      var height = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientHeight;
 
-      var tw = 292.79;
-      var th = 84.06;
-
-      x = width / 2 - tw / 2;
-      y = height / 2 + th / 2;
-
-      var translateStr = "translate(" + x + "," + y + ") scale(1.5,1.5)";
+      var translateStr = (0, _d3helpers.sizeHireMe)();
       d3.select(".hire-me-svg").selectAll("path").attr("transform", translateStr);
 
       var resizeTimer2;
-      // d3.select(window).on("resize", () => {
+      d3.select(window).on("resize.two", function (e) {
 
-      //   clearTimeout(resizeTimer2);
-      //   resizeTimer2 = setTimeout(() => {
-      //     console.log('resize finished')
-      //     var width = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientWidth
-      //     var height = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientHeight
-
-      //     var tw = 292.79;
-      //     var th = 84.06;
-
-      //     x = width/2 - tw/2; 
-      //     y = height/2 + th/2;
-
-      //     var translateStr = "translate(" + x + "," + y + ") scale(1.5,1.5)";
-      //     d3.select(".hire-me-svg").selectAll("path").attr("transform", translateStr)
-      //   }, 250)
-      // })
+        clearTimeout(resizeTimer2);
+        resizeTimer2 = setTimeout(function () {
+          translateStr = (0, _d3helpers.sizeHireMe)();
+          d3.select(".hire-me-svg").selectAll("path").attr("transform", translateStr);
+        }, 250);
+      });
     }
   }, {
     key: 'render',

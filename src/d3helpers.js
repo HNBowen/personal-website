@@ -179,4 +179,30 @@ const radCoords = (radius, theta) => {
   return {'x': x, 'y': y}
 }
 
+export const sizeHireMe = () => {
+  var width = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientWidth
+  var height = document.getElementsByClassName("hire-me-svg-wrapper")[0].clientHeight
+
+  console.log(width)
+
+  var tw, th, scale;
+
+  if (width > 414) {
+    scale = "scale(3,3)"
+    tw = 585.57;
+    th = 168.12;
+  } else {
+    scale = "scale(1.5,1.5)";
+    tw = 292.79;
+    th = 84.06;
+  }
+
+  var x = width/2 - tw/2; 
+  var y = height/2 + th/2;
+
+  var translateStr = "translate(" + x + "," + y + ")" + scale;
+
+  return translateStr;
+}
+
 

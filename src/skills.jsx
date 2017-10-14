@@ -56,7 +56,7 @@ class Skills extends React.Component {
     //we clear the setTimeout every time the "resize" event fires
     //so, we only redraw once the resize event stops being fired
     var resizeTimer;
-    d3.select(window).on("resize", () => {
+    d3.select(window).on("resize.one", (e) => {
       clearTimeout(resizeTimer)
       resizeTimer = setTimeout(() => {
 
