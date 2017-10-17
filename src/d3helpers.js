@@ -56,7 +56,7 @@ export const createNodes = (selection, skills) =>  {
     if (d.id === "0") {
       return "url(#" + d.label + ")"
     } else {
-      return "#e8eeda"
+      return "white"
     }
   })
   .transition()

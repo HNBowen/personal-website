@@ -35,7 +35,7 @@ class HireMe extends React.Component {
   render() {
     return (
       <div className="hire-me">
-        <div id="hire-me-svg-wrapper">
+        <div id="hire-me-svg-wrapper" >
           <svg id="hire-me-svg">
             <path d={hireMeData} fill="none" stroke="#000000" strokeWidth="2" transform="scale(2,2)" className="hire-me-path"/>
           </svg>

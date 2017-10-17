@@ -7,6 +7,7 @@ html, body {
 #hank {
   display: flex;
   flex-direction: column-reverse;
+  margin-top: 1%;
 }
 
 /* for desktop, any screen larger than iPad pro */
@@ -24,7 +25,8 @@ html, body {
   background-image: url("src/assets/blue_tiles.jpeg");
   background-size: cover;
   height: 100vh;
-  width: 100vw;
+  margin: 1%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -50,8 +52,10 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  background-color: #d5d9bd;
+  margin-right:1%;
+  margin-left:1%;
+  background-color: #02b2d2;
+  border-radius: 0 0 10px 10px;
 }
 
 .about-me-skills {
@@ -79,6 +83,9 @@ html, body {
 @media only screen and (min-width: 1025px) {
   .about-me {
     width: 50vw;
+    border-radius: 0 10px 10px 0;
+    margin-right: 1%;
+    margin-left:0;
   }
 }
 
@@ -105,16 +112,21 @@ html, body {
 
 #svg-container {
   height: 60vh;
-  width: 100vw;
   display: flex;
   justify-content: space-between;
   z-index: -1;
   background-color: #00b2d2;
+  border-radius: 10px 10px 0 0;
+  margin-left:1%;
+  margin-right:1%;
 }
 
 @media only screen and (min-width: 1025px) {
   #svg-container {
     width: 50vw;
+    border-radius: 10px 0 0 10px;
+    margin-left:1%;
+    margin-right:0;
   }
 }
 
@@ -146,15 +158,20 @@ html, body {
 }
 
 .applications-header {
-  width: 100vw;
   height: 10%;
-  font-size: 3vh;
+  font-size: 6vh;
   font-family: monospace;
-  margin: 0;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 10px;
+  background-color: #028c56;
+  -webkit-text-fill-color: white;
 }
 
 .brainstorm-header {
-  text-align: left;
+  text-align: center;
   height: 5%;
   font-size: 3vh;
   background-color: #f7dd36;
@@ -162,28 +179,47 @@ html, body {
   font-weight: bold;
   letter-spacing: 7px;
   margin: 0px;
+  margin-left: 1%;
+  margin-right: 1%;
   padding-left: 7px;
   font-family: monospace;
+  border-radius: 10px;
 }
 
 .share-my-kitchen-header {
-  text-align: left;
+  text-align: center;
   height: 5%;
   font-size: 3vh;
   margin: 0px;
+  margin-left: 1%;
+  margin-right: 1%;
   padding-left: 7px;
   background-color:#5764c6;
   -webkit-text-fill-color: white;
   font-family: monospace;
+  border-radius: 10px;
 }
 
 .app-body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
   align-items: center;
+  border-radius: 10px;
+  padding: 3%;
+
+}
+
+.brainstorm-body {
+  background-color: #ca972e;
+}
+
+.share-my-kitchen-body {
+  background-color: #869b69;
 }
 
 .app-demo {
@@ -203,7 +239,7 @@ html, body {
   font-family: monospace;
   -webkit-text-fill-color: #12c9d4;
   border: solid #12c9d4 2px;
-  background:rgba(255,255,255,0.5);
+  background-color: white;
   padding: 2vw;
   margin-left: 5vw;
   margin-right: 5vw;
@@ -230,6 +266,11 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #f7d942;
+  border-radius: 10px;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 #hire-me-svg-wrapper {
@@ -262,7 +303,7 @@ html, body {
   .app-body {
     flex-direction: row;
     align-items: center;
-    
+    height: 100vh;
   }
   
   .app-demo {

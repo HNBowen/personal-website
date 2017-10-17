@@ -32485,7 +32485,7 @@ var createNodes = exports.createNodes = function createNodes(selection, skills) 
     if (d.id === "0") {
       return "url(#" + d.label + ")";
     } else {
-      return "#e8eeda";
+      return "white";
     }
   }).transition().duration(750).delay(function (d, i) {
     return i * 200;
@@ -32636,85 +32636,130 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(17);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Applications = function Applications() {
-  return _react2.default.createElement(
-    "div",
-    { className: "applications-container" },
-    _react2.default.createElement(
-      "h4",
-      { className: "applications-header" },
-      "Applications"
-    ),
-    _react2.default.createElement(
-      "h5",
-      { className: "brainstorm-header" },
-      "brainstorm"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "app-body" },
-      _react2.default.createElement(
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Applications = function (_React$Component) {
+  _inherits(Applications, _React$Component);
+
+  function Applications() {
+    _classCallCheck(this, Applications);
+
+    return _possibleConstructorReturn(this, (Applications.__proto__ || Object.getPrototypeOf(Applications)).apply(this, arguments));
+  }
+
+  _createClass(Applications, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // var controller = new ScrollMagic.Controller({
+      //   globalSceneOptions: {
+      //     triggerHook: 'onLeave'
+      //   }
+      // });
+
+      // var slides = document.querySelectorAll('div.app-body');
+      // var headers = document.querySelectorAll('h5');
+
+      // for (var i = 0; i < slides.length; i++) {
+      //   new ScrollMagic.Scene({
+      //     triggerElement: slides[i]
+      //   })
+      //   .setPin(slides[i])
+      //   .addTo(controller)
+
+      // }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+
+      return _react2.default.createElement(
         "div",
-        { className: "app-demo" },
-        _react2.default.createElement("img", { src: "src/assets/brainstorm_website.png", className: "app-img" })
-      ),
-      _react2.default.createElement(
-        "div",
-        { className: "side-bar" },
+        { className: "applications-container" },
         _react2.default.createElement(
-          "p",
-          { className: "app-about" },
-          "brainstorm is a collaborative brainstorming tool designed to help teams develop ideas with a visually iterative process.",
-          _react2.default.createElement("br", null),
-          _react2.default.createElement("br", null),
-          "Built using React, Redux, Express, MongoDB, and d3."
+          "h4",
+          { className: "applications-header" },
+          "Applications"
         ),
         _react2.default.createElement(
-          "a",
-          { className: "github-button app-button", href: "https://github.com/conundrum-inc/brainstorm/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork conundrum-inc/brainstorm on GitHub" },
-          "Fork"
-        )
-      )
-    ),
-    _react2.default.createElement(
-      "h5",
-      { className: "share-my-kitchen-header" },
-      "sharemykitchen"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "app-body" },
-      _react2.default.createElement(
-        "div",
-        { className: "app-demo" },
-        _react2.default.createElement("img", { className: "app-img", src: "src/assets/share-my-kitchen_website.png" })
-      ),
-      _react2.default.createElement(
-        "div",
-        { className: "side-bar" },
-        _react2.default.createElement(
-          "p",
-          { className: "app-about" },
-          "sharemykitchen is a kitchen sharing app that allows foodies and entertainers to share their kitchen spaces.",
-          _react2.default.createElement("br", null),
-          _react2.default.createElement("br", null),
-          "Built using React, Redux, Express, and MongoDB."
+          "h5",
+          { className: "brainstorm-header" },
+          "brainstorm"
         ),
         _react2.default.createElement(
-          "a",
-          { className: "github-button app-button", href: "https://github.com/gabesangels/sharemykitchen/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork gabesangles/sharemykitchen on GitHub" },
-          "Fork"
+          "div",
+          { className: "app-body brainstorm-body" },
+          _react2.default.createElement(
+            "div",
+            { className: "app-demo" },
+            _react2.default.createElement("img", { src: "src/assets/brainstorm_website.png", className: "app-img" })
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "side-bar" },
+            _react2.default.createElement(
+              "p",
+              { className: "app-about" },
+              "brainstorm is a collaborative brainstorming tool designed to help teams develop ideas with a visually iterative process.",
+              _react2.default.createElement("br", null),
+              _react2.default.createElement("br", null),
+              "Built using React, Redux, Express, MongoDB, and d3."
+            ),
+            _react2.default.createElement(
+              "a",
+              { className: "github-button app-button", href: "https://github.com/conundrum-inc/brainstorm/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork conundrum-inc/brainstorm on GitHub" },
+              "Fork"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "h5",
+          { className: "share-my-kitchen-header" },
+          "sharemykitchen"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "app-body share-my-kitchen-body" },
+          _react2.default.createElement(
+            "div",
+            { className: "app-demo" },
+            _react2.default.createElement("img", { className: "app-img", src: "src/assets/share-my-kitchen_website.png" })
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "side-bar" },
+            _react2.default.createElement(
+              "p",
+              { className: "app-about" },
+              "sharemykitchen is a kitchen sharing app that allows foodies and entertainers to share their kitchen spaces.",
+              _react2.default.createElement("br", null),
+              _react2.default.createElement("br", null),
+              "Built using React, Redux, Express, and MongoDB."
+            ),
+            _react2.default.createElement(
+              "a",
+              { className: "github-button app-button", href: "https://github.com/gabesangels/sharemykitchen/fork", "data-icon": "octicon-repo-forked", "aria-label": "Fork gabesangles/sharemykitchen on GitHub" },
+              "Fork"
+            )
+          )
         )
-      )
-    )
-  );
-};
+      );
+    }
+  }]);
+
+  return Applications;
+}(_react2.default.Component);
 
 exports.default = Applications;
 
