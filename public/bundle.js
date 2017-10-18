@@ -32823,16 +32823,25 @@ var HireMe = function (_React$Component) {
       var translateStr = (0, _d3helpers.sizeHireMe)();
       d3.select("#hire-me-svg").selectAll("path").attr("transform", translateStr);
 
-      var hireVivus = new _vivus2.default('hire-me-svg', { duration: 750,
-        animTimingFunction: _vivus2.default.EASE
-      }, function () {
-        console.log('vivus finished');
-      });
+      var animateHireMeCtrl = new ScrollMagic.Controller();
 
-      var fillTween = new TweenMax.to('.hire-me-path', 3, {
-        fill: "#6262d6",
-        delay: 4
-      });
+      var animateHireMe = new ScrollMagic.Scene({
+        triggerElement: ".hire-me",
+        triggerHook: 'onEnter',
+        reverse: false
+      }).on('enter', function () {
+        console.log('entering hire me scene');
+        var hireVivus = new _vivus2.default('hire-me-svg', { duration: 750,
+          animTimingFunction: _vivus2.default.EASE
+        }, function () {
+          console.log('vivus finished');
+        });
+
+        var fillTween = new TweenMax.to('.hire-me-path', 3, {
+          fill: "#6262d6",
+          delay: 4
+        });
+      }).addTo(animateHireMeCtrl);
 
       var resizeTimer2;
       d3.select(window).on("resize.two", function (e) {
