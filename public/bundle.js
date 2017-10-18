@@ -32702,7 +32702,7 @@ var Applications = function (_React$Component) {
           { className: "app-body brainstorm-body" },
           _react2.default.createElement(
             "div",
-            { className: "app-demo" },
+            { className: "app-demo brainstorm-demo" },
             _react2.default.createElement("img", { src: "src/assets/brainstorm_website.png", className: "app-img" })
           ),
           _react2.default.createElement(
@@ -32710,7 +32710,7 @@ var Applications = function (_React$Component) {
             { className: "side-bar" },
             _react2.default.createElement(
               "p",
-              { className: "app-about" },
+              { className: "app-about brainstorm-about" },
               "brainstorm is a collaborative brainstorming tool designed to help teams develop ideas with a visually iterative process.",
               _react2.default.createElement("br", null),
               _react2.default.createElement("br", null),
@@ -32733,7 +32733,7 @@ var Applications = function (_React$Component) {
           { className: "app-body share-my-kitchen-body" },
           _react2.default.createElement(
             "div",
-            { className: "app-demo" },
+            { className: "app-demo share-my-kitchen-demo" },
             _react2.default.createElement("img", { className: "app-img", src: "src/assets/share-my-kitchen_website.png" })
           ),
           _react2.default.createElement(
@@ -32741,7 +32741,7 @@ var Applications = function (_React$Component) {
             { className: "side-bar" },
             _react2.default.createElement(
               "p",
-              { className: "app-about" },
+              { className: "app-about share-my-kitchen-about" },
               "sharemykitchen is a kitchen sharing app that allows foodies and entertainers to share their kitchen spaces.",
               _react2.default.createElement("br", null),
               _react2.default.createElement("br", null),

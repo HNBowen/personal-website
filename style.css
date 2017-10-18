@@ -74,7 +74,7 @@ html, body {
   text-align: left;
   box-shadow: 0 5px 5px grey;
   font-family: monospace;
-  -webkit-text-fill-color: #12c9d4;
+  -webkit-text-fill-color: #02b2d2;
   border: solid #12c9d4 2px;
   background-color: white;
   
@@ -104,7 +104,7 @@ html, body {
   text-align: left;
   box-shadow: 0 5px 5px grey;
   font-family: monospace;
-  -webkit-text-fill-color: #12c9d4;
+  -webkit-text-fill-color: #02b2d2;
   border: solid #12c9d4 2px;
   background-color: white;
 }
@@ -215,7 +215,7 @@ html, body {
 }
 
 .brainstorm-body {
-  background-color: #ca972e;
+  background-color: #ef9024;
 }
 
 .share-my-kitchen-body {
@@ -226,23 +226,41 @@ html, body {
   margin-left: 5vw;
   margin-right: 5vw;
   box-shadow: 0 5px 5px grey;
-  border: solid #12c9d4 2px;
+  
+}
+
+.brainstorm-demo {
+  border: solid #f7dd36 2px;
+}
+
+.share-my-kitchen-demo {
+  border: solid #5764c6 2px;
 }
 
 .app-img {
   width: 100%;
+  display: block;
 }
 
 
 .app-about {
   box-shadow: 0 5px 5px grey;
   font-family: monospace;
-  -webkit-text-fill-color: #12c9d4;
-  border: solid #12c9d4 2px;
+  border: solid #5864c6 2px;
   background-color: white;
   padding: 2vw;
   margin-left: 5vw;
   margin-right: 5vw;
+}
+
+.brainstorm-about {
+  -webkit-text-fill-color: #ef9024;
+  border: solid #f7dd36 2px;
+}
+
+.share-my-kitchen-about {
+  -webkit-text-fill-color: #869a69;
+  border: solid #5764c6 2px;
 }
 
 .app-buttons-container {
