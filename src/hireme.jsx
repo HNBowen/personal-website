@@ -15,10 +15,21 @@ class HireMe extends React.Component {
     var translateStr = sizeHireMe();
     d3.select("#hire-me-svg").selectAll("path").attr("transform", translateStr)
 
-    var hireVivus = new Vivus('hire-me-svg', {duration: 750}, () => {
+    var hireVivus = new Vivus('hire-me-svg', 
+      { duration: 750, 
+        animTimingFunction: Vivus.EASE
+      }, () => {
       console.log('vivus finished')
+
+
     });
     
+
+    var fillTween = new TweenMax.to('.hire-me-path', 3, {
+      fill: "#6262d6",
+      delay: 4
+    })
+
 
     var resizeTimer2;
     d3.select(window).on("resize.two", (e) => {
@@ -37,7 +48,7 @@ class HireMe extends React.Component {
       <div className="hire-me">
         <div id="hire-me-svg-wrapper" >
           <svg id="hire-me-svg">
-            <path d={hireMeData} fill="none" stroke="#000000" strokeWidth="2" transform="scale(2,2)" className="hire-me-path"/>
+            <path d={hireMeData} fill="#f7d942" stroke="#6262d6" strokeWidth="2" transform="scale(2,2)" className="hire-me-path"/>
           </svg>
         </div>
         <div className="hire-me-links-container">

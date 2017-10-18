@@ -1,6 +1,9 @@
 var webpack = require('webpack');
 
 module.exports = {
+  // node: {
+  //   fs: 'empty'
+  // },
   entry: './src/index.js',
   output: {
     path: __dirname + '/public',
@@ -20,5 +23,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js','.json']
-  }
+  },
 };
