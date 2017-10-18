@@ -3,8 +3,8 @@ import React from 'react'
 import Splash from './splash.jsx'
 import AboutMe from './aboutme.jsx'
 import Skills from './skills.jsx'
-import Experience from './experience.jsx'
 import Applications from './applications.jsx'
+import HireMe from './hireme.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -15,8 +15,12 @@ class App extends React.Component {
     return (
         <div id="app">
           <Splash />
-          <AboutMe />
-          <Skills skills={['JS', 'Node & Express', 'React', 'AngularJS', 'D3', 'MongoDB', 'HTML & CSS']} />
+          <div id="hank">
+            <AboutMe />
+            <Skills />
+          </div>
+          <Applications />
+          <HireMe />
         </div>
       )
   }

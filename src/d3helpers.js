@@ -1,18 +1,11 @@
 import * as d3 from 'd3'
 
-const hexagon = {
+export const hexagon = {
   draw: function(x, y, r) {
     var points = [ [x - r, y], [x - (r/2), y + (r*Math.sqrt(3)/2)], [x + (r/2), y+(r*Math.sqrt(3)/2)], [x+r, y], [x+(r/2),y-(r*Math.sqrt(3)/2)], [x-(r/2),y-(r*Math.sqrt(3)/2)], [x-r,y] ];
     return d3.svg.line()(points);
   }
 }
-
-const square = {
-  draw: function(x, y, r) {
-    
-  }
-}
-
 
 export const exitHex = (selection) => {
   
@@ -50,13 +43,22 @@ export const exitHex = (selection) => {
 };
 
 export const createNodes = (selection, skills) =>  {
+
+  console.log('drawing hexagons')
+  selection.selectAll("path, rect").remove()
   
   selection.selectAll(/*"circle"*/"path")
   .data(skills).enter()
   .append(/*"circle"*/"svg:path")
-  .attr("stroke","black")
-  .attr("fill", "none")
-  .attr("stroke","black")
+  .attr("id", (d) => d.id)
+  .attr("stroke","white")
+  .attr("fill", (d) => {
+    if (d.id === "0") {
+      return "url(#" + d.label + ")"
+    } else {
+      return "white"
+    }
+  })
   .transition()
   .duration(750)
   .delay(function(d, i) { return i * 200; })
@@ -65,12 +67,18 @@ export const createNodes = (selection, skills) =>  {
     return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
   })
 
+
+
   selection.selectAll("rect")
     .data(skills).enter()
     .append("rect")
     .attr("stroke", "none")
     .attr("fill", (d) => {
-      return d.label ? "url(#" + d.label + ")" : "none";
+      if (d.id !== "0") {
+        return "url(#" + d.label + ")";
+      } else {
+        return "none"
+      }
     })
     .transition()
     .duration(750)
@@ -91,6 +99,8 @@ export const createNodes = (selection, skills) =>  {
       var i = d3.interpolate(0, d.hexRad);
       return function(t) { return d.y - i(t)*(3/8)*Math.sqrt(2); };
     })
+
+  
     
   
 }
@@ -167,6 +177,32 @@ const radCoords = (radius, theta) => {
   x = radius * Math.cos(theta);
   y = radius * Math.sin(theta);
   return {'x': x, 'y': y}
+}
+
+export const sizeHireMe = () => {
+  var width = document.getElementById("hire-me-svg-wrapper").clientWidth
+  var height = document.getElementById("hire-me-svg-wrapper").clientHeight
+
+  console.log(width)
+
+  var tw, th, scale;
+
+  if (width > 619) {
+    scale = "scale(3,3)"
+    tw = 586;
+    th = 168.12;
+  } else {
+    scale = "scale(1.5,1.5)";
+    tw = 293;
+    th = 84.06;
+  }
+
+  var x = width/2 - tw/2; 
+  var y = height/2 + th/2;
+
+  var translateStr = "translate(" + x + "," + y + ")" + scale;
+
+  return translateStr;
 }
 
 

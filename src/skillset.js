@@ -1,46 +1,58 @@
 const skillSet = [
   {
-   label: undefined
+   id: "0",
+   label: "profile_hex",
+   text: "my mug"
   },
   {
-    icon: "src/assets/js.png",
-    label: "js"
+    id: "1",
+    label: "js",
+    text: "JavaScript"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "angular"
+    id: "2",
+    label: "angular",
+    text: "AngularJS"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "d3"
+    id: "3",
+    label: "d3",
+    text: "d3"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "node"
+    id: "4",
+    label: "node",
+    text: "NodeJS"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "mongo"
+    id: "5",
+    label: "mongo",
+    text: "MongoDB"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "htmlImg"
+    id: "6",
+    label: "htmlImg",
+    text: "html5"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "css"
+    id: "7",
+    label: "css",
+    text: "CSS"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "mysql"
+    id: "8",
+    label: "mysql",
+    text: "mysql"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "react"
+    id: "9",
+    label: "react",
+    text: "React"
   },
   {
-    icon: "src/assets/unh.png",
-    label: "redux"
+    id: "10",
+    label: "redux",
+    text: "Redux"
   }
 ]
 

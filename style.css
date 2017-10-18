@@ -4,6 +4,20 @@ html, body {
   height: 100%;
 }
 
+#hank {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 1%;
+}
+
+/* for desktop, any screen larger than iPad pro */
+@media only screen and (min-width: 1025px) {
+  #hank {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
 .splash {
 
   justify-content: center;
@@ -11,7 +25,8 @@ html, body {
   background-image: url("src/assets/blue_tiles.jpeg");
   background-size: cover;
   height: 100vh;
-  width: 100vw;
+  margin: 1%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -30,109 +45,285 @@ html, body {
 }
 
 .about-me {
-  opacity: 0;
   text-align: center;
-  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-right:1%;
+  margin-left:1%;
+  background-color: #02b2d2;
+  border-radius: 0 0 10px 10px;
 }
 
-/* this container has a custom png as its background image. The 
-  somewhat experimental drop-shadow property will consider the 
-  transparent pieces of the png when applying the shadow. In this way
-  I can acheive a box shadow effect around a custom shape.
-  http://bricss.net/post/33158273857/box-shadow-vs-filter-drop-shadow
-*/
-.about-me-img-container {
-  height: 20vh;
-  margin-left: 5vw;
-  background-image: url("src/assets/profile_hex.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
-  -webkit-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
-  -moz-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
-  -ms-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
-  -o-filter: drop-shadow(0 5px 5px rgba(0,0,0,.5));
+.about-me-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
 }
 
-/* this is styling for the image tag. Basically it allows the 
-  .about-me-img-container to automatically size based on the img
-  in the source attritbute of the .about-me-img img tag. We set the 
-  visibility to hidden to it doesn't cover the image we actually want to
-  see, the background png in the .about-me-img-container.
-*/
-.about-me-img {
-  visibility: hidden;
-  height: 20vh;
-}
-
-
-.about-me-text {
+.about-me-text-skills {
+  opacity: 0;
   padding: 2vw;
   margin-left: 5vw;
   margin-right: 5vw;
   text-align: left;
   box-shadow: 0 5px 5px grey;
   font-family: monospace;
-  -webkit-text-fill-color: #eff8ef;
-  border: solid #eff8ef 2px;
-  background-color: #12c9d4;
+  -webkit-text-fill-color: #02b2d2;
+  border: solid #12c9d4 2px;
+  border-radius: 10px;
+  background-color: white;
+  
 }
 
-.skills-container {
-  text-align: center;
-  height: 50vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
+@media only screen and (min-width: 1025px) {
+  .about-me {
+    width: 50vw;
+    border-radius: 0 10px 10px 0;
+    margin-right: 1%;
+    margin-left:0;
+  }
+}
+
+.about-me-blurb {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.skills-list {
-  text-align: center
+.about-me-text {
+  opacity: 0;
+  padding: 2vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  text-align: left;
+  box-shadow: 0 5px 5px grey;
+  font-family: monospace;
+  -webkit-text-fill-color: #02b2d2;
+  border: solid #12c9d4 2px;
+  border-radius: 10px;
+  background-color: white;
 }
-
-.skills-list-item {
-  display: inline-block;
-  width: 30%;
-}
-
 
 
 #svg-container {
   height: 60vh;
-  width: 100vw;
   display: flex;
   justify-content: space-between;
   z-index: -1;
+  background-color: #00b2d2;
+  border-radius: 10px 10px 0 0;
+  margin-left:1%;
+  margin-right:1%;
 }
 
-.experience-container {
-  text-align: center;
-  height: 50vh;
-  
- 
+@media only screen and (min-width: 1025px) {
+  #svg-container {
+    width: 50vw;
+    border-radius: 10px 0 0 10px;
+    margin-left:1%;
+    margin-right:0;
+  }
 }
 
-.experience-list: {
-  list-style: none
-}
 
-.experience-item {
-  width: 100%;
-  height: 50%;
-  float: right;
-}
-.experience-img {
-  float: left;
-}
 
 .applications-container {
   text-align: center;
-  height: 50vh;
+  display: flex;
+  flex-direction: column;
   
+}
+
+.applications-header {
+  height: 10%;
+  font-size: 6vh;
+  font-family: monospace;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 10px;
+  background-color: #028c56;
+  -webkit-text-fill-color: white;
+}
+
+.brainstorm-header {
+  text-align: center;
+  height: 5%;
+  font-size: 3vh;
+  background-color: #f7dd36;
+  -webkit-text-fill-color: #fcfcfc;
+  font-weight: bold;
+  letter-spacing: 7px;
+  margin: 0px;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding-left: 7px;
+  font-family: monospace;
+  border-radius: 10px;
+}
+
+.share-my-kitchen-header {
+  text-align: center;
+  height: 5%;
+  font-size: 3vh;
+  margin: 0px;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding-left: 7px;
+  background-color:#5764c6;
+  -webkit-text-fill-color: white;
+  font-family: monospace;
+  border-radius: 10px;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  align-items: center;
+  border-radius: 10px;
+  padding: 3%;
+
+}
+
+.brainstorm-body {
+  background-color: #ef9024;
+}
+
+.share-my-kitchen-body {
+  background-color: #869b69;
+}
+
+.app-demo {
+  margin-left: 5vw;
+  margin-right: 5vw;
+  box-shadow: 0 5px 5px grey;
+  border-radius: 10px;
+  overflow: hidden;
+  
+}
+
+.brainstorm-demo {
+  border: solid #f7dd36 2px;
+}
+
+.share-my-kitchen-demo {
+  border: solid #5764c6 2px;
+}
+
+.app-img {
+  width: 100%;
+  display: block;
+  
+}
+
+
+.app-about {
+  box-shadow: 0 5px 5px grey;
+  font-family: monospace;
+  border: solid #5864c6 2px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 2vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.brainstorm-about {
+  -webkit-text-fill-color: #ef9024;
+  border: solid #f7dd36 2px;
+}
+
+.share-my-kitchen-about {
+  -webkit-text-fill-color: #869a69;
+  border: solid #5764c6 2px;
+}
+
+.app-buttons-container {
+  margin-top: auto;
+  margin-right: 5vw;
+  margin-bottom: 3%;
+  justify-content: space-around;
+}
+
+.app-button {
+  align-self: center;
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hire-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f7d942;
+  border-radius: 10px;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+#hire-me-svg-wrapper {
+  width: 100%;
+  height: 75%;
+}
+
+#hire-me-svg {
+  width: 100%;
+}
+
+.hire-me-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+@media only screen and (min-width: 1025px) {
+
+  .app-about {
+    width: 25%;
+    
+  }
+
+  .app-buttons-container {
+    width: 25%;
+  }
+
+  .app-body {
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .app-demo {
+    width: 60%;
+  }
+
+
+  .side-bar {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 619px) {
+  #hire-me-svg {
+    height: 200px;
+  }
 }
