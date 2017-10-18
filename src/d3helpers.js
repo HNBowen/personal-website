@@ -32,8 +32,6 @@ export const createNodes = (selection, skills) =>  {
     return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
   })
 
-
-
   selection.selectAll("rect")
     .data(skills).enter()
     .append("rect")
@@ -64,10 +62,6 @@ export const createNodes = (selection, skills) =>  {
       var i = d3.interpolate(0, d.hexRad);
       return function(t) { return d.y - i(t)*(3/8)*Math.sqrt(2); };
     })
-
-  
-    
-  
 }
 
 export const resize = (el, data) => {
