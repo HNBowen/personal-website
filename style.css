@@ -291,6 +291,7 @@ html, body {
 
 .hire-me-links-container {
   display: flex;
+  flex-shrink: 0;
   flex-direction: row;
   justify-content: center;
 }
