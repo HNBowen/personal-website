@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
 import skillSet from './skillset.js'
 
-import { resize, createNodes, exitHex, sizeNodes } from './d3helpers.js'
+import { resize, createNodes, sizeNodes } from './d3helpers.js'
 class Skills extends React.Component {
   constructor(props) {
     super(props);
@@ -81,11 +81,6 @@ class Skills extends React.Component {
         //draw and zoom-in hexagons
         console.log('enter')
         createNodes(this.d3Graph, skillSet);
-      })
-      .on('leave', () => {
-        //zoom out hexagons
-        console.log('leave')
-        exitHex(this.d3Graph)
       })
       .addTo(skillsCtrl)
   }

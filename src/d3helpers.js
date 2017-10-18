@@ -7,41 +7,6 @@ export const hexagon = {
   }
 }
 
-export const exitHex = (selection) => {
-  
-  selection.selectAll(/*"circle"*/"path")
-    .transition()
-    .duration(750)
-    .delay(function(d, i) { return i * 5; })
-    .attrTween("d", function(d) {
-      var i = d3.interpolate(d.hexRad, 0);
-      return function(t) { return hexagon.draw(d.x, d.y, i(t)); };
-    })
-    .remove()
-
-  selection.selectAll("rect")
-    .transition()
-    .duration(750)
-    .delay(function(d, i) { return i * 5})
-    .attrTween("width", function(d) {
-      var i = d3.interpolate(d.hexRad, 0);
-      return function(t) { return i(t)*(0.75)*Math.sqrt(2); };
-    })
-    .attrTween("height", function(d) {
-      var i = d3.interpolate(d.hexRad, 0);
-      return function(t) { return i(t)*(0.75)*Math.sqrt(2); };
-    })
-    .attrTween("x", function(d) {
-      var i = d3.interpolate(d.hexRad, 0);
-      return function(t) { return d.x - i(t)*(3/8)*Math.sqrt(2); };
-    })
-    .attrTween("y", function(d) {
-      var i = d3.interpolate(d.hexRad, 0);
-      return function(t) { return d.y - i(t)*(3/8)*Math.sqrt(2); };
-    })
-    .remove()
-};
-
 export const createNodes = (selection, skills) =>  {
 
   console.log('drawing hexagons')

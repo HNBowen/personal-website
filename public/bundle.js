@@ -32332,10 +32332,6 @@ var Skills = function (_React$Component) {
         //draw and zoom-in hexagons
         console.log('enter');
         (0, _d3helpers.createNodes)(_this2.d3Graph, _skillset2.default);
-      }).on('leave', function () {
-        //zoom out hexagons
-        console.log('leave');
-        (0, _d3helpers.exitHex)(_this2.d3Graph);
       }).addTo(skillsCtrl);
     }
   }, {
@@ -32424,7 +32420,7 @@ exports.default = skillSet;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sizeHireMe = exports.sizeNodes = exports.resize = exports.createNodes = exports.exitHex = exports.hexagon = undefined;
+exports.sizeHireMe = exports.sizeNodes = exports.resize = exports.createNodes = exports.hexagon = undefined;
 
 var _d = __webpack_require__(91);
 
@@ -32437,42 +32433,6 @@ var hexagon = exports.hexagon = {
     var points = [[x - r, y], [x - r / 2, y + r * Math.sqrt(3) / 2], [x + r / 2, y + r * Math.sqrt(3) / 2], [x + r, y], [x + r / 2, y - r * Math.sqrt(3) / 2], [x - r / 2, y - r * Math.sqrt(3) / 2], [x - r, y]];
     return d3.svg.line()(points);
   }
-};
-
-var exitHex = exports.exitHex = function exitHex(selection) {
-
-  selection.selectAll( /*"circle"*/"path").transition().duration(750).delay(function (d, i) {
-    return i * 5;
-  }).attrTween("d", function (d) {
-    var i = d3.interpolate(d.hexRad, 0);
-    return function (t) {
-      return hexagon.draw(d.x, d.y, i(t));
-    };
-  }).remove();
-
-  selection.selectAll("rect").transition().duration(750).delay(function (d, i) {
-    return i * 5;
-  }).attrTween("width", function (d) {
-    var i = d3.interpolate(d.hexRad, 0);
-    return function (t) {
-      return i(t) * 0.75 * Math.sqrt(2);
-    };
-  }).attrTween("height", function (d) {
-    var i = d3.interpolate(d.hexRad, 0);
-    return function (t) {
-      return i(t) * 0.75 * Math.sqrt(2);
-    };
-  }).attrTween("x", function (d) {
-    var i = d3.interpolate(d.hexRad, 0);
-    return function (t) {
-      return d.x - i(t) * (3 / 8) * Math.sqrt(2);
-    };
-  }).attrTween("y", function (d) {
-    var i = d3.interpolate(d.hexRad, 0);
-    return function (t) {
-      return d.y - i(t) * (3 / 8) * Math.sqrt(2);
-    };
-  }).remove();
 };
 
 var createNodes = exports.createNodes = function createNodes(selection, skills) {
