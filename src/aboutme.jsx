@@ -17,7 +17,7 @@ class AboutMe extends React.Component {
     var scene = new ScrollMagic.Scene({
       triggerElement: ".aboutTween",
       triggerHook: 0.75,
-      reverse: true
+      reverse: false
     })
     .setTween(aboutMeTweenEnter)
     

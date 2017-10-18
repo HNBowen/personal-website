@@ -32143,7 +32143,7 @@ var AboutMe = function (_React$Component) {
       var scene = new ScrollMagic.Scene({
         triggerElement: ".aboutTween",
         triggerHook: 0.75,
-        reverse: true
+        reverse: false
       }).setTween(aboutMeTweenEnter);
 
       controller.addScene(scene);
@@ -32326,7 +32326,8 @@ var Skills = function (_React$Component) {
 
       var skillsScene = new ScrollMagic.Scene({
         triggerElement: "#svg",
-        triggerHook: 0.5
+        triggerHook: 0.5,
+        reverse: false
       }).on('enter', function () {
         //draw and zoom-in hexagons
         console.log('enter');

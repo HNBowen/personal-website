@@ -74,7 +74,8 @@ class Skills extends React.Component {
 
     var skillsScene = new ScrollMagic.Scene({
       triggerElement: "#svg",
-      triggerHook: 0.5
+      triggerHook: 0.5,
+      reverse: false
     })
       .on('enter', () => {
         //draw and zoom-in hexagons
