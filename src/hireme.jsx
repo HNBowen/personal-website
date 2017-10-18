@@ -15,20 +15,34 @@ class HireMe extends React.Component {
     var translateStr = sizeHireMe();
     d3.select("#hire-me-svg").selectAll("path").attr("transform", translateStr)
 
-    var hireVivus = new Vivus('hire-me-svg', 
-      { duration: 750, 
-        animTimingFunction: Vivus.EASE
-      }, () => {
-      console.log('vivus finished')
+    var animateHireMeCtrl = new ScrollMagic.Controller();
+
+    var animateHireMe = new ScrollMagic.Scene({
+      triggerElement: ".hire-me",
+      triggerHook: 'onEnter',
+      reverse: false
+    })
+    .on('enter', () => {
+      console.log('entering hire me scene')
+      var hireVivus = new Vivus('hire-me-svg', 
+        { duration: 750, 
+          animTimingFunction: Vivus.EASE
+        }, () => {
+        console.log('vivus finished')
 
 
-    });
+      });
+      
+
+      var fillTween = new TweenMax.to('.hire-me-path', 3, {
+        fill: "#6262d6",
+        delay: 4
+      })
+    })
+    .addTo(animateHireMeCtrl)
+
     
 
-    var fillTween = new TweenMax.to('.hire-me-path', 3, {
-      fill: "#6262d6",
-      delay: 4
-    })
 
 
     var resizeTimer2;
