@@ -150,10 +150,15 @@ export const sizeHireMe = () => {
     scale = "scale(3,3)"
     tw = 749.25;
     th = 162.84;
-  } else {
+  } else if (width <= 812 && width >= 414) {
     scale = "scale(1.5,1.5)";
     tw = 374.63;
     th = 81.42;
+    
+  } else {
+    scale = "scale(1,1)";
+    tw = 249.75;
+    th = 54.82;
   }
 
   var x = width/2 - tw/2; 
