@@ -19475,9 +19475,9 @@ var sizeHireMe = exports.sizeHireMe = function sizeHireMe() {
   var tw, th, scale;
 
   if (width > 812) {
-    scale = "scale(3,3)";
-    tw = 749.25;
-    th = 162.84;
+    scale = "scale(2,2)";
+    tw = 499.5;
+    th = 108.56;
   } else if (width <= 812 && width >= 414) {
     scale = "scale(1.5,1.5)";
     tw = 374.63;
