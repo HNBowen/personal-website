@@ -146,14 +146,14 @@ export const sizeHireMe = () => {
 
   var tw, th, scale;
 
-  if (width > 619) {
+  if (width > 812) {
     scale = "scale(3,3)"
-    tw = 586;
-    th = 168.12;
+    tw = 749.25;
+    th = 162.84;
   } else {
     scale = "scale(1.5,1.5)";
-    tw = 293;
-    th = 84.06;
+    tw = 374.63;
+    th = 81.42;
   }
 
   var x = width/2 - tw/2; 
